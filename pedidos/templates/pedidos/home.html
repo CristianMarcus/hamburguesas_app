@@ -1,0 +1,53 @@
+{% extends 'pedidos/base.html' %}
+{% load static %}
+<head>
+    <link rel="icon" type="image/x-icon" href="{% static 'pedidos/img/home.png' %}">
+</head>
+{% block title %}Inicio - HamburguesasApp{% endblock %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <section class="text-center">
+        <img src="{% static 'pedidos/img/polasburgersabuela.jpeg' %}" alt="Pola's Burger's Logo" class="img-titulo">
+        <h3>Bienvenidos</h3>
+        <p>Las mejores hamburguesas del condado</p>
+    </section>
+    <section class="imagenportada">
+    </section>
+    <section class="mt-5" id="nuestrasburgers">
+        <h2>Nuestras Burger's</h2>
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <p class="card-text"><span class="precio">${{ producto.precio }}</span></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <p>Click para Seleccionar</p>
+        </div>
+    </section>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Script de home.html ejecutado');
+        if (window.location.hash === '#nuestrasburgers') {
+            console.log('Ancla #nuestrasburgers encontrada'); // Agrega esta línea
+            const targetElement = document.getElementById('nuestrasburgers');
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+</script>
+{% endblock %}

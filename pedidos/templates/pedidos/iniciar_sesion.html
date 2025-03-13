@@ -1,0 +1,18 @@
+{% extends 'pedidos/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Iniciar Sesión</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Usuario:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+{% endblock %}

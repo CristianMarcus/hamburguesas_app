@@ -1,0 +1,89 @@
+{% extends 'pedidos/base.html' %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'detalle_pedido.css' %}">
+</head>
+
+{% block title %}Detalle del Pedido{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Detalle del Pedido</h1>
+        <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
+        <p><button id="enviar-whatsapp" class="btn btn-success">Confirmar para Finalizar</button></p>
+        <p>Cliente: {{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}</p>
+        <p>Teléfono: {{ pedido.cliente_anonimo.telefono }}</p>
+        <p>Dirección: {{ pedido.direccion }}</p>
+        <p>Método de Pago: {{ pedido.metodo_pago }}</p>
+        <p>Total: ${{ pedido.total }}</p>
+        
+
+        {% if items %}
+            <h2>Productos:</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{ item.producto.nombre }}</td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>${{ item.precio_unitario }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Este pedido no tiene productos.</p>
+        {% endif %}
+
+        
+
+        {{ items|safe|json_script:"items-data" }} </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('enviar-whatsapp').addEventListener('click', function() {
+                // Recopila los datos del pedido
+                var cliente = "{{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}";
+                var telefono = "{{ pedido.cliente_anonimo.telefono }}";
+                var direccion = "{{ pedido.direccion }}";
+                var metodoPago = "{{ pedido.metodo_pago }}";
+                var total = "{{ pedido.total }}";
+
+                // Recopila los productos del pedido desde JSON
+                var items = JSON.parse(document.getElementById('items-data').textContent);
+                var productos = items.map(function(item) {
+                    return item.producto.nombre + " - Cantidad: " + item.cantidad + " - Precio unitario: $" + item.precio_unitario;
+                }).join("\n");
+
+                // Crea el mensaje de WhatsApp
+                var mensaje = `
+Pedido realizado con éxito.
+Cliente: ${cliente}
+Teléfono: ${telefono}
+Dirección: ${direccion}
+Método de Pago: ${metodoPago}
+Total: ${total}
+Productos:
+${productos}
+                `;
+
+                // Codifica el mensaje para la URL
+                var mensajeCodificado = encodeURIComponent(mensaje);
+
+                // Crea la URL de WhatsApp Web
+                var urlWhatsApp = `https://web.whatsapp.com/send?phone=5491126884940&text=${mensajeCodificado}`;
+
+                // Abre WhatsApp Web en una nueva ventana
+                window.open(urlWhatsApp, '_blank');
+            });
+        });
+    </script>
+{% endblock %}

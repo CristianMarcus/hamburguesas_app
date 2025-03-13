@@ -1,0 +1,18 @@
+{% extends 'pedidos/base.html' %}
+
+{% block title %}Detalle del Producto{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Detalle del Producto</h1>
+        <div class="card">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" style="max-height: 300px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">Descripción: {{ producto.descripcion }}</p>
+                <p class="card-text">Precio: ${{ producto.precio }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,296 @@
+/* Estilos generales */
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #6d6c6c;
+    color: #333;
+}
+
+.carrito-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.carrito-titulo {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #444;
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+/* Estilos de la tabla */
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.carrito-tabla th, .carrito-tabla td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.carrito-tabla th {
+    background-color: #f5f5f5;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.carrito-tabla tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+.carrito-tabla img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrito-acciones button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.carrito-acciones button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Estilos de la cantidad */
+.carrito-cantidad-form {
+    display: inline-block;
+}
+
+.carrito-cantidad-input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.carrito-cantidad-actualizar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.carrito-cantidad-actualizar:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Estilos del total y botones */
+.carrito-total {
+    text-align: right;
+    margin-top: 30px;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #555;
+}
+
+.carrito-botones {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.carrito-botones a, .carrito-botones button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 0 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.carrito-botones a:hover, .carrito-botones button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+/* Estilos del carrito vacío */
+.carrito-vacio {
+    text-align: center;
+    margin-top: 60px;
+    color: #777;
+    font-size: 1.3em;
+}
+
+/* ------------------------------------
+    MEDIA QUERIES PARA ver_carrito.css
+    ------------------------------------ */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .carrito-container {
+        width: 95%;
+        padding: 15px; /* Reducir el padding */
+    }
+
+    .carrito-titulo {
+        font-size: 1.6em; /* Reducir aún más el tamaño del título */
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+
+    .carrito-tabla {
+        overflow-x: auto;
+        display: block; /* Convertir la tabla en un bloque */
+        white-space: nowrap; /* Evitar que el texto se rompa */
+    }
+
+    .carrito-tabla thead {
+        display: none; /* Ocultar la cabecera de la tabla */
+    }
+
+    .carrito-tabla tr {
+        display: block;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .carrito-tabla td {
+        display: block;
+        text-align: right;
+        font-size: 0.7em;
+        border: none;
+        padding: 5px 0;
+    }
+
+    .carrito-tabla td:before {
+        content: attr(data-label); /* Mostrar el encabezado como contenido */
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .carrito-tabla img {
+        max-width: 40px; /* Reducir aún más el tamaño de la imagen */
+        margin-right: 3px;
+    }
+
+    .carrito-acciones {
+        flex-direction: column;
+        align-items: stretch; /* Estirar los botones para ocupar todo el ancho */
+    }
+
+    .carrito-acciones button {
+        margin-bottom: 3px;
+        padding: 6px 12px; /* Reducir el padding del botón */
+        font-size: 0.7em; /* Reducir el tamaño del texto del botón */
+    }
+
+    .carrito-cantidad-input {
+        width: 40px;
+        padding: 3px;
+        font-size: 0.6em;
+    }
+
+    .carrito-cantidad-actualizar {
+        padding: 3px 8px;
+        font-size: 0.6em;
+    }
+
+    .carrito-total {
+        font-size: 0.9em; /* Reducir el tamaño del texto del total */
+        text-align: center; /* Centrar el texto del total */
+        margin-top: 15px;
+    }
+
+    .carrito-botones a, .carrito-botones button {
+        padding: 6px 12px; /* Reducir el padding de los botones */
+        margin: 3px 0;
+        font-size: 0.7em; /* Reducir el tamaño del texto de los botones */
+    }
+
+    .carrito-vacio {
+        font-size: 0.9em;
+        margin-top: 30px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    /* Ajustes para pantallas pequeñas en modo horizontal */
+    .carrito-container {
+        padding: 20px;
+    }
+
+    .carrito-titulo {
+        font-size: 1.8em;
+    }
+
+    .carrito-tabla td {
+        font-size: 0.75em;
+    }
+
+    .carrito-botones a, .carrito-botones button {
+        padding: 8px 16px;
+        font-size: 0.8em;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Ajustes para tabletas */
+    .carrito-container {
+        padding: 25px;
+    }
+
+    .carrito-titulo {
+        font-size: 2em;
+    }
+
+    .carrito-tabla td {
+        font-size: 0.8em;
+    }
+
+    .carrito-botones a, .carrito-botones button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Ajustes para escritorios */
+    .carrito-botones a, .carrito-botones button {
+        display: inline-block;
+        width: auto;
+        margin: 5px;
+    }
+}

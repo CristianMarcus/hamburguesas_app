@@ -1,0 +1,37 @@
+{% extends 'pedidos/base.html' %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'pedidos/listar_productos.css' %}">
+    
+</head>
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Lista de Productos</h1>
+    <a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3">Crear Nuevo Producto</a>
+    <div class="row">
+        {% for producto in productos %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <a href="{% url 'agregar_al_carrito' producto.id %}">
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                        <p class="card-text"><span class="precio">{{ producto.precio }}</span></p>
+                        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-primary">Ver Detalles</a>
+                        <div class="mt-2">
+                            <a href="{% url 'editar_producto' producto.id %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,513 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #888585;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4 {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 175px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text .precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e44d26;
+    background-color: #ebd40d;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.card-text .precio:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning, .btn-danger {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+a {
+    text-decoration: none;
+    color: #c82333;
+}
+
+
+CSS
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #888585;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4 {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 175px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text .precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e44d26;
+    background-color: #ebd40d;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.card-text .precio:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning,
+.btn-danger {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+a {
+    text-decoration: none;
+    color: #c82333;
+}
+
+/* ------------------------------------
+   MEDIA QUERIES
+   ------------------------------------ */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .btn-success {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .card-text .precio {
+        font-size: 1rem;
+        padding: 3px 6px;
+    }
+
+    .btn-primary {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .btn-warning,
+    .btn-danger {
+        padding: 4px 8px;
+        font-size: 10px;
+        margin: 3px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn-success {
+        padding: 9px 18px;
+        font-size: 15px;
+    }
+
+    .col-md-4 {
+        width: calc(50% - 20px);
+    }
+
+    .card {
+        width: 280px;
+    }
+
+    .card-img-top {
+        height: 160px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .card-text .precio {
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+
+    .btn-warning,
+    .btn-danger {
+        padding: 4px 9px;
+        font-size: 11px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .col-md-4 {
+        width: calc(50% - 20px);
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .card-img-top {
+        height: 170px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+
+    .card-text .precio {
+        font-size: 1.2rem;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .btn-warning,
+    .btn-danger {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .col-md-4 {
+        width: calc(33.33% - 20px);
+    }
+
+    .card {
+        width: 270px;
+    }
+
+    .card-img-top {
+        height: 175px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+
+    .card-text .precio {
+        font-size: 1.2rem;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .btn-warning,
+    .btn-danger {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Your default styles already handle this well */
+}

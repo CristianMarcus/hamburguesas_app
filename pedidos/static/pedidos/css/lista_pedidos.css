@@ -1,0 +1,220 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #b95820;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #4b8d16;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: rgb(219, 136, 201);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Para que el border-radius funcione */
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+    color: #555;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Estilos de botones */
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 0.875rem;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para el mensaje de "No hay pedidos" */
+.text-center {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #777;
+}
+
+/* Estilos para la tabla responsive */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* ------------------------------------
+   MEDIA QUERIES
+   ------------------------------------ */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .text-center {
+        padding: 10px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+        font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 7px 11px;
+    }
+
+    .text-center {
+        padding: 15px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+
+    .text-center {
+        padding: 20px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 5.5rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 15px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+
+    .text-center {
+        padding: 20px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Your default styles already handle this well */
+}

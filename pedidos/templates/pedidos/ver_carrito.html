@@ -1,0 +1,64 @@
+{% extends 'pedidos/base.html' %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'carrito.css' %}">
+</head>
+{% block title %}Carrito de Compras{% endblock %}
+
+{% block content %}
+<div class="carrito-container">
+    <h1 class="carrito-titulo">Carrito de Compras</h1>
+    <table class="carrito-tabla">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos_carrito %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>
+                    <form method="post" action="{% url 'actualizar_cantidad' producto.producto_id %}" class="carrito-cantidad-form">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1"
+                                class="carrito-cantidad-input">
+                            <button type="submit" class="carrito-cantidad-actualizar">Actualizar</button>
+                        </div>
+                    </form>
+                </td>
+                <td>${{ producto.precio|floatformat:2 }}</td>
+                <td>${{ producto.subtotal|floatformat:2 }}</td>
+                <td class="carrito-acciones">
+                    <a href="{% url 'eliminar_del_carrito' producto.producto_id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="carrito-vacio">El carrito está vacío.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                <td><strong>${{ total|floatformat:2 }}</strong></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="carrito-total">
+        <strong>Total: ${{ total|floatformat:2 }}</strong>
+    </div>
+    <div class="carrito-botones">
+        <a href="{% url 'home' %}#nuestrasburgers" class="btn btn-primary">Agregar Hamburguesas</a>
+        <a href="{% url 'crear_pedido' %}" class="btn btn-success">Crear Pedido</a>
+        <a href="{% url 'vaciar_carrito' %}" class="btn btn-warning">Vaciar Carrito</a>
+    </div>
+</div>
+{% endblock %}
