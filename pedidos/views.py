@@ -69,8 +69,14 @@ def detalle_producto(request, producto_id):
 
 
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ClienteAnonimoForm, PedidoForm
+from .models import Pedido, ItemPedido
+from django.utils import timezone
+from django.db import transaction, IntegrityError
+
 def crear_pedido(request):
-    
     carrito = request.session.get('carrito', {})
     if not carrito:
         messages.error(request, "El carrito está vacío.")
@@ -82,12 +88,10 @@ def crear_pedido(request):
             return redirect('ver_carrito')
 
     if request.method == 'POST':
-        
         cliente_form = ClienteAnonimoForm(request.POST)
         pedido_form = PedidoForm(request.POST, request.FILES)
 
         if cliente_form.is_valid() and pedido_form.is_valid():
-            
             cliente_anonimo = cliente_form.save()
             pedido = pedido_form.save(commit=False)
             pedido.cliente_anonimo = cliente_anonimo
@@ -97,9 +101,7 @@ def crear_pedido(request):
             try:
                 with transaction.atomic():
                     pedido.save()
-                    
-            except IntegrityError as e:
-                
+            except IntegrityError:
                 pedido = pedido_form.save(commit=False)
                 pedido.cliente_anonimo = cliente_anonimo
                 pedido.fecha_creacion = timezone.now()
@@ -116,7 +118,6 @@ def crear_pedido(request):
                             last_pedido = Pedido.objects.order_by('-id').first()
                             pedido.id = last_pedido.id + 1
                     pedido.save()
-                    
 
             total_pedido = 0
             for producto_id, item in carrito.items():
@@ -129,34 +130,64 @@ def crear_pedido(request):
                     cantidad=cantidad,
                     precio_unitario=precio_unitario
                 )
-            
 
-            pedido.total = total_pedido
+            cargo_delivery = 500  # Cargo fijo de delivery
+            total_con_delivery = total_pedido + cargo_delivery
+            pedido.total = total_con_delivery
             pedido.save()
-            
 
             request.session['carrito'] = {}
             messages.success(request, "Pedido realizado con éxito.")
             return redirect('detalle_pedido', pedido_id=pedido.id)
         else:
-            
             messages.error(request, "Por favor, corrija los errores en el formulario.")
     else:
-        
         cliente_form = ClienteAnonimoForm()
         pedido_form = PedidoForm()
 
-    return render(request, 'pedidos/crear_pedido.html', {'cliente_form': cliente_form, 'pedido_form': pedido_form})
+    # Cálculo del subtotal y cargo de delivery para mostrar en la plantilla
+    subtotal = sum(int(item.get('cantidad', 1)) * float(item.get('precio', 0)) for item in carrito.values())
+    cargo_delivery = 500
+    total_con_delivery = subtotal + cargo_delivery
+
+    return render(request, 'pedidos/crear_pedido.html', {
+        'cliente_form': cliente_form,
+        'pedido_form': pedido_form,
+        'subtotal': subtotal,
+        'cargo_delivery': cargo_delivery,
+        'total_con_delivery': total_con_delivery
+    })
 
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all().order_by('-fecha_creacion') # Para mejorar el rendimiento, se podría agregar paginación
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
 
+import json
+from django.core.serializers import serialize
+
 def detalle_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, pk=pedido_id)
-    items = ItemPedido.objects.filter(pedido=pedido).select_related('producto') # Optimización de consultas
-    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido, 'items': items})
+    items = ItemPedido.objects.filter(pedido=pedido).select_related('producto')
+    items_data = []
+    for item in items:
+        items_data.append({
+            'producto_nombre': item.producto.nombre,
+            'cantidad': item.cantidad,
+            'precio_unitario': str(item.precio_unitario)  # Convertir a cadena
+        })
+    items_json = json.dumps(items_data)
+    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido, 'items': items, 'items_json': items_json})
+
+
+
+def confirmar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    if request.method == 'POST':
+        pedido.estado = 'confirmado'
+        pedido.save()
+        messages.success(request, "Pedido confirmado, Muchas Gracias.")
+        return redirect('home')
 
 @transaction.atomic
 def eliminar_pedido(request, pedido_id):

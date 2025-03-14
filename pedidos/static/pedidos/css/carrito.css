@@ -83,7 +83,13 @@ body {
 
 /* Estilos de la cantidad */
 .carrito-cantidad-form {
-    display: inline-block;
+    display: inline;
+}
+
+.carrito-cantidad-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carrito-cantidad-input {
@@ -110,6 +116,23 @@ body {
     transform: translateY(-2px);
 }
 
+.carrito-cantidad-incrementar,
+.carrito-cantidad-disminuir {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-cantidad-incrementar:hover,
+.carrito-cantidad-disminuir:hover {
+    background-color: #e0e0e0;
+}
+
 /* Estilos del total y botones */
 .carrito-total {
     text-align: right;
@@ -129,7 +152,8 @@ body {
     color: white;
     border: none;
     padding: 15px 30px;
-    margin: 0 15px;
+    margin: 15px;
+    width: 200px; /* Ajustar el ancho de los botones */
     border-radius: 10px;
     text-decoration: none;
     cursor: pointer;

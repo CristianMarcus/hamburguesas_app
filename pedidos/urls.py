@@ -15,6 +15,7 @@ urlpatterns = [
     path('crear/', views.crear_pedido, name='crear_pedido'),
     path('pedidos/', views.listar_pedidos, name='listar_pedidos'),
     path('detalle/<int:pedido_id>/', views.detalle_pedido, name='detalle_pedido'),
+    path('confirmar/<int:pedido_id>/', views.confirmar_pedido, name='confirmar_pedido'),
     path('eliminar_pedido/<int:pedido_id>/', views.eliminar_pedido, name='eliminar_pedido'),
 
     # URLs para el Carrito de Compras

@@ -1,43 +1,79 @@
 {% extends 'pedidos/base.html' %}
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'pedidos/css/crear_pedido.css' %}">
-</head>
+
 {% block title %}Crear Pedido{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'pedidos/css/crear_pedido.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container">
         <h1>Crear Pedido</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono:</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="metodo_pago" class="form-label">Método de Pago:</label>
+                        <select name="metodo_pago" id="metodo_pago" class="form-select">
+                            <option value="efectivo">Efectivo</option>
+                            <option value="mercado_pago">Mercado Pago</option>
+                        </select>
+                        <div id="mercado-pago-info" style="display: none; margin-top: 10px;">
+                            <a href="https://link.mercadopago.com.ar/polasburgers" class="btn btn-success btn-sm" target="_blank">
+                                Pagar con Mercado Pago
+                            </a>
+                            <p>Luego de realizado el pago,"realize el pedido abajo" para finalizar</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Resumen del Pedido</h5>
+                            <p class="card-text">Subtotal: <span id="subtotal">${{ subtotal|floatformat:2 }}</span></p>
+                            <p class="card-text">Cargo de Delivery: <span id="cargo-delivery">${{ cargo_delivery|floatformat:2 }}</span></p>
+                            <p class="card-color">Total: <span id="total">${{ total_con_delivery|floatformat:2 }}</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono:</label>
-                <input type="text" id="telefono" name="telefono" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="metodo_pago" class="form-label">Método de Pago:</label>
-                <select name="metodo_pago" id="metodo_pago" class="form-select">
-                    <option value="efectivo">Efectivo</option>
-                    <option value="mercado_pago">Mercado Pago</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="comprobante_pago" class="form-label">Comprobante de Pago (si aplica):</label>
-                <input type="file" id="comprobante_pago" name="comprobante_pago" class="form-control">
-            </div>
+
             <button type="submit" class="btn btn-primary">Realizar Pedido</button>
         </form>
     </div>
+
+    <script>
+        const metodoPagoSelect = document.getElementById('metodo_pago');
+        const mercadoPagoInfo = document.getElementById('mercado-pago-info');
+
+        metodoPagoSelect.addEventListener('change', function() {
+            if (this.value === 'mercado_pago') {
+                mercadoPagoInfo.style.display = 'block';
+            } else {
+                mercadoPagoInfo.style.display = 'none';
+            }
+        });
+    </script>
 {% endblock %}

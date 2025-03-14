@@ -11,13 +11,18 @@
     <div class="container">
         <h1>Detalle del Pedido</h1>
         <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
-        <p><button id="enviar-whatsapp" class="btn btn-success">Confirmar para Finalizar</button></p>
+
+        <form id="confirmar-form" method="post" action="{% url 'confirmar_pedido' pedido.id %}">
+            {% csrf_token %}
+            <button type="button" id="enviar-whatsapp" class="btn btn-success">Confirmar para Finalizar</button>
+        </form>
+        <p style="color: red;">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
+
         <p>Cliente: {{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}</p>
         <p>Teléfono: {{ pedido.cliente_anonimo.telefono }}</p>
         <p>Dirección: {{ pedido.direccion }}</p>
         <p>Método de Pago: {{ pedido.metodo_pago }}</p>
         <p>Total: ${{ pedido.total }}</p>
-        
 
         {% if items %}
             <h2>Productos:</h2>
@@ -43,46 +48,57 @@
             <p>Este pedido no tiene productos.</p>
         {% endif %}
 
-        
-
-        {{ items|safe|json_script:"items-data" }} </div>
+        <script id="items-data" type="application/json">
+            {{ items_json|safe }}
+        </script>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('enviar-whatsapp').addEventListener('click', function() {
-                // Recopila los datos del pedido
-                var cliente = "{{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}";
-                var telefono = "{{ pedido.cliente_anonimo.telefono }}";
-                var direccion = "{{ pedido.direccion }}";
-                var metodoPago = "{{ pedido.metodo_pago }}";
-                var total = "{{ pedido.total }}";
+                try {
+                    var items = JSON.parse(document.getElementById('items-data').textContent);
+                    console.log(items);
 
-                // Recopila los productos del pedido desde JSON
-                var items = JSON.parse(document.getElementById('items-data').textContent);
-                var productos = items.map(function(item) {
-                    return item.producto.nombre + " - Cantidad: " + item.cantidad + " - Precio unitario: $" + item.precio_unitario;
-                }).join("\n");
+                    // Construir la lista de productos de forma dinámica
+                    var productos = items.map(function(item) {
+                        return item.producto_nombre + " - Cantidad: " + item.cantidad + " - Precio unitario: $" + item.precio_unitario;
+                    }).join("\n");
 
-                // Crea el mensaje de WhatsApp
-                var mensaje = `
+                    // Recopila los datos del pedido
+                    var cliente = "{{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}";
+                    var telefono = "{{ pedido.cliente_anonimo.telefono }}";
+                    var direccion = "{{ pedido.direccion }}";
+                    var metodoPago = "{{ pedido.metodo_pago }}";
+                    var total = "{{ pedido.total }}";
+
+                    // Crea el mensaje de WhatsApp
+                    var mensaje = `
 Pedido realizado con éxito.
 Cliente: ${cliente}
 Teléfono: ${telefono}
 Dirección: ${direccion}
 Método de Pago: ${metodoPago}
-Total: ${total}
 Productos:
 ${productos}
-                `;
+Total:
+${total}
+                    `;
 
-                // Codifica el mensaje para la URL
-                var mensajeCodificado = encodeURIComponent(mensaje);
+                    // Codifica el mensaje para la URL
+                    var mensajeCodificado = encodeURIComponent(mensaje);
 
-                // Crea la URL de WhatsApp Web
-                var urlWhatsApp = `https://web.whatsapp.com/send?phone=5491126884940&text=${mensajeCodificado}`;
+                    // Crea la URL de WhatsApp
+                    var urlWhatsApp = `https://wa.me/5491126884940?text=${mensajeCodificado}`;
 
-                // Abre WhatsApp Web en una nueva ventana
-                window.open(urlWhatsApp, '_blank');
+                    // Abre WhatsApp en una nueva ventana
+                    window.open(urlWhatsApp, '_blank');
+
+                    // Envía el formulario para confirmar el pedido
+                    document.getElementById('confirmar-form').submit();
+                } catch (e) {
+                    console.error("Error al parsear JSON:", e);
+                }
             });
         });
     </script>

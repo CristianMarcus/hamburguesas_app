@@ -28,15 +28,6 @@ class PedidoForm(forms.ModelForm):
         if metodo_pago not in dict(Pedido.METODO_PAGO_CHOICES):
             raise forms.ValidationError("Método de pago no válido.")
         return metodo_pago
-    def clean(self):
-        cleaned_data = super().clean()
-        metodo_pago = cleaned_data.get('metodo_pago')
-        comprobante_pago = cleaned_data.get('comprobante_pago')
-
-        if metodo_pago == 'mercado_pago' and not comprobante_pago:
-            self.add_error('comprobante_pago', "El comprobante de pago es obligatorio para Mercado Pago.")
-
-        return cleaned_data
 
 class ClienteAnonimoForm(forms.ModelForm):
     class Meta:

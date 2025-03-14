@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #f0f8ff;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 900px; /* Aumentado el ancho máximo */
     margin: 40px auto;
     padding: 30px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -28,27 +28,17 @@ h1 {
 /* Estilos del formulario */
 .form-label {
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     display: block;
     color: black;
     font-family: cursive;
-    margin-left: 80px;
 }
-.form-control{
-    background-color: rgb(4, 189, 4);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-}
-
-
 
 .form-control,
 .form-select {
-    width: 80%;
+    width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    margin-left: 80px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
@@ -71,154 +61,80 @@ h1 {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    margin-left: 80px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
 
+/* Estilos adicionales */
+#mercado-pago-info {
+    margin-top: 10px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Resumen del pedido */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    background-color: #e0f7fa;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
 /* Media Queries para Responsividad */
+@media (min-width: 768px) {
+    .mb-3 {
+        padding: 0 10px; /* Añadido relleno horizontal */
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
-        margin: 20px auto;
-    }
-
-    .form-control,
-    .form-select {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .btn-primary {
-        padding: 10px 18px;
-        font-size: 14px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .container {
         width: 95%;
     }
-}
 
-/* ------------------------------------
-   MEDIA QUERIES
-   ------------------------------------ */
-
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
-    .container {
-        max-width: 90%;
-        padding: 20px;
-        margin: 20px auto;
+    .mb-3 {
+        padding: 0 5px; /* Reducido relleno horizontal en móviles */
     }
-
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        font-size: 14px;
-        margin-left: 0; /* Reset margin */
-    }
-
-    .form-control,
-    .form-select {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-        margin-left: 0; /* Reset margin */
-    }
-
-    .btn-primary {
-        padding: 10px 15px;
-        font-size: 14px;
-        margin-left: 0; /* Reset margin */
-    }
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .container {
-        max-width: 90%;
-        padding: 25px;
-        margin: 30px auto;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    .form-label {
-        font-size: 15px;
-        margin-left: 40px; /* Adjust margin */
-    }
-
-    .form-control,
-    .form-select {
-        width: 90%;
-        padding: 11px;
-        font-size: 15px;
-        margin-left: 40px; /* Adjust margin */
-    }
-
-    .btn-primary {
-        padding: 11px 18px;
-        font-size: 15px;
-        margin-left: 40px; /* Adjust margin */
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .container {
-        max-width: 80%;
-    }
-
-    .form-label {
-        font-size: 16px;
-        margin-left: 60px; /* Adjust margin */
-    }
-
-    .form-control,
-    .form-select {
-        width: 85%;
-        padding: 12px;
-        font-size: 16px;
-        margin-left: 60px; /* Adjust margin */
-    }
-
-    .btn-primary {
-        padding: 12px 20px;
-        font-size: 16px;
-        margin-left: 60px; /* Adjust margin */
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .container {
-        max-width: 70%;
-    }
-
-    .form-label {
-        margin-left: 80px;
-    }
-
-    .form-control,
-    .form-select {
-        margin-left: 80px;
-    }
-
-    .btn-primary {
-        margin-left: 80px;
-    }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    /* Your default styles already handle this well */
 }
