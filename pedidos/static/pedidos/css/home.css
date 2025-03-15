@@ -7,24 +7,19 @@
     padding: 150px 0;
     border-radius: 8px;
     margin-bottom: 30px;
-    }
-
-
-.img-titulo{
-    width: 70%;  /* Ajuste del ancho de la imagen */
-    height: 60%; /* Ajuste del alto de la imagen */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-
-
 }
 
+.img-titulo {
+    width: 70%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid rgb(255, 94, 0); /* Corrección: ancho, estilo y color del borde */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
-
-h2{
+h2 {
     color: rgb(15, 54, 90);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 8rem;
@@ -53,84 +48,87 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     font-family: 'Times New Roman', Times, serif;
+    margin: 0 -10px; /* Ajustamos el margen para compensar el padding de las columnas */
 }
 
 .col-md-4 {
     width: calc(33.33% - 20px);
+    padding: 10px; /* Añadimos padding para separar las cards */
     margin: 10px;
+    box-sizing: border-box; /* Aseguramos que el padding se incluya en el ancho */
 }
 
 .card {
-    margin-left: 60px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
     background-color: #fff;
-    width: 250px;
-    display: flex; /* Añadido para flexbox */
-    flex-direction: column; /* Añadido para flexbox */
+    width: 100%; /* Las cards ocupan todo el ancho de su columna */
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
 .card-img-top {
-    height: 250px; /* Ajuste inicial del tamaño de la imagen */
+    width: 100%;
+    height: 200px;
     object-fit: cover;
+    border-radius: 12px 12px 0 0;
 }
 
 .card-body {
-    background-color: darkgoldenrod;
-    text-align: center;
-    padding: 15px;
-    flex-grow: 1; /* Añadido para que el contenido se expanda */
-}
-
-.div.card.mt-4{
-    align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-title {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
 }
 
 .card-text {
-    font-size: 1.1rem;
-    color: #141111;
-    margin-bottom: 12px;
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
 }
 
-.card-link {
-    display: inline-block;
+.card-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(204, 79, 116);
+    margin-bottom: 20px;
+}
+
+.btn-comprar {
     background-color: #e57373;
-    color: #fff;
+    color: white;
+    border: none;
     padding: 10px 20px;
     border-radius: 8px;
+    cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
 }
 
-.card-link:hover {
+.btn-comprar:hover {
     background-color: #d84315;
+    transform: translateY(-3px);
 }
 
-
-/* ------------------------------------
-    MEDIA QUERIES
-    ------------------------------------ */
-
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
+/* Media Queries */
+@media (max-width: 767.98px) {
     .imagenportada {
-        padding: 50px 0; /* Reducir aún más el padding en móviles */
-        margin-bottom: 1.25rem; /* 20px */
+        padding: 100px 0;
     }
 
     .img-titulo {
@@ -139,62 +137,7 @@ p {
     }
 
     h2 {
-        font-size: 2.5rem; /* Reducir el tamaño del título */
-    }
-
-    h3 {
-        font-size: 2rem; /* Reducir el tamaño del subtítulo */
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .mt-5 h2 {
-        font-size: 1.5rem; /* Reducir el tamaño del título */
-        margin-bottom: 1rem; /* 16px */
-    }
-
-    .col-md-4 {
-        width: 100%;
-        margin: 0.625rem 0; /* 10px */
-    }
-
-    .card {
-        margin-left: 0;
-        width: 90%;
-    }
-
-    .card-img-top {
-        height: 12.5rem; /* 200px */
-    }
-
-    .card-title {
-        font-size: 1rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
-
-    .card-link {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
-    }
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .imagenportada {
-        padding: 70px 0; /* Ajuste gradual del padding */
-    }
-
-    .img-titulo {
-        width: 80%;
-    }
-
-    h2 {
-        font-size: 3.5rem; /* Ajuste gradual del tamaño del título */
+        font-size: 4rem;
     }
 
     h3 {
@@ -202,7 +145,7 @@ p {
     }
 
     p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .mt-5 h2 {
@@ -210,31 +153,19 @@ p {
     }
 
     .col-md-4 {
-        width: calc(50% - 1.25rem); /* 20px */
+        width: 100%;
+        margin: 10px 0;
     }
 
     .card {
-        margin-left: 1.875rem; /* 30px */
-        width: 17.5rem; /* 280px */
-    }
-
-    .card-img-top {
-        height: 13.75rem; /* 220px */
+        margin-left: 0;
+        width: 90%;
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .imagenportada {
-        padding: 90px 0;
-    }
-
-    .img-titulo {
-        width: 75%;
-    }
-
     h2 {
-        font-size: 4.5rem;
+        font-size: 6rem;
     }
 
     h3 {
@@ -242,39 +173,13 @@ p {
     }
 
     p {
-        font-size: 1.25rem;
-    }
-
-    .mt-5 h2 {
-        font-size: 2.4rem;
-    }
-
-    .col-md-4 {
-        width: calc(50% - 1.25rem);
-    }
-
-    .card {
-        margin-left: 2.5rem; /* 40px */
-        width: 18.75rem; /* 300px */
-    }
-
-    .card-img-top {
-        height: 15rem; /* 240px */
+        font-size: 1.5rem;
     }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .imagenportada {
-        padding: 120px 0;
-    }
-
-    .img-titulo {
-        width: 70%;
-    }
-
     h2 {
-        font-size: 5.5rem;
+        font-size: 7rem;
     }
 
     h3 {
@@ -282,28 +187,63 @@ p {
     }
 
     p {
-        font-size: 1.375rem;
+        font-size: 1.7rem;
+    }
+}
+/* Teléfonos muy pequeños (menos de 320px) */
+@media (max-width: 319.98px) {
+    .imagenportada {
+        padding: 80px 0;
     }
 
-    .mt-5 h2 {
-        font-size: 2.6rem;
+    h2 {
+        font-size: 3rem;
     }
 
-    .col-md-4 {
-        width: calc(33.33% - 1.25rem);
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
     }
 
     .card {
-        margin-left: 3.125rem; /* 50px */
-        width: 16.875rem; /* 270px */
-    }
-
-    .card-img-top {
-        height: 15.3125rem; /* 245px */
+        width: 95%;
     }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    /* Your default styles already handle this well */
+/* Tablets grandes y laptops pequeñas (1200px a 1400px) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .col-md-4 {
+        width: calc(33.33% - 30px);
+    }
+}
+
+/* Monitores grandes (más de 1400px) */
+@media (min-width: 1400px) {
+    .col-md-4 {
+        width: calc(33.33% - 40px);
+    }
+
+    .card {
+        width: 300px;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 767.98px) {
+    .col-md-4 {
+        width: 100%;
+    }
+
+    .card {
+        margin-left: 0; /* Eliminamos el margen izquierdo en pantallas pequeñas */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .col-md-4 {
+        width: 50%; /* Dos cards por fila en tablets */
+    }
 }

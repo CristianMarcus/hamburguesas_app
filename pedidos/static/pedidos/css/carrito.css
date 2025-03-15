@@ -9,14 +9,18 @@ body {
     padding: 0;
 }
 
+.card.h-100{
+    margin: 12px;
+}
+
 .carrito-container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 40px auto;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    padding: 40px auto;
 }
 
 .carrito-titulo {
