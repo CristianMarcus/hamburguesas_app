@@ -1,8 +1,12 @@
 /* Estilos generales */
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #6d6c6c;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
     color: #333;
+    background-color: #c57d10;
+    margin: 0;
+    padding: 0;
 }
 
 .carrito-container {
@@ -18,7 +22,7 @@ body {
 .carrito-titulo {
     text-align: center;
     margin-bottom: 40px;
-    color: #444;
+    color: rgb(15, 54, 90); /* Color de los títulos de home.css */
     font-size: 2.8em;
     font-weight: 700;
     letter-spacing: 1px;
@@ -41,7 +45,7 @@ body {
 }
 
 .carrito-tabla th {
-    background-color: #f5f5f5;
+    background-color: #e0e0e0; /* Color un poco mas oscuro que el fondo */
     color: #555;
     font-weight: 600;
     text-transform: uppercase;
@@ -66,18 +70,19 @@ body {
     align-items: center;
 }
 
-.carrito-acciones button {
-    background-color: #e74c3c;
+.carrito-acciones a.btn-danger {
+    background-color: #e57373; /* Color de los botones de las cards */
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
 }
 
-.carrito-acciones button:hover {
-    background-color: #c0392b;
+.carrito-acciones a.btn-danger:hover {
+    background-color: #d84315; /* Oscurecer al pasar el ratón */
     transform: translateY(-2px);
 }
 
@@ -102,7 +107,7 @@ body {
 }
 
 .carrito-cantidad-actualizar {
-    background-color: #3498db;
+    background-color: #e57373; /* Color de los botones de las cards */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -112,7 +117,7 @@ body {
 }
 
 .carrito-cantidad-actualizar:hover {
-    background-color: #2980b9;
+    background-color: #d84315; /* Oscurecer al pasar el ratón */
     transform: translateY(-2px);
 }
 
@@ -139,7 +144,7 @@ body {
     margin-top: 30px;
     font-size: 1.4em;
     font-weight: 600;
-    color: #555;
+    color: rgb(204, 79, 116); /* Color de los precios de home.css */
 }
 
 .carrito-botones {
@@ -148,12 +153,12 @@ body {
 }
 
 .carrito-botones a, .carrito-botones button {
-    background-color: #3498db;
+    background-color: #e57373; /* Color de los botones de las cards */
     color: white;
     border: none;
     padding: 15px 30px;
     margin: 15px;
-    width: 200px; /* Ajustar el ancho de los botones */
+    width: 200px;
     border-radius: 10px;
     text-decoration: none;
     cursor: pointer;
@@ -162,7 +167,7 @@ body {
 }
 
 .carrito-botones a:hover, .carrito-botones button:hover {
-    background-color: #2980b9;
+    background-color: #d84315; /* Oscurecer al pasar el ratón */
     transform: translateY(-3px);
 }
 
@@ -174,31 +179,27 @@ body {
     font-size: 1.3em;
 }
 
-/* ------------------------------------
-    MEDIA QUERIES PARA ver_carrito.css
-    ------------------------------------ */
-
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575.98px) {
     .carrito-container {
         width: 95%;
-        padding: 15px; /* Reducir el padding */
+        padding: 15px;
     }
 
     .carrito-titulo {
-        font-size: 1.6em; /* Reducir aún más el tamaño del título */
+        font-size: 1.6em;
         margin-bottom: 15px;
         padding-bottom: 8px;
     }
 
     .carrito-tabla {
         overflow-x: auto;
-        display: block; /* Convertir la tabla en un bloque */
-        white-space: nowrap; /* Evitar que el texto se rompa */
+        display: block;
+        white-space: nowrap;
     }
 
     .carrito-tabla thead {
-        display: none; /* Ocultar la cabecera de la tabla */
+        display: none;
     }
 
     .carrito-tabla tr {
@@ -216,26 +217,27 @@ body {
     }
 
     .carrito-tabla td:before {
-        content: attr(data-label); /* Mostrar el encabezado como contenido */
+        content: attr(data-label);
         float: left;
         text-transform: uppercase;
         font-weight: bold;
     }
 
     .carrito-tabla img {
-        max-width: 40px; /* Reducir aún más el tamaño de la imagen */
+        max-width: 40px;
         margin-right: 3px;
     }
 
     .carrito-acciones {
         flex-direction: column;
-        align-items: stretch; /* Estirar los botones para ocupar todo el ancho */
+        align-items: stretch;
     }
 
-    .carrito-acciones button {
+    .carrito-acciones a.btn-danger {
         margin-bottom: 3px;
-        padding: 6px 12px; /* Reducir el padding del botón */
-        font-size: 0.7em; /* Reducir el tamaño del texto del botón */
+        padding: 6px 12px;
+        margin: 5px;
+        font-size: 0.7em;
     }
 
     .carrito-cantidad-input {
@@ -250,15 +252,15 @@ body {
     }
 
     .carrito-total {
-        font-size: 0.9em; /* Reducir el tamaño del texto del total */
-        text-align: center; /* Centrar el texto del total */
+        font-size: 0.9em;
+        text-align: center;
         margin-top: 15px;
     }
 
     .carrito-botones a, .carrito-botones button {
-        padding: 6px 12px; /* Reducir el padding de los botones */
-        margin: 3px 0;
-        font-size: 0.7em; /* Reducir el tamaño del texto de los botones */
+        padding: 6px 12px;
+        margin: 3px;
+        font-size: 0.7em;
     }
 
     .carrito-vacio {
@@ -269,7 +271,6 @@ body {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    /* Ajustes para pantallas pequeñas en modo horizontal */
     .carrito-container {
         padding: 20px;
     }
@@ -284,13 +285,13 @@ body {
 
     .carrito-botones a, .carrito-botones button {
         padding: 8px 16px;
+        margin: 10px auto;
         font-size: 0.8em;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    /* Ajustes para tabletas */
     .carrito-container {
         padding: 25px;
     }
@@ -306,15 +307,66 @@ body {
     .carrito-botones a, .carrito-botones button {
         padding: 10px 20px;
         font-size: 0.9em;
+        margin: 15px auto;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    /* Ajustes para escritorios */
     .carrito-botones a, .carrito-botones button {
         display: inline-block;
         width: auto;
-        margin: 5px;
+        margin: 15px 10px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .carrito-container {
+        width: 80%;
+        padding: 50px;
+    }
+
+    .carrito-titulo {
+        font-size: 3em;
+        margin-bottom: 50px;
+    }
+
+    .carrito-tabla th, .carrito-tabla td {
+        padding: 25px;
+    }
+
+    .carrito-tabla img {
+        max-width: 120px;
+    }
+
+    .carrito-acciones a.btn-danger {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    .carrito-cantidad-input {
+        width: 100px;
+        padding: 12px;
+        font-size: 1.1em;
+    }
+
+    .carrito-cantidad-actualizar {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+
+    .carrito-total {
+        font-size: 1.6em;
+    }
+
+    .carrito-botones a, .carrito-botones button {
+        padding: 18px 35px;
+        font-size: 1.2em;
+        margin: 20px 15px;
+    }
+
+    .carrito-vacio {
+        font-size: 1.5em;
     }
 }

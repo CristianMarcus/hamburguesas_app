@@ -10,17 +10,41 @@
 {% block content %}
     <div class="container">
         <h1>Detalle del Pedido</h1>
-        <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
+
+        <p style="color: rgb(53, 190, 19);">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
 
         <form id="confirmar-form" method="post" action="{% url 'confirmar_pedido' pedido.id %}">
             {% csrf_token %}
             <button type="button" id="enviar-whatsapp" class="btn btn-success">Confirmar para Finalizar</button>
         </form>
-        <p style="color: red;">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
+        <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
 
-        <p>Cliente: {{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}</p>
-        <p>Teléfono: {{ pedido.cliente_anonimo.telefono }}</p>
-        <p>Dirección: {{ pedido.direccion }}</p>
+        <form method="post" action="{% url 'actualizar_pedido' pedido.id %}"></form>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" value="{{ pedido.cliente_anonimo.nombre }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" value="{{ pedido.cliente_anonimo.apellido }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" name="telefono" id="telefono" value="{{ pedido.cliente_anonimo.telefono }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion">Dirección:</label>
+                <input type="text" name="direccion" id="direccion" value="{{ pedido.direccion }}" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+
         <p>Método de Pago: {{ pedido.metodo_pago }}</p>
         <p>Total: ${{ pedido.total }}</p>
 
@@ -66,9 +90,9 @@
                     }).join("\n");
 
                     // Recopila los datos del pedido
-                    var cliente = "{{ pedido.cliente_anonimo.nombre }} {{ pedido.cliente_anonimo.apellido }}";
-                    var telefono = "{{ pedido.cliente_anonimo.telefono }}";
-                    var direccion = "{{ pedido.direccion }}";
+                    var cliente = document.getElementById('nombre').value + " " + document.getElementById('apellido').value;
+                    var telefono = document.getElementById('telefono').value;
+                    var direccion = document.getElementById('direccion').value;
                     var metodoPago = "{{ pedido.metodo_pago }}";
                     var total = "{{ pedido.total }}";
 

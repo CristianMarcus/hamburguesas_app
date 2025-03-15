@@ -9,36 +9,34 @@
 
 {% block content %}
     <div class="carrito-container">
-        <h1 class="carrito-titulo">Carrito de Compras</h1>
+        <h1 class="carrito-titulo"><i class="fas fa-shopping-cart"></i> Carrito de Compras</h1>
         <table class="carrito-tabla">
             <thead>
                 <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Subtotal</th>
-                    <th>Acciones</th>
+                    <th><i class="fas fa-hamburger"></i> Producto</th>
+                    <th><i class="fas fa-sort-numeric-up"></i> Cantidad</th>
+                    <th><i class="fas fa-dollar-sign"></i> Precio Unitario</th>
+                    <th><i class="fas fa-calculator"></i> Subtotal</th>
+                    <th><i class="fas fa-cogs"></i> Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for producto in productos_carrito %}
-                <tr>
+                <tr id="producto-{{ producto.producto_id }}">
                     <td>{{ producto.nombre }}</td>
                     <td>
-                        <form method="post" action="{% url 'actualizar_cantidad' producto.producto_id %}" class="carrito-cantidad-form">
-                            {% csrf_token %}
-                            <div class="carrito-cantidad-container">
-                                <button type="button" class="carrito-cantidad-disminuir">-</button>
-                                <input type="text" name="cantidad" value="{{ producto.cantidad }}" class="carrito-cantidad-input">
-                                <button type="button" class="carrito-cantidad-incrementar">+</button>
-                                <button type="submit" class="carrito-cantidad-actualizar">Actualizar</button>
-                            </div>
-                        </form>
+                        <div class="carrito-cantidad-container">
+                            <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1" class="carrito-cantidad-input" data-id="{{ producto.producto_id }}" data-precio="{{ producto.precio|floatformat:2 }}">
+                        </div>
                     </td>
-                    <td>${{ producto.precio|floatformat:2 }}</td>
-                    <td>${{ producto.subtotal|floatformat:2 }}</td>
+                    <td class="precio-unitario" data-precio="{{ producto.precio|floatformat:2 }}">
+                        ${{ producto.precio|floatformat:2 }}
+                    </td>
+                    <td class="subtotal" id="subtotal-{{ producto.producto_id }}">
+                        ${{ producto.subtotal|floatformat:2 }}
+                    </td>
                     <td class="carrito-acciones">
-                        <a href="{% url 'eliminar_del_carrito' producto.producto_id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        <a href="{% url 'eliminar_del_carrito' producto.producto_id %}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
                     </td>
                 </tr>
                 {% empty %}
@@ -49,40 +47,65 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-right"><strong>Total:</strong></td>
-                    <td><strong>${{ total|floatformat:2 }}</strong></td>
+                    <td colspan="3" class="text-right"><strong><i class="fas fa-coins"></i> Total:</strong></td>
+                    <td class="carrito-total"><strong>${{ total|floatformat:2 }}</strong></td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
-        <div class="carrito-total">
-            <strong>Total: ${{ total|floatformat:2 }}</strong>
-        </div>
         <div class="carrito-botones">
-            <a href="{% url 'home' %}#nuestrasburgers" class="btn btn-primary">Agregar Hamburguesas</a>
-            <a href="{% url 'crear_pedido' %}" class="btn btn-success">Crear Pedido</a>
-            <a href="{% url 'vaciar_carrito' %}" class="btn btn-warning">Vaciar Carrito</a>
+            <a href="{% url 'home' %}#nuestrasburgers" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar Hamburguesas</a>
+            <a href="{% url 'crear_pedido' %}" class="btn btn-success"><i class="fas fa-check-circle"></i> Crear Pedido</a>
+            <a href="{% url 'vaciar_carrito' %}" class="btn btn-warning"><i class="fas fa-trash"></i> Vaciar Carrito</a>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cantidadInputs = document.querySelectorAll('.carrito-cantidad-input');
-
+        
             cantidadInputs.forEach(input => {
-                const disminuirBtn = input.previousElementSibling;
-                const incrementarBtn = input.nextElementSibling;
-
-                disminuirBtn.addEventListener('click', function() {
-                    if (parseInt(input.value) > 1) {
-                        input.value = parseInt(input.value) - 1;
-                    }
-                });
-
-                incrementarBtn.addEventListener('click', function() {
-                    input.value = parseInt(input.value) + 1;
+                input.addEventListener('change', function() {
+                    const productoId = this.dataset.id;
+                    const cantidad = parseInt(this.value);
+                    const precio = parseFloat(this.dataset.precio);
+        
+                    fetch(`/actualizar_cantidad_ajax/${productoId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                        },
+                        body: JSON.stringify({ cantidad: cantidad }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const subtotalElement = document.getElementById(`subtotal-${productoId}`);
+                            subtotalElement.textContent = `$${(precio * cantidad).toFixed(2)}`;
+                            document.querySelector('.carrito-total strong').textContent = `$${parseFloat(data.total).toFixed(2)}`; // Corrección aquí
+                        } else {
+                            alert('Error al actualizar la cantidad.');
+                        }
+                    });
                 });
             });
+        
+            // Función para obtener el token CSRF de las cookies
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                    return cookieValue;
+                }
+            }
         });
     </script>
 {% endblock %}

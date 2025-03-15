@@ -186,7 +186,7 @@ def confirmar_pedido(request, pedido_id):
     if request.method == 'POST':
         pedido.estado = 'confirmado'
         pedido.save()
-        messages.success(request, "Pedido confirmado, Muchas Gracias.")
+        messages.success(request, "Pedido confirmado,Cuando este en camino le avisaremos. Muchas Gracias.")
         return redirect('home')
 
 @transaction.atomic
@@ -374,3 +374,53 @@ def iniciar_sesion(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('home')  # Redirige a la página principal después del cierre de sesión
+
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Pedido
+
+def actualizar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    if request.method == 'POST':
+        # Lógica para actualizar el pedido
+        pedido.cliente_anonimo.nombre = request.POST.get('nombre')
+        pedido.cliente_anonimo.apellido = request.POST.get('apellido')
+        pedido.cliente_anonimo.telefono = request.POST.get('telefono')
+        pedido.direccion = request.POST.get('direccion')
+        pedido.save()
+        messages.success(request, "Pedido actualizado con éxito.")
+        return redirect('detalle_pedido', pedido_id=pedido_id)  # Redirige a la página de detalles del pedido
+    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido})
+
+
+from django.http import JsonResponse
+from decimal import Decimal
+
+# ... (otras importaciones y funciones)
+
+def actualizar_cantidad_ajax(request, producto_id):
+    """
+    Actualiza la cantidad de un producto en el carrito y devuelve el nuevo subtotal y total.
+    """
+    if request.method == 'POST':
+        try:
+            cantidad = int(json.loads(request.body)['cantidad'])
+            if cantidad < 1:
+                return JsonResponse({'success': False, 'message': 'Cantidad inválida.'})
+
+            carrito = request.session.get('carrito', {})
+            if str(producto_id) in carrito:
+                carrito[str(producto_id)]['cantidad'] = cantidad
+                request.session['carrito'] = carrito
+                request.session.modified = True
+
+                # Recalcular el subtotal y el total
+                subtotal = Decimal(carrito[str(producto_id)]['precio']) * cantidad
+                total = sum(Decimal(item['precio']) * item['cantidad'] for item in carrito.values())
+
+                return JsonResponse({'success': True, 'subtotal': str(subtotal), 'total': str(total)})
+            else:
+                return JsonResponse({'success': False, 'message': 'Producto no encontrado en el carrito.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+    else:
+        return JsonResponse({'success': False, 'message': 'Método no permitido.'})

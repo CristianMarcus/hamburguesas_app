@@ -24,7 +24,8 @@ urlpatterns = [
     path('carrito/actualizar/<int:producto_id>/', views.actualizar_cantidad, name='actualizar_cantidad'),
     path('carrito/eliminar/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('carrito/vaciar/', views.vaciar_carrito, name='vaciar_carrito'),
-    
+    path('actualizar_cantidad_ajax/<int:producto_id>/', views.actualizar_cantidad_ajax, name='actualizar_cantidad_ajax'), # URL para AJAX
+    path('actualizar_pedido/<int:pedido_id>/', views.actualizar_pedido, name='actualizar_pedido'),
     # URLs para la autenticación
     path('politica-privacidad/', views.politica_privacidad, name='politica_privacidad'),
     path('terminos-condiciones/', views.terminos_condiciones, name='terminos_condiciones'),

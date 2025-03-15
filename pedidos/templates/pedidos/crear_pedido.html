@@ -9,49 +9,50 @@
 
 {% block content %}
     <div class="container">
-        <h1>Crear Pedido</h1>
+        <h1><i class="fas fa-clipboard-list"></i> Crear Pedido</h1>
+        <h5 class="crearh5">('Complete sus datos')</h5>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre:</label>
+                        <label for="nombre" class="form-label"><i class="fas fa-user"></i> Nombre:</label>
                         <input type="text" id="nombre" name="nombre" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido:</label>
+                        <label for="apellido" class="form-label"><i class="fas fa-user-tag"></i> Apellido:</label>
                         <input type="text" id="apellido" name="apellido" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono:</label>
+                        <label for="telefono" class="form-label"><i class="fas fa-phone"></i> Teléfono:</label>
                         <input type="text" id="telefono" name="telefono" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="direccion" class="form-label">Dirección:</label>
+                        <label for="direccion" class="form-label"><i class="fas fa-map-marker-alt"></i> Dirección:</label>
                         <input type="text" id="direccion" name="direccion" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="metodo_pago" class="form-label">Método de Pago:</label>
+                        <label for="metodo_pago" class="form-label"><i class="fas fa-money-check-alt"></i> Método de Pago:</label>
                         <select name="metodo_pago" id="metodo_pago" class="form-select">
                             <option value="efectivo">Efectivo</option>
                             <option value="mercado_pago">Mercado Pago</option>
                         </select>
-                        <div id="mercado-pago-info" style="display: none; margin-top: 10px;">
+                        <div id="mercado-pago-info" style="display:none; margin: 10px;">
                             <a href="https://link.mercadopago.com.ar/polasburgers" class="btn btn-success btn-sm" target="_blank">
+                                <img src="{% static 'pedidos/img/iconomp.svg' %}" alt="Mercado Pago" style="height: 24px; vertical-align: middle; margin-right: 8px;">
                                 Pagar con Mercado Pago
                             </a>
-                            <p>Luego de realizado el pago,"realize el pedido abajo" para finalizar</p>
+                            <p>Luego de realizado el pago,vuelvá y presione el boton de abajo "realizar pedido" para continuar</p>
                         </div>
                     </div>
-                    
 
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="card-title">Resumen del Pedido</h5>
+                            <h5 class="card-title"><i class="fas fa-receipt"></i> Resumen del Pedido</h5>
                             <p class="card-text">Subtotal: <span id="subtotal">${{ subtotal|floatformat:2 }}</span></p>
                             <p class="card-text">Cargo de Delivery: <span id="cargo-delivery">${{ cargo_delivery|floatformat:2 }}</span></p>
                             <p class="card-color">Total: <span id="total">${{ total_con_delivery|floatformat:2 }}</span></p>
@@ -60,7 +61,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Realizar Pedido</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Realizar Pedido</button>
         </form>
     </div>
 

@@ -16,29 +16,34 @@
     <link rel="stylesheet" href="{% static 'listar_productos.css' %}">
     <link rel="stylesheet" href="{% static 'lista_pedidos.css' %}">
     <link rel="stylesheet" href="{% static 'detalle_pedido.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><img id="openClosedSign" src="{% static 'pedidos/img/closed.gif' %}" alt="Open/Closed"></li>
+                </ul>
                 <a href="{% url 'home' %}" class="nav-logo">
                     <img src="{% static 'pedidos/img/polasburgers.jpeg' %}" alt="Pola's Burger's Logo"
                          class="nav-logo-img">
                 </a>
-                
                 <ul class="nav-menu">
-                    <li><img id="openClosedSign" src="{% static 'pedidos/img/closed.gif' %}" alt="Open/Closed"></li>
-                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="{% url 'ver_carrito' %}" class="nav-link">Carrito</a></li>
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'ver_carrito' %}" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                     {% if user.is_authenticated %}
-                        <li class="nav-item"><a href="{% url 'listar_productos' %}" class="nav-link">Productos</a></li>
-                        <li class="nav-item"><a href="{% url 'listar_pedidos' %}" class="nav-link">Pedidos</a></li>
+                    <li class="nav-item"><a href="{% url 'listar_productos' %}" class="nav-link"><i class="fas fa-box"></i> Productos</a></li>
+                    <li class="nav-item"><a href="{% url 'listar_pedidos' %}" class="nav-link"><i class="fas fa-list-alt"></i> Pedidos</a></li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
     </header>
+
     {% if messages %}
     <div class="messages-container">
         {% for message in messages %}
@@ -46,23 +51,25 @@
         {% endfor %}
     </div>
     {% endif %}
+
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="login-links">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+                <li><a href="{% url 'cerrar_sesion' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                 {% else %}
-                    <li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'iniciar_sesion' %}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a></li>
                 {% endif %}
             </div>
             <p class="footer-text">Horario de Atención: Viernes, Sábados y Domingos de 19:30 a 23:30</p>
             <p class="footer-text">&copy; {{ year }} Pola's Burger's - Todos los derechos reservados.</p>
             <p class="footer-text">Desarrollo <a href="https://www.linkedin.com/in/cristian-marcus34738462"
                     target="_blank" class="footer-link">Agencia Digital Powa</a></p>
-            <p class="footer-text"><a href="{% url 'politica_privacidad' %}" class="footer-link">Política de Privacidad</a> | <a href="{% url 'terminos_condiciones' %}" class="footer-link">Términos y Condiciones</a></p>        
+            <p class="footer-text"><a href="{% url 'politica_privacidad' %}" class="footer-link">Política de Privacidad</a> | <a href="{% url 'terminos_condiciones' %}" class="footer-link">Términos y Condiciones</a></p>
         </div>
     </footer>
     <script>
@@ -77,7 +84,7 @@
                     });
                 }
             }
-    
+
             // Manejar clics en enlaces con `data-scroll-to`
             const scrollLinks = document.querySelectorAll('[data-scroll-to]');
             scrollLinks.forEach(link => {
@@ -87,7 +94,7 @@
                     scrollToTarget(targetId);
                 });
             });
-    
+
             // Verificar si la URL actual tiene un ancla y realizar el desplazamiento
             if (window.location.hash) {
                 scrollToTarget(window.location.hash);
@@ -95,15 +102,15 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             function updateOpenClosedSign() {
                 const now = new Date();
                 const day = now.getDay(); // 0: Domingo, 1: Lunes, ..., 6: Sábado
                 const hour = now.getHours();
                 const minutes = now.getMinutes();
-    
+
                 let openHour, openMinute, closeHour, closeMinute;
-    
+
                 // Define el horario de apertura y cierre para cada día
                 switch (day) {
                     case 5: // Viernes
@@ -119,30 +126,38 @@
                         document.getElementById('openClosedSign').src = "{% static 'pedidos/img/closed.gif' %}";
                         return;
                 }
-    
+
                 // Compara el horario actual con el horario de apertura y cierre
                 let openTime = openHour + openMinute / 60;
                 let closeTime = closeHour + closeMinute / 60;
                 let currentTime = hour + minutes / 60;
-    
+
                 if (currentTime >= openTime && currentTime < closeTime) {
                     document.getElementById('openClosedSign').src = "{% static 'pedidos/img/open.gif' %}";
                 } else {
                     document.getElementById('openClosedSign').src = "{% static 'pedidos/img/closed.gif' %}";
                 }
             }
-    
+
             updateOpenClosedSign(); // Actualizar al cargar la página
             setInterval(updateOpenClosedSign, 60000); // Actualizar cada minuto
         });
     </script>
     <script>
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             // Ejemplo: Mostrar enlaces al presionar Ctrl + Shift + L
             if (event.ctrlKey && event.shiftKey && event.key === 'L') {
                 document.querySelector('.login-links').style.display = 'block';
             }
         });
+    </script>
+    <script>
+        setTimeout(function() {
+            var mensajes = document.querySelectorAll('.message'); // Selecciona todos los elementos con la clase 'message'
+            mensajes.forEach(function(mensaje) {
+                mensaje.style.display = 'none';
+            });
+        }, 3000); // Ocultar después de 3 segundos
     </script>
 </body>
 

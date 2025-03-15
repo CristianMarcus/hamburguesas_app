@@ -5,19 +5,16 @@
 </head>
 {% block title %}Inicio - HamburguesasApp{% endblock %}
 
-
-
 {% block content %}
 <div class="container mt-5">
     <section class="text-center">
         <img src="{% static 'pedidos/img/polasburgersabuela.jpeg' %}" alt="Pola's Burger's Logo" class="img-titulo">
-        <h3>Bienvenidos</h3>
-        
+        <h3>Bienvenidos <i class="fas fa-home"></i></h3> 
     </section>
     <section class="imagenportada">
     </section>
     <section class="mt-5" id="nuestrasburgers">
-        <h2>Nuestras Burger's</h2>
+        <h2>Nuestras Burger's <i class="fas fa-hamburger"></i></h2>
         <div class="row">
             {% for producto in productos %}
             <div class="col-md-4 mb-4">
@@ -26,13 +23,13 @@
                         <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ producto.nombre }}</h5>
-                            <p class="card-text"><span class="precio">${{ producto.precio }}</span></p>
+                            <p class="card-text"><span class="precio"><i class="fas fa-dollar-sign"></i> ${{ producto.precio }}</span></p>
                         </div>
                     </div>
                 </a>
             </div>
             {% endfor %}
-            <p>Click para Seleccionar</p>
+            <p><i class="fas fa-mouse-pointer"></i> Click para Seleccionar</p>
         </div>
     </section>
 </div>
@@ -40,7 +37,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         console.log('Script de home.html ejecutado');
         if (window.location.hash === '#nuestrasburgers') {
-            console.log('Ancla #nuestrasburgers encontrada'); // Agrega esta línea
+            console.log('Ancla #nuestrasburgers encontrada');
             const targetElement = document.getElementById('nuestrasburgers');
             if (targetElement) {
                 targetElement.scrollIntoView({

@@ -1,6 +1,5 @@
 /* Estilos generales */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f0f8ff;
@@ -24,14 +23,30 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
 }
+.card.mt-4{
+    align-items: center;
+}
+
+p.card-color{
+    color: #f8f404;
+}
+
+.crearh5 {
+    color: #82b3e7;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: larger;
+    font-weight: bold;
+}
 
 /* Estilos del formulario */
 .form-label {
-    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    color: orangered;
     margin-bottom: 10px;
     display: block;
     color: black;
-    font-family: cursive;
+    
 }
 
 .form-control,
@@ -66,7 +81,7 @@ h1 {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #3583d6;
 }
 
 /* Estilos adicionales */
@@ -86,6 +101,18 @@ h1 {
     width: 100%;
     display: block;
     text-align: center;
+}
+
+.btn-btn-successbtn-sm {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-success:hover {
@@ -114,6 +141,56 @@ h1 {
 .card-text {
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+/* ------------------------------------
+    MEDIA QUERIES PARA ver_carrito.css
+    ------------------------------------ */
+    /* Media Queries */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .btn-btn-successbtn-sm {
+        padding: 6px 12px;
+        font-size: 0.875rem; /* Reducir el tamaño de la fuente */
+        margin-right: 3px; /* Reducir el margen */
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .btn-btn-successbtn-sm {
+        padding: 7px 14px;
+        font-size: 0.9rem; /* Ajustar ligeramente el tamaño de la fuente */
+        margin-right: 4px; /* Ajustar el margen */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .btn-btn-successbtn-sm {
+        padding: 8px 16px; /* Mantener el padding original */
+        font-size: 1rem; /* Mantener el tamaño de la fuente original */
+        margin-right: 5px; /* Mantener el margen original */
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .btn-btn-successbtn-sm {
+        padding: 9px 18px; /* Ligeramente aumentar el padding */
+        font-size: 1.1rem; /* Ligeramente aumentar el tamaño de la fuente */
+        margin-right: 6px; /* Ligeramente aumentar el margen */
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .btn-btn-successbtn-sm {
+        padding: 10px 20px; /* Aumentar el padding para pantallas grandes */
+        font-size: 1.2rem; /* Aumentar el tamaño de la fuente para pantallas grandes */
+        margin-right: 8px; /* Aumentar el margen para pantallas grandes */
+    }
 }
 
 /* Media Queries para Responsividad */
