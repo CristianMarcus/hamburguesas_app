@@ -1,14 +1,20 @@
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Simpsonfont';
     line-height: 1.6;
     color: #333;
-    background-color: #c57d10;
+    background-color: #f6f609;
     margin: 0;
     padding: 0;
 }
 
-.nav-menu li img#openClosedSign {
+@font-face {
+    font-family: 'Simpsonfont';
+    src: url('fonts/Simpsonfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+nav-menu li img#openClosedSign {
     max-height: 30px;
     max-width: 60px;
     width: auto;
@@ -20,26 +26,88 @@ body {
     box-shadow: none;
     transition: transform 0.3s ease;
     border-radius: 10px;
+    font-family: 'Simpsonfont';
 }
 
-.nav-menu li img#openClosedSign:hover {
+nav-menu li img#openClosedSign:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
+    font-family: 'Simpsonfont';
 }
 
 .header {
-    background-color: #333;
+    background-image: url("pedidos/img/krustyinicio.jfif");
     color: #ce4e4e;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border: 1px solid rgba(249, 144, 184, 0.743);
-    font-size: 1.2em;
-    padding: 10px 0;
+    font-family: 'Simpsonfont';
+    font-size: 1em;
+    padding: 15px;
+    border-radius: 10px;
+    height: 600px;
+
+    width: auto;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+
+    /* Borde con gradiente lineal y animación de destello */
+    border-width: 10px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ea7610, #ffff00) 1;
+    border-image-slice: 1;
+    border-image-repeat: round;
+
+    /* Animación de destello */
+    animation: border-blink 3s infinite alternate; /* 2 segundos de duración, repetición infinita, alternar */
 }
 
+/* Definición de la animación de destello al estilo Simpson */
+@keyframes border-blink {
+    0% {
+        border-image: linear-gradient(to right, #ffeb3b, #ff9800) 1; /* Amarillo y naranja */
+    }
+    10% {
+        border-image: linear-gradient(to right, #ff9800, #ffeb3b) 1; /* Naranja y amarillo */
+    }
+    20% {
+        border-image: linear-gradient(to right, #03a9f4, #2196f3) 1; /* Azul claro y azul */
+    }
+    30% {
+        border-image: linear-gradient(to right, #2196f3, #03a9f4) 1; /* Azul y azul claro */
+    }
+    40% {
+        border-image: linear-gradient(to right, #e91e63, #f06292) 1; /* Rosa y rosa claro */
+    }
+    50% {
+        border-image: linear-gradient(to right, #f06292, #e91e63) 1; /* Rosa claro y rosa */
+    }
+    60% {
+        border-image: linear-gradient(to right, #ffc107, #ff9800) 1; /* Amarillo oscuro y naranja */
+    }
+    70% {
+        border-image: linear-gradient(to right, #ff9800, #ffc107) 1; /* Naranja y amarillo oscuro */
+    }
+    80% {
+        border-image: linear-gradient(to right, #00bcd4, #03a9f4) 1; /* Cian y azul claro */
+    }
+    90% {
+        border-image: linear-gradient(to right, #03a9f4, #00bcd4) 1; /* Azul claro y cian */
+    }
+    100% {
+        border-image: linear-gradient(to right, #ffeb3b, #ff9800) 1; /* Amarillo y naranja */
+    }
+}
+
+.imagenportada{
+
+    height: 1390px;
+}
 .nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent; /* Fondo amarillo */
+    padding: 10px 0; /* Añade un poco de padding vertical */
+    font-family: 'Simpsonfont';
 }
 
 .nav-container {
@@ -47,12 +115,8 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 90%;
+    font-family: 'Simpsonfont';
     max-width: 1200px;
-}
-
-.nav-logo-img {
-    height: 100px;
-    border-radius: 50%;
 }
 
 .nav-menu {
@@ -60,84 +124,156 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
+    font-family: 'Simpsonfont';
 }
 
 .nav-item {
     margin: 0 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Simpsonfont';
 }
 
 .nav-link {
-    color: #ee3f3f;
+    color: #e71b81;
+    font-size: 1.5em;
     text-decoration: none;
-    padding: 8px 15px;
+
+    padding: 8px 8px;
     transition: color 0.3s ease;
+    font-family: 'Simpsonfont', sans-serif;
+    font-weight: bold;
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black;
+    display: block; /* Ocupa todo el ancho del contenedor */
+}
+a.nav-link{
+    margin-left: 13em;
+    text-align: center;
+    font-family: 'Simpsonfont';
 }
 
 .nav-link:hover {
-    color: #ccc;
+    color: #3ea315; /* Ligero cambio de color al pasar el ratón */
+    font-family: 'Simpsonfont';
 }
 
+
+
 .main-content {
-    background-color: #ca4e5a !important;
+    background-color: transparent !important;
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 30px;
+    margin-left: 50px;
+    padding: 5px;
     min-height: auto; /* Cambiamos min-height a auto */
     border-radius: 10px;
     box-sizing: border-box; /* Añadimos box-sizing */
+    font-family: 'Simpsonfont';
+    
 }
+
 
 .messages-container {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
+    font-family: 'Simpsonfont';
 }
 
 .message {
     padding: 10px 15px;
     margin-bottom: 10px;
     border-radius: 5px;
+    font-family: 'Simpsonfont';
 }
 
 .success {
     background-color: #d4edda;
     color: #155724;
+    font-family: 'Simpsonfont';
 }
 
 .error {
     background-color: #f8d7da;
     color: #721c24;
+    font-family: 'Simpsonfont';
+}
+
+.icono-krusty {
+    width: 50px;
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    animation: mover-motito 30s linear infinite;
+    z-index: 10;
+    transition: transform 0s linear; /* Rotación instantánea */
+}
+
+@keyframes mover-motito {
+    0% {
+        left: -20px;
+        transform: rotateY(0deg); /* Sin rotación al inicio */
+    }
+    25%, 75% {
+        transform: rotateY(0deg); /* Sin rotación en el trayecto */
+    }
+    80% {
+        left: calc(100% - 50px);
+        transform: rotateY(360deg); /* Sin rotación en el centro */
+    }
+    100% {
+        left: -20px;
+        transform: rotateY(0deg); /* Rotación completa al final */
+    }
 }
 
 .footer {
-    background-color: #222;
-    color: #ccc;
-    padding: 20px 0;
+    background-color: #0d52d1;
+    position: absolute;
+    color: white;
+    padding: 5px;
     text-align: center;
-    
+    border: 2px solid rgb(253, 237, 5);
+    border-radius: 2px;
+    font-family: 'Simpsonfont';
+    min-height: 80px;
+    width: 1393px;
 }
 
 .footer-container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: 'Simpsonfont';
+    display: flex; /* Utiliza flexbox para la distribución */
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .footer-text {
     margin: 5px 0;
-    font-size: 14px;
-    color: #999;
+    font-size: 16px; /* Reduce el tamaño de la fuente */
+    color: #ffc107; /* Amarillo más suave */
+    font-family: 'Simpsonfont';
+    text-shadow: none; /* Elimina el text-shadow para una apariencia más limpia */
 }
 
 .footer-text:first-child {
     font-weight: bold;
-    color: #fdd835;
+    font-size: 18px; /* Aumenta el tamaño de la fuente para el texto principal */
+    color: #ffeb3b; /* Amarillo más claro para el texto principal */
 }
 
 .footer-link {
-    color: #fdd835;
+    color: #81d4fa; /* Un azul claro más suave */
     text-decoration: none;
+    font-family: 'Simpsonfont';
+    margin: 0 10px; /* Añade espacio entre los enlaces */
 }
 
 .footer-link:hover {
@@ -146,6 +282,18 @@ body {
 
 .login-links {
     display: none;
+    font-family: 'Simpsonfont';
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column; /* Asegura que los elementos se apilen en pantallas pequeñas */
+        align-items: center;
+    }
+    .footer-link {
+        margin: 5px 0; /* Ajusta el margen para pantallas pequeñas */
+    }
 }
 
 /* Media Queries */

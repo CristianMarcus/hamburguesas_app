@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.utils.timezone import now, timezone
 from django.db import transaction, IntegrityError
 from .models import Producto, Pedido, ItemPedido, ClienteAnonimo
 from .forms import PedidoForm, ItemPedidoForm, ProductoForm, ClienteAnonimoForm
 import datetime
-from django.utils import timezone
+
 
 
 def home(request):
     productos = Producto.objects.all()
+    year = datetime.datetime.now().year
     context = {
         'productos': productos,
+        'year': year,
+        
     }
     return render(request, 'pedidos/home.html', context)
 
@@ -70,11 +72,12 @@ def detalle_producto(request, producto_id):
 
 
 from django.shortcuts import render, redirect
+from django.utils import timezone
+from django.db import transaction, IntegrityError
 from django.contrib import messages
 from .forms import ClienteAnonimoForm, PedidoForm
 from .models import Pedido, ItemPedido
-from django.utils import timezone
-from django.db import transaction, IntegrityError
+from django.http import JsonResponse
 
 def crear_pedido(request):
     carrito = request.session.get('carrito', {})
@@ -138,14 +141,15 @@ def crear_pedido(request):
 
             request.session['carrito'] = {}
             messages.success(request, "Pedido realizado con éxito.")
-            return redirect('detalle_pedido', pedido_id=pedido.id)
+
+            # Devuelve una respuesta JSON con el pedido_id
+            return JsonResponse({'success': True, 'pedido_id': pedido.id})
         else:
-            messages.error(request, "Por favor, corrija los errores en el formulario.")
+            return JsonResponse({'success': False, 'errors': cliente_form.errors, 'pedido_form_errors': pedido_form.errors})
     else:
         cliente_form = ClienteAnonimoForm()
         pedido_form = PedidoForm()
 
-    # Cálculo del subtotal y cargo de delivery para mostrar en la plantilla
     subtotal = sum(int(item.get('cantidad', 1)) * float(item.get('precio', 0)) for item in carrito.values())
     cargo_delivery = 500
     total_con_delivery = subtotal + cargo_delivery

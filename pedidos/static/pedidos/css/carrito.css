@@ -1,13 +1,5 @@
 /* Estilos generales */
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #c57d10;
-    margin: 0;
-    padding: 0;
-}
+
 
 .card.h-100{
     margin: 12px;
@@ -21,10 +13,12 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 40px auto;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-titulo {
     text-align: center;
+    font-family: 'Simpsonfont';
     margin-bottom: 40px;
     color: rgb(15, 54, 90); /* Color de los títulos de home.css */
     font-size: 2.8em;
@@ -40,24 +34,31 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
+    font-family: 'Simpsonfont';
+}
+.strongtotal{
+    color: #044498;
 }
 
 .carrito-tabla th, .carrito-tabla td {
     padding: 20px;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-tabla th {
     background-color: #e0e0e0; /* Color un poco mas oscuro que el fondo */
-    color: #555;
+    color: #043678;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9em;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-tabla tbody tr:hover {
     background-color: #f8f8f8;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-tabla img {
@@ -66,16 +67,18 @@ body {
     border-radius: 8px;
     margin-right: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Simpsonfont';
 }
 
 .carrito-acciones {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-acciones a.btn-danger {
-    background-color: #e57373; /* Color de los botones de las cards */
+    background-color: #e91212; /* Color de los botones de las cards */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -83,22 +86,26 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-acciones a.btn-danger:hover {
     background-color: #d84315; /* Oscurecer al pasar el ratón */
     transform: translateY(-2px);
+    font-family: 'Simpsonfont';
 }
 
 /* Estilos de la cantidad */
 .carrito-cantidad-form {
     display: inline;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-input {
@@ -108,6 +115,7 @@ body {
     border-radius: 8px;
     text-align: center;
     font-size: 1em;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-actualizar {
@@ -118,11 +126,13 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-actualizar:hover {
     background-color: #d84315; /* Oscurecer al pasar el ratón */
     transform: translateY(-2px);
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-incrementar,
@@ -135,11 +145,13 @@ body {
     margin: 0 5px;
     font-size: 1em;
     transition: background-color 0.3s ease;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-cantidad-incrementar:hover,
 .carrito-cantidad-disminuir:hover {
     background-color: #e0e0e0;
+    font-family: 'Simpsonfont';
 }
 
 /* Estilos del total y botones */
@@ -148,16 +160,18 @@ body {
     margin-top: 30px;
     font-size: 1.4em;
     font-weight: 600;
-    color: rgb(204, 79, 116); /* Color de los precios de home.css */
+    color: rgb(25, 4, 111); /* Color de los precios de home.css */
+    font-family: 'Simpsonfont';
 }
 
 .carrito-botones {
     text-align: center;
     margin-top: 40px;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-botones a, .carrito-botones button {
-    background-color: #e57373; /* Color de los botones de las cards */
+    background-color: #d010d6; /* Color de los botones de las cards */
     color: white;
     border: none;
     padding: 15px 30px;
@@ -168,19 +182,22 @@ body {
     cursor: pointer;
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Simpsonfont';
 }
 
 .carrito-botones a:hover, .carrito-botones button:hover {
-    background-color: #d84315; /* Oscurecer al pasar el ratón */
+    background-color: #aa15d8; /* Oscurecer al pasar el ratón */
     transform: translateY(-3px);
+    font-family: 'Simpsonfont';
 }
 
 /* Estilos del carrito vacío */
 .carrito-vacio {
     text-align: center;
     margin-top: 60px;
-    color: #777;
+    color: #131e83;
     font-size: 1.3em;
+    font-family: 'Simpsonfont';
 }
 
 /* Extra small devices (phones, less than 576px) */

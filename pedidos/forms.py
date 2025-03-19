@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from .models import Pedido, ClienteAnonimo, ItemPedido, Producto
 import re
+import os
 
 def validar_telefono(telefono):
     if not telefono:
@@ -14,6 +15,11 @@ class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
         fields = ['direccion', 'metodo_pago', 'comprobante_pago']
+        widgets = {
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'metodo_pago': forms.Select(attrs={'class': 'form-select'}),
+        }
+    comprobante_pago = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
 
     def clean_direccion(self):
         direccion = self.cleaned_data['direccion']
@@ -29,12 +35,21 @@ class PedidoForm(forms.ModelForm):
             raise forms.ValidationError("Método de pago no válido.")
         return metodo_pago
 
+    def clean_comprobante_pago(self):
+        comprobante_pago = self.cleaned_data.get('comprobante_pago')
+        if comprobante_pago:
+            allowed_extensions = ['.pdf', '.jpg', '.jpeg', '.png']  # Tipos de archivo permitidos
+            ext = os.path.splitext(comprobante_pago.name)[1].lower()
+            if ext not in allowed_extensions:
+                raise ValidationError("Solo se permiten archivos PDF e imágenes (JPG, JPEG, PNG).")
+        return comprobante_pago
+
 class ClienteAnonimoForm(forms.ModelForm):
     class Meta:
         model = ClienteAnonimo
         fields = ['nombre', 'apellido', 'telefono']
         widgets = {
-            'apellido': forms.TextInput(attrs={'required': False}), #Agregado
+            'apellido': forms.TextInput(attrs={'required': False}), # Agregado
         }
 
     def clean_nombre(self):

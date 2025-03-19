@@ -1,34 +1,40 @@
 /* Estilos generales */
-body {
-    line-height: 1.6;
-    color: #333;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+
 
 .container {
     max-width: 900px; /* Aumentado el ancho máximo */
     margin: 40px auto;
     padding: 30px;
+    font-family: 'Simpsonfont';
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    color: #007bff;
+
+
+.tecague {
+    font-family: 'Simpsonfont';
+    color: #0452a6;
     text-align: center;
     margin-bottom: 30px;
+    text-shadow: 
+        -1px -1px 0 black, 
+        1px -1px 0 black, 
+        -1px 1px 0 black, 
+        1px 1px 0 black;
+    
 }
-.card.mt-4{
+.card.mt-4 {
+    font-family: 'Simpsonfont';
     align-items: center;
+    background-color: rgb(151, 151, 234);
+    
 }
 
 p.card-color{
     color: #f8f404;
+    font-family: 'Simpsonfont';
 }
 
 .crearh5 {
@@ -37,6 +43,7 @@ p.card-color{
     margin-bottom: 30px;
     font-size: larger;
     font-weight: bold;
+    font-family: 'Simpsonfont';
 }
 
 /* Estilos del formulario */
@@ -46,6 +53,7 @@ p.card-color{
     margin-bottom: 10px;
     display: block;
     color: black;
+    font-family: 'Simpsonfont';
     
 }
 
@@ -58,6 +66,7 @@ p.card-color{
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
+    font-family: 'Simpsonfont';
 }
 
 .form-control:focus,
@@ -65,6 +74,7 @@ p.card-color{
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    font-family: 'Simpsonfont';
 }
 
 .btn-primary {
@@ -78,15 +88,18 @@ p.card-color{
     transition: background-color 0.3s ease;
     width: 100%;
     margin-top: 20px;
+    font-family: 'Simpsonfont';
 }
 
 .btn-primary:hover {
     background-color: #3583d6;
+    font-family: 'Simpsonfont';
 }
 
 /* Estilos adicionales */
 #mercado-pago-info {
     margin-top: 10px;
+    font-family: 'Simpsonfont';
 }
 
 .btn-success {
@@ -101,6 +114,7 @@ p.card-color{
     width: 100%;
     display: block;
     text-align: center;
+    font-family: 'Simpsonfont';
 }
 
 .btn-btn-successbtn-sm {
@@ -113,10 +127,12 @@ p.card-color{
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
+    font-family: 'Simpsonfont';
 }
 
 .btn-success:hover {
     background-color: #218838;
+    font-family: 'Simpsonfont';
 }
 
 /* Resumen del pedido */
@@ -126,21 +142,25 @@ p.card-color{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     margin-top: 20px;
     background-color: #e0f7fa;
+    font-family: 'Simpsonfont';
 }
 
 .card-body {
     padding: 20px;
+    font-family: 'Simpsonfont';
 }
 
 .card-title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 15px;
+    font-family: 'Simpsonfont';
 }
 
 .card-text {
     font-size: 16px;
     margin-bottom: 10px;
+    font-family: 'Simpsonfont';
 }
 
 /* ------------------------------------

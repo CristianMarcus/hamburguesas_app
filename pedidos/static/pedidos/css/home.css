@@ -1,12 +1,8 @@
-.imagenportada {
-    background-image: url("pedidos/img/fondohamburguesa.jfif"), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-    background-color: #fff;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    padding: 150px 0;
-    border-radius: 8px;
-    margin-bottom: 30px;
+@font-face {
+    font-family: 'Simpsonfont';
+    src: url('fonts/Simpsonfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .img-titulo {
@@ -14,14 +10,14 @@
     height: 60%;
     object-fit: cover;
     border-radius: 20px;
-    border: 5px solid rgb(255, 94, 0); /* Corrección: ancho, estilo y color del borde */
+    border: 5px solid rgb(255, 94, 0);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 h2 {
     color: rgb(15, 54, 90);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Simpsonfont', cursive;
     font-size: 8rem;
 }
 
@@ -29,33 +25,88 @@ h3 {
     color: rgb(114, 52, 2);
     font-size: 6rem;
     text-decoration: underline;
+    font-family: 'Simpsonfont';
 }
 
 p {
     color: rgb(204, 79, 116);
     font-size: 1.8rem;
     margin: 5px;
+    font-family: 'Simpsonfont';
+}
+
+.pazul {
+    color: rgb(9, 9, 121);
+}
+.container.mt-5 {
+    background-color: #007bff;
+    margin-left: 20px;
 }
 
 .mt-5 h2 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 3rem;
+    font-family: 'Simpsonfont';
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: 'Times New Roman', Times, serif;
-    margin: 0 -10px; /* Ajustamos el margen para compensar el padding de las columnas */
+    font-family: 'Simpsonfont';
+    margin: 0 -10px;
 }
 
 .col-md-4 {
     width: calc(33.33% - 20px);
-    padding: 10px; /* Añadimos padding para separar las cards */
+    padding: 10px;
     margin: 10px;
-    box-sizing: border-box; /* Aseguramos que el padding se incluya en el ancho */
+    box-sizing: border-box;
+    font-family: 'Simpsonfont';
+}
+
+.product-item {
+    text-align: center;
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.product-item:hover {
+    transform: translateY(-10px); /* Elevación de 10 píxeles */
+}
+
+.product-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 10px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details h5 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #063051;
+    font-family: 'Simpsonfont';
+}
+
+.product-details p {
+    font-size: 1em;
+    color: #666;
+    font-family: 'Simpsonfont';
+}
+
+.imagenproducto {
+    width: 70px;
+    height: 70px;
 }
 
 .card {
@@ -63,187 +114,99 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     background-color: #fff;
-    width: 100%; /* Las cards ocupan todo el ancho de su columna */
+    width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    font-family: 'Simpsonfont';
 }
 
-
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.card-image-container {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #fff;
 }
-.card-img-top {
+
+.card-image-container img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 12px 12px 0 0;
 }
 
 .card-body {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .card-title {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
+    font-family: 'Simpsonfont';
 }
 
 .card-text {
     font-size: 1em;
     color: #666;
     margin-bottom: 15px;
+    font-family: 'Simpsonfont';
 }
 
-.card-price {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: rgb(204, 79, 116);
-    margin-bottom: 20px;
-}
-
-.btn-comprar {
-    background-color: #e57373;
-    color: white;
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-start;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    font-family: 'Simpsonfont';
 }
 
-.btn-comprar:hover {
-    background-color: #d84315;
-    transform: translateY(-3px);
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
-/* Media Queries */
-@media (max-width: 767.98px) {
-    .imagenportada {
-        padding: 100px 0;
+.precio {
+    color: #bd0606;
+    font-weight: 300;
+    font-family: 'Simpsonfont';
+}
+
+
+
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        width: calc(50% - 20px);
     }
+}
 
+@media (max-width: 576px) {
+    .col-md-4 {
+        width: 100%;
+    }
+}
+
+/* Media Queries para la imagen del título */
+@media (max-width: 768px) {
     .img-titulo {
         width: 90%;
         height: auto;
     }
+}
 
-    h2 {
-        font-size: 4rem;
-    }
-
-    h3 {
-        font-size: 3rem;
-    }
-
-    p {
-        font-size: 1.2rem;
-    }
-
-    .mt-5 h2 {
-        font-size: 2rem;
-    }
-
-    .col-md-4 {
+@media (max-width: 576px) {
+    .img-titulo {
         width: 100%;
-        margin: 10px 0;
-    }
-
-    .card {
-        margin-left: 0;
-        width: 90%;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-    h2 {
-        font-size: 6rem;
-    }
-
-    h3 {
-        font-size: 4rem;
-    }
-
-    p {
-        font-size: 1.5rem;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    h2 {
-        font-size: 7rem;
-    }
-
-    h3 {
-        font-size: 5rem;
-    }
-
-    p {
-        font-size: 1.7rem;
-    }
-}
-/* Teléfonos muy pequeños (menos de 320px) */
-@media (max-width: 319.98px) {
-    .imagenportada {
-        padding: 80px 0;
-    }
-
-    h2 {
-        font-size: 3rem;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .card {
-        width: 95%;
-    }
-}
-
-/* Tablets grandes y laptops pequeñas (1200px a 1400px) */
-@media (min-width: 1200px) and (max-width: 1399.98px) {
-    .col-md-4 {
-        width: calc(33.33% - 30px);
-    }
-}
-
-/* Monitores grandes (más de 1400px) */
-@media (min-width: 1400px) {
-    .col-md-4 {
-        width: calc(33.33% - 40px);
-    }
-
-    .card {
-        width: 300px;
-    }
-}
-
-/* Media Queries */
-@media (max-width: 767.98px) {
-    .col-md-4 {
-        width: 100%;
-    }
-
-    .card {
-        margin-left: 0; /* Eliminamos el margen izquierdo en pantallas pequeñas */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .col-md-4 {
-        width: 50%; /* Dos cards por fila en tablets */
     }
 }

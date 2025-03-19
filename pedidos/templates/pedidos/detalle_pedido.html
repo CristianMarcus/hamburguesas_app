@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>Detalle del Pedido</h1>
+        <h1 id="detalle-pedido-ancla">Detalle del Pedido</h1>
 
         <p style="color: rgb(53, 190, 19);">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
 
@@ -19,7 +19,7 @@
         </form>
         <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
 
-        <form method="post" action="{% url 'actualizar_pedido' pedido.id %}"></form>
+        <form method="post" action="{% url 'actualizar_pedido' pedido.id %}">
             {% csrf_token %}
 
             <div class="mb-3">
@@ -79,50 +79,41 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            let items;
+            try {
+                items = JSON.parse(document.getElementById('items-data').textContent);
+            } catch (e) {
+                console.error("Error al parsear JSON:", e);
+                return; // Detener la ejecución si hay un error
+            }
+
             document.getElementById('enviar-whatsapp').addEventListener('click', function() {
-                try {
-                    var items = JSON.parse(document.getElementById('items-data').textContent);
-                    console.log(items);
+                const productos = items.map(item =>
+                    `${item.producto_nombre} - Cantidad: ${item.cantidad} - Precio unitario: $${item.precio_unitario}`
+                ).join("\n");
 
-                    // Construir la lista de productos de forma dinámica
-                    var productos = items.map(function(item) {
-                        return item.producto_nombre + " - Cantidad: " + item.cantidad + " - Precio unitario: $" + item.precio_unitario;
-                    }).join("\n");
+                const cliente = `${document.getElementById('nombre').value} ${document.getElementById('apellido').value}`;
+                const telefono = document.getElementById('telefono').value;
+                const direccion = document.getElementById('direccion').value;
+                const metodoPago = "{{ pedido.metodo_pago }}";
+                const total = "{{ pedido.total }}";
 
-                    // Recopila los datos del pedido
-                    var cliente = document.getElementById('nombre').value + " " + document.getElementById('apellido').value;
-                    var telefono = document.getElementById('telefono').value;
-                    var direccion = document.getElementById('direccion').value;
-                    var metodoPago = "{{ pedido.metodo_pago }}";
-                    var total = "{{ pedido.total }}";
+                const mensaje = `
+                    Pedido realizado con éxito.
+                    Cliente: ${cliente}
+                    Teléfono: ${telefono}
+                    Dirección: ${direccion}
+                    Método de Pago: ${metodoPago}
+                    Productos:
+                    ${productos}
+                    Total:
+                    ${total}
+                `;
 
-                    // Crea el mensaje de WhatsApp
-                    var mensaje = `
-Pedido realizado con éxito.
-Cliente: ${cliente}
-Teléfono: ${telefono}
-Dirección: ${direccion}
-Método de Pago: ${metodoPago}
-Productos:
-${productos}
-Total:
-${total}
-                    `;
-
-                    // Codifica el mensaje para la URL
-                    var mensajeCodificado = encodeURIComponent(mensaje);
-
-                    // Crea la URL de WhatsApp
-                    var urlWhatsApp = `https://wa.me/5491126884940?text=${mensajeCodificado}`;
-
-                    // Abre WhatsApp en una nueva ventana
-                    window.open(urlWhatsApp, '_blank');
-
-                    // Envía el formulario para confirmar el pedido
-                    document.getElementById('confirmar-form').submit();
-                } catch (e) {
-                    console.error("Error al parsear JSON:", e);
-                }
+                const mensajeCodificado = encodeURIComponent(mensaje);
+                const urlWhatsApp = `https://wa.me/5491126884940?text=${mensajeCodificado}`;
+                window.open(urlWhatsApp, '_blank');
+                document.getElementById('confirmar-form').submit();
             });
         });
     </script>

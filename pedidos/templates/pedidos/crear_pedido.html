@@ -3,13 +3,9 @@
 
 {% block title %}Crear Pedido{% endblock %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'pedidos/css/crear_pedido.css' %}">
-{% endblock %}
-
 {% block content %}
     <div class="container">
-        <h1><i class="fas fa-clipboard-list"></i> Crear Pedido</h1>
+        <h1 id="inicio-crearpedido" class="tecague">Crear Pedido</h1>
         <h5 class="crearh5">('Complete sus datos')</h5>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -46,7 +42,14 @@
                                 <img src="{% static 'pedidos/img/iconomp.svg' %}" alt="Mercado Pago" style="height: 24px; vertical-align: middle; margin-right: 8px;">
                                 Pagar con Mercado Pago
                             </a>
-                            <p>Luego de realizado el pago,vuelvá y presione el boton de abajo "realizar pedido" para continuar</p>
+                            <p>Favor de enviar comprobante de pago al finalizar el pedido</p>
+                            <p>Luego de realizado el pago, presione en  realizar pedido para continuar.</p>
+                            
+                            <!-- <p>Luego de realizado el pago, cargue el comprobante para continuar.</p>
+                            <div class="mb-3">
+                                <label for="comprobante_pago" class="form-label">Comprobante de Pago:</label>
+                                <input type="file" id="comprobante_pago" name="comprobante_pago" class="form-control">
+                            </div> -->
                         </div>
                     </div>
 
@@ -61,10 +64,9 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Realizar Pedido</button>
+            <button  type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Realizar Pedido</button>
         </form>
     </div>
-
     <script>
         const metodoPagoSelect = document.getElementById('metodo_pago');
         const mercadoPagoInfo = document.getElementById('mercado-pago-info');
@@ -74,6 +76,49 @@
                 mercadoPagoInfo.style.display = 'block';
             } else {
                 mercadoPagoInfo.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío normal del formulario
+    
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken') // Asegúrate de tener la función getCookie
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirige a la página de detalles con el ancla y el pedido_id
+                        window.location.href = `{% url 'detalle_pedido' pedido_id=0 %}#detalle-pedido-ancla`.replace('0', data.pedido_id);
+                    } else {
+                        alert('Error al crear el pedido.');
+                        console.error(data.errors);
+                        console.error(data.pedido_form_errors);
+                    }
+                });
+            });
+    
+            // Función para obtener el token CSRF de las cookies
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                    return cookieValue;
+                }
             }
         });
     </script>

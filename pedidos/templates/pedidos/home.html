@@ -1,38 +1,34 @@
 {% extends 'pedidos/base.html' %}
 {% load static %}
-<head>
-    <link rel="icon" type="image/x-icon" href="{% static 'pedidos/img/home.png' %}">
-</head>
+
 {% block title %}Inicio - HamburguesasApp{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <section class="text-center">
-        <img src="{% static 'pedidos/img/polasburgersabuela.jpeg' %}" alt="Pola's Burger's Logo" class="img-titulo">
-        <h3>Bienvenidos <i class="fas fa-home"></i></h3> 
-    </section>
-    <section class="imagenportada">
-    </section>
-    <section class="mt-5" id="nuestrasburgers">
-        <h2>Nuestras Burger's <i class="fas fa-hamburger"></i></h2>
-        <div class="row">
-            {% for producto in productos %}
-            <div class="col-md-4 mb-4">
-                <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ producto.nombre }}</h5>
-                            <p class="card-text"><span class="precio"><i class="fas fa-dollar-sign"></i> ${{ producto.precio }}</span></p>
+
+    <div class="container mt-5">
+        <section class="mt-5" id="nuestrasburgers">
+            <h2>Nuestras Burger's</h2>
+            <div class="row">
+                {% for producto in productos %}
+                <div class="col-md-4 mb-4 product-item">
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
+                        <div class="product-image">
+                            <img class="imagenproducto" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
                         </div>
-                    </div>
-                </a>
+                        <div class="product-details">
+                            <h5>{{ producto.nombre }}</h5>
+                            <p><span class="precio"><i class="fas fa-dollar-sign"></i> ${{ producto.precio }}</span></p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <p class="pazul">Todas Las burgers van acompañadas de Papas Fritas</p>
             </div>
-            {% endfor %}
-            <p><i class="fas fa-mouse-pointer"></i> Click para Seleccionar</p>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('Script de home.html ejecutado');
@@ -45,6 +41,52 @@
                 });
             }
         }
+
+        const motito = document.querySelector('.icono-krusty');
+        const footer = document.querySelector('.footer');
+
+        function actualizarAnimacion() {
+            const footerRect = footer.getBoundingClientRect();
+            const footerTop = footerRect.top - 50; // Ajuste para la posición inicial
+
+            const keyframes = `
+                @keyframes mover-motito {
+                    0% {
+                        top: ${footerTop}px;
+                        left: 0;
+                        transform: rotate(0deg);
+                    }
+                    50% {
+                        top: ${footerTop}px;
+                        left: calc(100% - 50px);
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        top: ${footerTop}px;
+                        left: 0;
+                        transform: rotate(0deg);
+                    }
+                }
+            `;
+
+            // Elimina la regla de animación anterior (si existe)
+            const styleSheet = document.styleSheets[0];
+            for (let i = 0; i < styleSheet.cssRules.length; i++) {
+                if (styleSheet.cssRules[i].name === 'mover-motito') {
+                    styleSheet.deleteRule(i);
+                    break;
+                }
+            }
+
+            // Agrega la nueva regla de animación
+            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+            // Aplica la animación al icono
+            motito.style.animation = 'mover-motito 15s linear infinite';
+        }
+
+        actualizarAnimacion();
+        window.addEventListener('resize', actualizarAnimacion);
     });
 </script>
 {% endblock %}

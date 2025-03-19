@@ -18,13 +18,17 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  # Cambiar en producción
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'pedidos/static/pedidos/css',  # Cambio aquí
+    os.path.join(BASE_DIR, 'pedidos/static/pedidos/css'),  # Cambio aquí
 ]
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Asegura que el directorio 'media/temp' exista
+TEMP_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'temp')
+os.makedirs(TEMP_MEDIA_ROOT, exist_ok=True)
 
 INSTALLED_APPS = [
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pedidos.apps.PedidosConfig',
-    
 ]
 
 MIDDLEWARE = [
@@ -66,7 +69,7 @@ ROOT_URLCONF = 'HamburguesasApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'pedidos/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'pedidos/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,7 +90,7 @@ DATABASES = {
         'NAME': 'hamburguesasdb',  # Nombre de tu base de datos
         'USER': 'postgres',        # Tu usuario de PostgreSQL
         'PASSWORD': '1234',        # Tu contraseña de PostgreSQL
-        'HOST': 'localhost',       # O la dirección de tu servidor PostgreSQL
+        'HOST': 'localhost',      # O la dirección de tu servidor PostgreSQL
         'PORT': '5432',            # Puerto de PostgreSQL
     }
 }
@@ -114,7 +117,5 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 USE_I18N = True
 
 USE_TZ = True
-
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
