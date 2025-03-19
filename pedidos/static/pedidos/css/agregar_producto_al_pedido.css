@@ -1,0 +1,103 @@
+/* pedidos/agregar_producto_al_pedido.css */
+
+.agregar-producto-container {
+    background-color: #fff9c4; /* Amarillo claro, como la piel de los Simpsons */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 450px; /* Un poco más ancho */
+    margin: 30px auto;
+    border: 3px solid #ffeb3b; /* Borde amarillo más intenso */
+}
+
+.agregar-producto-titulo {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #d32f2f; /* Rojo intenso, como el techo de la casa de los Simpsons */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida */
+    font-size: 2.5em; /* Título más grande */
+    text-shadow: 2px 2px #ffc107; /* Sombra amarilla */
+}
+
+.agregar-producto-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #212121; /* Gris oscuro */
+    font-weight: bold;
+}
+
+.agregar-producto-select,
+.agregar-producto-cantidad {
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ffc107; /* Borde amarillo */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fffde7; /* Amarillo muy claro */
+}
+
+.agregar-producto-btn {
+    background-color: #00bcd4; /* Azul turquesa, como el cielo de Springfield */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.agregar-producto-btn:hover {
+    background-color: #0097a7; /* Azul turquesa más oscuro */
+}
+
+.resumen-pedido {
+    background-color: #e0f7fa; /* Un azul muy claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.resumen-pedido h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #00838f; /* Un azul más oscuro */
+}
+
+.resumen-pedido ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resumen-pedido li {
+    margin-bottom: 5px;
+}
+
+.resumen-pedido p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#precio-unitario {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #1976d2; /* Un azul más oscuro */
+}
+
+.eliminar-item {
+    background-color: #f44336; /* Rojo */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.eliminar-item:hover {
+    background-color: #d32f2f; /* Rojo más oscuro */
+}

@@ -1,393 +1,107 @@
-/* Estilos generales */
-
-
-.card.h-100{
-    margin: 12px;
-}
+/* carrito.css */
 
 .carrito-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 40px auto;
-    font-family: 'Simpsonfont';
+    font-family: 'Simpsonfont', sans-serif; /* Asegúrate de tener la fuente cargada */
+    background-color: #fff9c4; /* Amarillo claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
 }
 
 .carrito-titulo {
-    text-align: center;
-    font-family: 'Simpsonfont';
-    margin-bottom: 40px;
-    color: rgb(15, 54, 90); /* Color de los títulos de home.css */
-    font-size: 2.8em;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 20px;
+    color: #ffc107; /* Amarillo Simpsons */
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
 }
 
-/* Estilos de la tabla */
 .carrito-tabla {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
-    font-family: 'Simpsonfont';
-}
-.strongtotal{
-    color: #044498;
+    margin-top: 20px;
 }
 
 .carrito-tabla th, .carrito-tabla td {
-    padding: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #f0f0f0;
-    font-family: 'Simpsonfont';
 }
 
 .carrito-tabla th {
-    background-color: #e0e0e0; /* Color un poco mas oscuro que el fondo */
-    color: #043678;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    font-family: 'Simpsonfont';
+    background-color: #ffeb3b; /* Amarillo Simpsons */
 }
 
-.carrito-tabla tbody tr:hover {
-    background-color: #f8f8f8;
-    font-family: 'Simpsonfont';
-}
-
-.carrito-tabla img {
-    max-width: 100px;
-    height: auto;
-    border-radius: 8px;
-    margin-right: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Simpsonfont';
-}
-
-.carrito-acciones {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Simpsonfont';
-}
-
-.carrito-acciones a.btn-danger {
-    background-color: #e91212; /* Color de los botones de las cards */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-    font-family: 'Simpsonfont';
-}
-
-.carrito-acciones a.btn-danger:hover {
-    background-color: #d84315; /* Oscurecer al pasar el ratón */
-    transform: translateY(-2px);
-    font-family: 'Simpsonfont';
-}
-
-/* Estilos de la cantidad */
-.carrito-cantidad-form {
-    display: inline;
-    font-family: 'Simpsonfont';
+.carrito-tabla tbody tr:nth-child(even) {
+    background-color: #fffde7; /* Amarillo claro */
 }
 
 .carrito-cantidad-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Simpsonfont';
+    display: inline-block;
 }
 
 .carrito-cantidad-input {
-    width: 80px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1em;
-    font-family: 'Simpsonfont';
-}
-
-.carrito-cantidad-actualizar {
-    background-color: #e57373; /* Color de los botones de las cards */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-family: 'Simpsonfont';
-}
-
-.carrito-cantidad-actualizar:hover {
-    background-color: #d84315; /* Oscurecer al pasar el ratón */
-    transform: translateY(-2px);
-    font-family: 'Simpsonfont';
-}
-
-.carrito-cantidad-incrementar,
-.carrito-cantidad-disminuir {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
+    width: 60px;
+    padding: 5px;
+    border: 2px solid #ffeb3b; /* Amarillo borde */
     border-radius: 5px;
-    cursor: pointer;
-    margin: 0 5px;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    font-family: 'Simpsonfont';
 }
 
-.carrito-cantidad-incrementar:hover,
-.carrito-cantidad-disminuir:hover {
-    background-color: #e0e0e0;
-    font-family: 'Simpsonfont';
+.carrito-acciones .btn {
+    margin-right: 5px;
 }
 
-/* Estilos del total y botones */
 .carrito-total {
     text-align: right;
-    margin-top: 30px;
-    font-size: 1.4em;
-    font-weight: 600;
-    color: rgb(25, 4, 111); /* Color de los precios de home.css */
-    font-family: 'Simpsonfont';
 }
 
 .carrito-botones {
+    margin-top: 20px;
     text-align: center;
-    margin-top: 40px;
-    font-family: 'Simpsonfont';
 }
 
-.carrito-botones a, .carrito-botones button {
-    background-color: #d010d6; /* Color de los botones de las cards */
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    margin: 15px;
-    width: 200px;
-    border-radius: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-family: 'Simpsonfont';
+.carrito-botones .btn {
+    margin: 5px;
 }
 
-.carrito-botones a:hover, .carrito-botones button:hover {
-    background-color: #aa15d8; /* Oscurecer al pasar el ratón */
-    transform: translateY(-3px);
-    font-family: 'Simpsonfont';
-}
-
-/* Estilos del carrito vacío */
 .carrito-vacio {
     text-align: center;
-    margin-top: 60px;
-    color: #131e83;
-    font-size: 1.3em;
-    font-family: 'Simpsonfont';
+    font-style: italic;
+    color: #999;
+    padding: 20px;
 }
 
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
-    .carrito-container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .carrito-titulo {
-        font-size: 1.6em;
-        margin-bottom: 15px;
-        padding-bottom: 8px;
-    }
-
-    .carrito-tabla {
-        overflow-x: auto;
-        display: block;
-        white-space: nowrap;
-    }
-
-    .carrito-tabla thead {
-        display: none;
-    }
-
-    .carrito-tabla tr {
-        display: block;
-        border-bottom: 1px solid #ddd;
-        padding: 10px 0;
-    }
-
-    .carrito-tabla td {
-        display: block;
-        text-align: right;
-        font-size: 0.7em;
-        border: none;
-        padding: 5px 0;
-    }
-
-    .carrito-tabla td:before {
-        content: attr(data-label);
-        float: left;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .carrito-tabla img {
-        max-width: 40px;
-        margin-right: 3px;
-    }
-
-    .carrito-acciones {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .carrito-acciones a.btn-danger {
-        margin-bottom: 3px;
-        padding: 6px 12px;
-        margin: 5px;
-        font-size: 0.7em;
-    }
-
-    .carrito-cantidad-input {
-        width: 40px;
-        padding: 3px;
-        font-size: 0.6em;
-    }
-
-    .carrito-cantidad-actualizar {
-        padding: 3px 8px;
-        font-size: 0.6em;
-    }
-
-    .carrito-total {
-        font-size: 0.9em;
-        text-align: center;
-        margin-top: 15px;
-    }
-
-    .carrito-botones a, .carrito-botones button {
-        padding: 6px 12px;
-        margin: 3px;
-        font-size: 0.7em;
-    }
-
-    .carrito-vacio {
-        font-size: 0.9em;
-        margin-top: 30px;
-    }
+.strongtotal {
+    text-align: right;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .carrito-container {
-        padding: 20px;
-    }
-
-    .carrito-titulo {
-        font-size: 1.8em;
-    }
-
-    .carrito-tabla td {
-        font-size: 0.75em;
-    }
-
-    .carrito-botones a, .carrito-botones button {
-        padding: 8px 16px;
-        margin: 10px auto;
-        font-size: 0.8em;
-    }
+/* Estilos para los botones */
+.btn-primary, .btn-success, .btn-warning, .btn-danger {
+    background-color: #4caf50; /* Verde Simpsons */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .carrito-container {
-        padding: 25px;
-    }
-
-    .carrito-titulo {
-        font-size: 2em;
-    }
-
-    .carrito-tabla td {
-        font-size: 0.8em;
-    }
-
-    .carrito-botones a, .carrito-botones button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-        margin: 15px auto;
-    }
+.btn-primary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover {
+    background-color: #43a047; /* Verde oscuro */
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .carrito-botones a, .carrito-botones button {
-        display: inline-block;
-        width: auto;
-        margin: 15px 10px;
-    }
+.btn-danger {
+    background-color: #f44336; /* Rojo */
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .carrito-container {
-        width: 80%;
-        padding: 50px;
-    }
+.btn-danger:hover {
+    background-color: #d32f2f; /* Rojo oscuro */
+}
 
-    .carrito-titulo {
-        font-size: 3em;
-        margin-bottom: 50px;
-    }
+.btn-warning {
+    background-color: #ff9800; /* Naranja */
+}
 
-    .carrito-tabla th, .carrito-tabla td {
-        padding: 25px;
-    }
-
-    .carrito-tabla img {
-        max-width: 120px;
-    }
-
-    .carrito-acciones a.btn-danger {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-
-    .carrito-cantidad-input {
-        width: 100px;
-        padding: 12px;
-        font-size: 1.1em;
-    }
-
-    .carrito-cantidad-actualizar {
-        padding: 12px 20px;
-        font-size: 1.1em;
-    }
-
-    .carrito-total {
-        font-size: 1.6em;
-    }
-
-    .carrito-botones a, .carrito-botones button {
-        padding: 18px 35px;
-        font-size: 1.2em;
-        margin: 20px 15px;
-    }
-
-    .carrito-vacio {
-        font-size: 1.5em;
-    }
+.btn-warning:hover {
+    background-color: #f57c00; /* Naranja oscuro */
 }

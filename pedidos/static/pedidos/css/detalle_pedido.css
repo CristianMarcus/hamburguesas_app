@@ -1,0 +1,144 @@
+/* detalle_pedido.css */
+
+/* --- Estilos Generales del Contenedor --- */
+.detalle-pedido-container {
+    font-family: 'Simpsonfont', sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #eee;
+}
+.productosh2 {
+    font-size: 4em;
+    color: #5cf702;
+    text-align: center;
+}
+
+/* --- Estilos de Encabezados y Textos --- */
+.detalle-pedido-titulo {
+    color: #ffc107;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.detalle-pedido-subtitulo {
+    color: #ff9800;
+    margin-top: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.detalle-pedido-texto {
+    color: #f33434;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- Estilos del Formulario --- */
+.detalle-pedido-form-control {
+    border: 2px solid #ffeb3b;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.detalle-pedido-btn-primary,
+.detalle-pedido-btn-success {
+    background-color: #4caf50;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-pedido-btn-primary:hover,
+.detalle-pedido-btn-success:hover {
+    background-color: #245f27;
+}
+
+/* --- Estilos de la Tabla de Productos --- */
+.detalle-pedido-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-pedido-tabla th,
+.detalle-pedido-tabla td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.detalle-pedido-tabla th {
+    background-color: #ffeb3b;
+}
+
+.detalle-pedido-tabla tbody tr:nth-child(even) {
+    background-color: #fffde7;
+}
+
+.detalle-pedido-whatsapp-btn {
+    background-color: #43a047;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-pedido-whatsapp-btn:hover {
+    background-color: #025f30;
+}
+
+/* --- Estilos del Formulario de Confirmación --- */
+.detalle-pedido-confirmar-form {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilos del Mensaje "Sin Productos" --- */
+.detalle-pedido-sin-productos {
+    font-style: italic;
+    color: #999;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* --- Selectores Específicos para IDs --- */
+#detalle-pedido-ancla {
+    color: #ffc107;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+#confirmar-form {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,120 +1,186 @@
 {% extends 'pedidos/base.html' %}
 {% load static %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'detalle_pedido.css' %}">
-</head>
-
 {% block title %}Detalle del Pedido{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 id="detalle-pedido-ancla">Detalle del Pedido</h1>
+<div class="detalle-pedido-container">
+    <h1 id="detalle-pedido-ancla" class="detalle-pedido-titulo">Detalle del Pedido</h1>
 
-        <p style="color: rgb(53, 190, 19);">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
+    <p class="detalle-pedido-texto" style="color: rgb(53, 190, 19);">Una vez presionado "confirmar para finalizar": diríjase al chat de WhatsApp y envíe el mensaje para completar. ¡Gracias!</p>
 
-        <form id="confirmar-form" method="post" action="{% url 'confirmar_pedido' pedido.id %}">
-            {% csrf_token %}
-            <button type="button" id="enviar-whatsapp" class="btn btn-success">Confirmar para Finalizar</button>
-        </form>
-        <h4>Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
+    <form id="confirmar-form" class="detalle-pedido-confirmar-form" method="post" action="{% url 'confirmar_pedido' pedido.id %}">
+        {% csrf_token %}
+        <button type="button" id="enviar-whatsapp" class="detalle-pedido-whatsapp-btn">Confirmar para Finalizar</button>
+    </form>
+    <h4 class="detalle-pedido-subtitulo">Verifique y Confirme para Finalizar, Muchas Gracias!</h4>
 
-        <form method="post" action="{% url 'actualizar_pedido' pedido.id %}">
-            {% csrf_token %}
+    <form method="post" action="{% url 'actualizar_pedido' pedido.id %}">
+        {% csrf_token %}
 
-            <div class="mb-3">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" value="{{ pedido.cliente_anonimo.nombre }}" class="form-control">
-            </div>
+        <div class="mb-3">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="{{ pedido.cliente_anonimo.nombre }}" class="detalle-pedido-form-control">
+        </div>
 
-            <div class="mb-3">
-                <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" id="apellido" value="{{ pedido.cliente_anonimo.apellido }}" class="form-control">
-            </div>
+        <div class="mb-3">
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido" value="{{ pedido.cliente_anonimo.apellido }}" class="detalle-pedido-form-control">
+        </div>
 
-            <div class="mb-3">
-                <label for="telefono">Teléfono:</label>
-                <input type="text" name="telefono" id="telefono" value="{{ pedido.cliente_anonimo.telefono }}" class="form-control">
-            </div>
+        <div class="mb-3">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" name="telefono" id="telefono" value="{{ pedido.cliente_anonimo.telefono }}" class="detalle-pedido-form-control">
+        </div>
 
-            <div class="mb-3">
-                <label for="direccion">Dirección:</label>
-                <input type="text" name="direccion" id="direccion" value="{{ pedido.direccion }}" class="form-control">
-            </div>
+        <div class="mb-3">
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" id="direccion" value="{{ pedido.direccion }}" class="detalle-pedido-form-control">
+        </div>
 
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </form>
+        <button type="submit" class="detalle-pedido-btn-primary">Guardar Cambios</button>
+    </form>
 
-        <p>Método de Pago: {{ pedido.metodo_pago }}</p>
-        <p>Total: ${{ pedido.total }}</p>
+    <p class="detalle-pedido-texto">Método de Pago: {{ pedido.metodo_pago }}</p>
+    <p class="detalle-pedido-texto total-pedido">Total: ${{ pedido.total }}</p>
 
-        {% if items %}
-            <h2>Productos:</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
-                        <tr>
-                            <td>{{ item.producto.nombre }}</td>
-                            <td>{{ item.cantidad }}</td>
-                            <td>${{ item.precio_unitario }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>Este pedido no tiene productos.</p>
-        {% endif %}
+    {% if items_data %}
+    <h2 class="productosh2">Productos:</h2>
+    <table class="detalle-pedido-tabla">
+        <thead>
+            <tr>
+                <th class="detalle-pedido-tabla th">Producto</th>
+                <th class="detalle-pedido-tabla th">Cantidad</th>
+                <th class="detalle-pedido-tabla th">Precio Unitario</th>
+                <th class="detalle-pedido-tabla th">Precio Total</th>
+                <th class="detalle-pedido-tabla th">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items_data %}
+            <tr data-producto-nombre="{{ item.producto_nombre }}" data-precio-unitario="{{ item.precio_unitario }}" data-index="{{ forloop.counter0 }}">
+                <td class="detalle-pedido-tabla td">{{ item.producto_nombre }}</td>
+                <td class="detalle-pedido-tabla td">
+                    <button class="decrementar-cantidad">-</button>
+                    <span class="cantidad">{{ item.cantidad }}</span>
+                    <button class="incrementar-cantidad">+</button>
+                </td>
+                <td class="detalle-pedido-tabla td precio-unitario">${{ item.precio_unitario }}</td>
+                <td class="detalle-pedido-tabla td precio-total">${{ item.precio_total }}</td>
+                <td class="detalle-pedido-tabla td">
+                    <button class="eliminar-item">Eliminar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="detalle-pedido-sin-productos">Este pedido no tiene productos.</p>
+    {% endif %}
+    <p>si te olvidaste algo...</p>
 
-        <script id="items-data" type="application/json">
-            {{ items_json|safe }}
-        </script>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let items;
-            try {
-                items = JSON.parse(document.getElementById('items-data').textContent);
-            } catch (e) {
-                console.error("Error al parsear JSON:", e);
-                return; // Detener la ejecución si hay un error
-            }
-
-            document.getElementById('enviar-whatsapp').addEventListener('click', function() {
-                const productos = items.map(item =>
-                    `${item.producto_nombre} - Cantidad: ${item.cantidad} - Precio unitario: $${item.precio_unitario}`
-                ).join("\n");
-
-                const cliente = `${document.getElementById('nombre').value} ${document.getElementById('apellido').value}`;
-                const telefono = document.getElementById('telefono').value;
-                const direccion = document.getElementById('direccion').value;
-                const metodoPago = "{{ pedido.metodo_pago }}";
-                const total = "{{ pedido.total }}";
-
-                const mensaje = `
-                    Pedido realizado con éxito.
-                    Cliente: ${cliente}
-                    Teléfono: ${telefono}
-                    Dirección: ${direccion}
-                    Método de Pago: ${metodoPago}
-                    Productos:
-                    ${productos}
-                    Total:
-                    ${total}
-                `;
-
-                const mensajeCodificado = encodeURIComponent(mensaje);
-                const urlWhatsApp = `https://wa.me/5491126884940?text=${mensajeCodificado}`;
-                window.open(urlWhatsApp, '_blank');
-                document.getElementById('confirmar-form').submit();
-            });
-        });
+    <script id="items-data" type="application/json">
+        {{ items_json|safe }}
     </script>
+    <a href="{% url 'agregar_producto_al_pedido' pedido.id %}" class="detalle-pedido-btn-success">Agregar Hamburguesa</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let items;
+        try {
+            items = JSON.parse(document.getElementById('items-data').textContent);
+        } catch (e) {
+            console.error("Error al parsear JSON:", e);
+            return;
+        }
+
+        document.getElementById('enviar-whatsapp').addEventListener('click', function() {
+            const productos = items.map(item =>
+                `${item.producto_nombre} - Cantidad: ${item.cantidad} - Precio unitario: $${item.precio_unitario}`
+            ).join("\n");
+
+            const cliente = `${document.getElementById('nombre').value} ${document.getElementById('apellido').value}`;
+            const telefono = document.getElementById('telefono').value;
+            const direccion = document.getElementById('direccion').value;
+            const metodoPago = "{{ pedido.metodo_pago }}";
+            const total = document.querySelector('.total-pedido').textContent.replace('Total: $', '');
+
+            const mensaje = `
+                Pedido realizado con éxito.
+                Cliente: ${cliente}
+                Teléfono: ${telefono}
+                Dirección: ${direccion}
+                Método de Pago: ${metodoPago}
+                Productos:
+                ${productos}
+                Total:
+                ${total}
+            `;
+
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const urlWhatsApp = `https://wa.me/5491126884940?text=${mensajeCodificado}`;
+            window.open(urlWhatsApp, '_blank');
+            document.getElementById('confirmar-form').submit();
+        });
+
+        const tablaProductos = document.querySelector('.detalle-pedido-tabla');
+
+        tablaProductos.addEventListener('click', function(event) {
+            if (event.target.classList.contains('incrementar-cantidad')) {
+                const fila = event.target.closest('tr');
+                const cantidadElemento = fila.querySelector('.cantidad');
+                let cantidad = parseInt(cantidadElemento.textContent);
+                cantidad++;
+                cantidadElemento.textContent = cantidad;
+                actualizarPrecioTotal(fila, cantidad);
+                actualizarTotalPedido();
+            } else if (event.target.classList.contains('decrementar-cantidad')) {
+                const fila = event.target.closest('tr');
+                const cantidadElemento = fila.querySelector('.cantidad');
+                let cantidad = parseInt(cantidadElemento.textContent);
+                if (cantidad > 1) {
+                    cantidad--;
+                    cantidadElemento.textContent = cantidad;
+                    actualizarPrecioTotal(fila, cantidad);
+                    actualizarTotalPedido();
+                }
+            } else if (event.target.classList.contains('eliminar-item')) {
+                const fila = event.target.closest('tr');
+                const index = parseInt(fila.dataset.index);
+                items.splice(index, 1); // Eliminar el ítem del array
+                fila.remove(); // Eliminar la fila de la tabla
+                actualizarIndices(); // Actualizar los índices de las filas restantes
+                actualizarTotalPedido();
+            }
+        });
+
+        function actualizarPrecioTotal(fila, cantidad) {
+            const precioUnitario = parseFloat(fila.dataset.precioUnitario);
+            const precioTotalElemento = fila.querySelector('.precio-total');
+            const precioTotal = precioUnitario * cantidad;
+            precioTotalElemento.textContent = `$${precioTotal.toFixed(2)}`;
+        }
+
+        function actualizarTotalPedido() {
+            let totalPedido = 0;
+            const filas = document.querySelectorAll('.detalle-pedido-tabla tbody tr');
+            filas.forEach(fila => {
+                const precioTotalElemento = fila.querySelector('.precio-total');
+                const precioTotal = parseFloat(precioTotalElemento.textContent.replace('$', ''));
+                totalPedido += precioTotal;
+            });
+            document.querySelector('.total-pedido').textContent = `Total: $${totalPedido.toFixed(2)}`;
+        }
+
+        function actualizarIndices() {
+            const filas = document.querySelectorAll('.detalle-pedido-tabla tbody tr');
+            filas.forEach((fila, index) => {
+                fila.dataset.index = index;
+            });
+        }
+
+        actualizarTotalPedido(); // Inicializar el total al cargar la página
+    });
+</script>
 {% endblock %}

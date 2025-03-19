@@ -1,0 +1,158 @@
+{% extends 'pedidos/base.html' %}
+{% load static %}
+{% block title %}Agregar Producto al Pedido{% endblock %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'pedidos/agregar_producto_al_pedido.css' %}">
+</head>
+
+{% block content %}
+<div class="agregar-producto-container">
+    <h1 class="agregar-producto-titulo">Agregar Producto al Pedido</h1>
+    <form method="post" id="agregar-producto-form">
+        {% csrf_token %}
+        <label class="agregar-producto-label" for="producto">Producto:</label>
+        <select class="agregar-producto-select" name="producto" id="producto">
+            {% for producto in productos %}
+            <option value="{{ producto.id }}" data-precio="{{ producto.precio }}">{{ producto.nombre }}</option>
+            {% endfor %}
+        </select>
+        <p id="precio-unitario">Precio unitario: $0.00</p>
+        <label class="agregar-producto-label" for="cantidad">Cantidad:</label>
+        <input class="agregar-producto-cantidad" type="number" name="cantidad" id="cantidad" value="1" min="1">
+        <button class="agregar-producto-btn" type="submit">Agregar</button>
+    </form>
+
+    <div class="resumen-pedido">
+        <h2>Resumen del Pedido</h2>
+        <ul id="lista-productos">
+            {% for item in pedido.itempedido_set.all %}
+            <li data-item-id="{{ item.id }}">
+                {{ item.producto.nombre }} x {{ item.cantidad }} - ${{ item.precio_unitario }}
+                <button class="eliminar-item" data-precio="{{ item.precio_unitario }}"
+                    data-cantidad="{{ item.cantidad }}">Eliminar</button>
+            </li>
+            {% endfor %}
+        </ul>
+        <p>Total: $<span id="total-pedido">{{ pedido.total }}</span></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('agregar-producto-form');
+        const listaProductos = document.getElementById('lista-productos');
+        const totalPedido = document.getElementById('total-pedido');
+        const selectProducto = document.getElementById('producto');
+        const inputCantidad = document.getElementById('cantidad');
+        const precioUnitario = document.getElementById('precio-unitario');
+
+        // Actualiza el precio unitario al cargar la página
+        precioUnitario.textContent = `Precio unitario: $${selectProducto.options[selectProducto.selectedIndex].dataset.precio}`;
+
+        // Actualiza el precio unitario cuando cambia la selección del producto
+        selectProducto.addEventListener('change', function () {
+            precioUnitario.textContent = `Precio unitario: $${selectProducto.options[selectProducto.selectedIndex].dataset.precio}`;
+        });
+
+        // Actualiza el total y la lista de productos cuando cambia la cantidad
+        inputCantidad.addEventListener('input', function () {
+            const productoPrecio = parseFloat(selectProducto.options[selectProducto.selectedIndex].dataset.precio);
+            const cantidad = parseInt(inputCantidad.value);
+            const precioTotalProducto = productoPrecio * cantidad;
+
+            // Actualiza el total del pedido
+            let totalActual = parseFloat(totalPedido.textContent);
+            let totalSinProductoActual = 0;
+
+            // Calcula el total sin el producto actual (si ya existe en la lista)
+            if (listaProductos.children.length > 0) {
+                const itemTexto = listaProductos.children[0].textContent;
+                const precioActual = parseFloat(itemTexto.split('$')[1]);
+                totalSinProductoActual = totalActual - precioActual;
+            } else {
+                totalSinProductoActual = totalActual;
+            }
+
+            totalPedido.textContent = (totalSinProductoActual + precioTotalProducto).toFixed(2);
+
+            // Actualiza la lista de productos
+            const productoNombre = selectProducto.options[selectProducto.selectedIndex].text;
+            const nuevoItem = document.createElement('li');
+            nuevoItem.textContent = `${productoNombre} x ${cantidad} - $${precioTotalProducto}`;
+
+            // Reemplaza el ítem anterior con el nuevo ítem
+            if (listaProductos.children.length > 0) {
+                listaProductos.children[0].replaceWith(nuevoItem);
+            } else {
+                listaProductos.appendChild(nuevoItem);
+            }
+        });
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const productoId = selectProducto.value;
+            const productoNombre = selectProducto.options[selectProducto.selectedIndex].text;
+            const productoPrecio = parseFloat(selectProducto.options[selectProducto.selectedIndex].dataset.precio);
+            const cantidad = parseInt(inputCantidad.value);
+            const precioTotalProducto = productoPrecio * cantidad;
+
+            const nuevoItem = document.createElement('li');
+            nuevoItem.textContent = `${productoNombre} x ${cantidad} - $${precioTotalProducto}`;
+            listaProductos.appendChild(nuevoItem);
+
+            const totalActual = parseFloat(totalPedido.textContent);
+            totalPedido.textContent = (totalActual + precioTotalProducto).toFixed(2);
+
+            form.submit();
+        });
+
+        // Agrega la funcionalidad para eliminar ítems (fuera del evento submit)
+        listaProductos.addEventListener('click', function (event) {
+            if (event.target.classList.contains('eliminar-item')) {
+                const item = event.target.parentElement;
+                const itemId = item.dataset.itemId; // Obtén el ID del ítem
+                const precio = parseFloat(event.target.dataset.precio);
+                const cantidad = parseInt(event.target.dataset.cantidad);
+                const precioTotalItem = precio * cantidad;
+
+                // Envía una solicitud POST a la vista de eliminación
+                fetch(`/eliminar_item/${itemId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken'), // Obtén el token CSRF
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Actualiza el total del pedido
+                        const totalActual = parseFloat(totalPedido.textContent);
+                        totalPedido.textContent = (totalActual - precioTotalItem).toFixed(2);
+
+                        // Elimina el ítem de la lista
+                        listaProductos.removeChild(item);
+                    }
+                });
+            }
+        });
+
+        // Función para obtener el token CSRF
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+{% endblock %}

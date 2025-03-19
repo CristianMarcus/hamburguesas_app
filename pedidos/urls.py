@@ -19,7 +19,8 @@ urlpatterns = [
     #path('detalle/<int:pedido_id>/<path:comprobante_url>/', views.detalle_pedido, name='detalle_pedido'),
     path('confirmar/<int:pedido_id>/', views.confirmar_pedido, name='confirmar_pedido'),
     path('eliminar_pedido/<int:pedido_id>/', views.eliminar_pedido, name='eliminar_pedido'),
-
+    path('agregar_producto_al_pedido/<int:pedido_id>/', views.agregar_producto_al_pedido, name='agregar_producto_al_pedido'),
+    path('eliminar_item/<int:item_id>/', views.eliminar_item_pedido, name='eliminar_item_pedido'),
     # URLs para el Carrito de Compras
     path('carrito/agregar/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
     path('ver_carrito/', views.ver_carrito, name='ver_carrito'),

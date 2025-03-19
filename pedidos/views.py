@@ -168,20 +168,121 @@ def listar_pedidos(request):
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
 
 import json
-from django.core.serializers import serialize
+from django.shortcuts import render, get_object_or_404
+from .models import Pedido, ItemPedido  # Asegúrate de que las rutas sean correctas
 
 def detalle_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, pk=pedido_id)
     items = ItemPedido.objects.filter(pedido=pedido).select_related('producto')
+    print(items)
     items_data = []
     for item in items:
+        precio_total = item.cantidad * item.producto.precio  # Calcular precio total aquí
         items_data.append({
             'producto_nombre': item.producto.nombre,
             'cantidad': item.cantidad,
-            'precio_unitario': str(item.precio_unitario)  # Convertir a cadena
+            'precio_unitario': str(item.producto.precio),  # Convertir a cadena
+            'precio_total': str(precio_total),  # Agregar precio total y convertir a cadena
         })
     items_json = json.dumps(items_data)
-    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido, 'items': items, 'items_json': items_json})
+    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido, 'items': items, 'items_json': items_json,  'items_data': items_data})
+
+import json
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import Pedido, ItemPedido
+from django.urls import reverse
+
+def actualizar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    if request.method == 'POST':
+        print("Pedido antes de actualizar:", pedido.cliente_anonimo.nombre, pedido.cliente_anonimo.apellido, pedido.direccion)
+
+        # Actualiza los datos del cliente
+        pedido.cliente_anonimo.nombre = request.POST.get('nombre')
+        pedido.cliente_anonimo.apellido = request.POST.get('apellido')
+        pedido.cliente_anonimo.telefono = request.POST.get('telefono')
+        pedido.direccion = request.POST.get('direccion')
+        pedido.save()
+        pedido.cliente_anonimo.save()  # Guarda los cambios en cliente_anonimo
+        messages.success(request, "Pedido actualizado con éxito.")
+
+        # Recarga el pedido actualizado de la base de datos
+        pedido = get_object_or_404(Pedido, pk=pedido_id)
+        print("Pedido después de actualizar:", pedido.cliente_anonimo.nombre, pedido.cliente_anonimo.apellido, pedido.direccion)
+
+        # Recalcula items_data después de actualizar el pedido
+        items = ItemPedido.objects.filter(pedido=pedido).select_related('producto')
+        items_data = []
+        for item in items:
+            precio_total = item.cantidad * item.producto.precio
+            items_data.append({
+                'producto_nombre': item.producto.nombre,
+                'cantidad': item.cantidad,
+                'precio_unitario': str(item.producto.precio),
+                'precio_total': str(precio_total),
+            })
+        items_json = json.dumps(items_data)
+
+        # Redirige a la página de detalles del pedido con el pedido y items_data actualizados
+        url_detalle_pedido = reverse('detalle_pedido', args=[pedido_id])
+        return redirect(f'{url_detalle_pedido}#detalle-pedido-ancla')
+
+    # Recalcula items_data en caso de que sea un GET request
+    items = ItemPedido.objects.filter(pedido=pedido).select_related('producto')
+    items_data = []
+    for item in items:
+        precio_total = item.cantidad * item.producto.precio
+        items_data.append({
+            'producto_nombre': item.producto.nombre,
+            'cantidad': item.cantidad,
+            'precio_unitario': str(item.producto.precio),
+            'precio_total': str(precio_total),
+        })
+    items_json = json.dumps(items_data)
+
+    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido, 'items_data': items_data, 'items_json': items_json})
+#si se olvidan de cargar algun producto
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Pedido, Producto, ItemPedido
+from django.contrib import messages
+from django.urls import reverse
+
+def agregar_producto_al_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    productos = Producto.objects.all()
+
+    if request.method == 'POST':
+        producto_id = request.POST.get('producto')
+        cantidad = int(request.POST.get('cantidad'))
+        producto = get_object_or_404(Producto, pk=producto_id)
+
+        # Agrega el producto al pedido con el precio_unitario
+        item_pedido, created = ItemPedido.objects.get_or_create(
+            pedido=pedido,
+            producto=producto,
+            defaults={'cantidad': cantidad, 'precio_unitario': producto.precio}
+        )
+        if not created:
+            item_pedido.cantidad += cantidad
+            item_pedido.save()
+
+        messages.success(request, f"{producto.nombre} agregado al pedido.")
+        url_detalle_pedido = reverse('detalle_pedido', args=[pedido_id])
+        return redirect(f'{url_detalle_pedido}#detalle-pedido-ancla')
+
+    return render(request, 'pedidos/agregar_producto_al_pedido.html', {'pedido': pedido, 'productos': productos})
+
+from django.shortcuts import get_object_or_404, redirect
+from django.http import JsonResponse
+from .models import ItemPedido
+
+def eliminar_item_pedido(request, item_id):
+    item = get_object_or_404(ItemPedido, pk=item_id)
+    if request.method == 'POST':
+        item.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
 
 
 
@@ -203,6 +304,13 @@ def eliminar_pedido(request, pedido_id):
         messages.error(request, "El pedido no existe.")
     return redirect('listar_pedidos')
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpRequest, HttpResponse
+from .models import Producto
+from decimal import Decimal
+from django.contrib import messages
+from django.urls import reverse
+
 def agregar_al_carrito(request, producto_id):
     producto = get_object_or_404(Producto, pk=producto_id)
     carrito = request.session.get('carrito', {})
@@ -211,7 +319,9 @@ def agregar_al_carrito(request, producto_id):
     else:
         carrito[str(producto_id)] = {'nombre': producto.nombre, 'precio': float(producto.precio), 'cantidad': 1}
     request.session['carrito'] = carrito
-    return redirect('ver_carrito')
+
+    # Redirige a la vista 'ver_carrito' con el fragmento de URL
+    return redirect(reverse('ver_carrito') + '#inicio-carrito')
 
 
 
@@ -285,23 +395,28 @@ from decimal import Decimal
 
 
 
+from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
+from decimal import Decimal
+from django.contrib import messages
+
 def eliminar_del_carrito(request: HttpRequest, producto_id):
     """
-    Restablece la cantidad de un producto en el carrito a 1.
+    Elimina un producto del carrito de compras.
 
     Args:
         request (HttpRequest): La solicitud HTTP.
-        producto_id (int): El ID del producto a restablecer.
+        producto_id (int): El ID del producto a eliminar.
 
     Returns:
-        HttpResponse: Renderiza la vista del carrito de compras.
+        HttpResponse: Redirige a la vista del carrito de compras.
     """
     carrito = request.session.get('carrito', {})
 
     if str(producto_id) in carrito:
-        carrito[str(producto_id)]['cantidad'] = 1
+        del carrito[str(producto_id)]  # Elimina el producto del carrito
         request.session['carrito'] = carrito
-        
+        messages.success(request, "Producto eliminado del carrito.")
     else:
         messages.error(request, "Producto no encontrado en el carrito.")
 
@@ -379,21 +494,7 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('home')  # Redirige a la página principal después del cierre de sesión
 
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Pedido
 
-def actualizar_pedido(request, pedido_id):
-    pedido = get_object_or_404(Pedido, pk=pedido_id)
-    if request.method == 'POST':
-        # Lógica para actualizar el pedido
-        pedido.cliente_anonimo.nombre = request.POST.get('nombre')
-        pedido.cliente_anonimo.apellido = request.POST.get('apellido')
-        pedido.cliente_anonimo.telefono = request.POST.get('telefono')
-        pedido.direccion = request.POST.get('direccion')
-        pedido.save()
-        messages.success(request, "Pedido actualizado con éxito.")
-        return redirect('detalle_pedido', pedido_id=pedido_id)  # Redirige a la página de detalles del pedido
-    return render(request, 'pedidos/detalle_pedido.html', {'pedido': pedido})
 
 
 from django.http import JsonResponse
