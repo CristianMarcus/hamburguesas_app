@@ -12,8 +12,13 @@
     border: 1px solid #eee;
 }
 .productosh2 {
-    font-size: 4em;
-    color: #5cf702;
+    font-size: 5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffc107;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
     text-align: center;
 }
 

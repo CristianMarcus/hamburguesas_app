@@ -14,10 +14,11 @@
         <label class="agregar-producto-label" for="producto">Producto:</label>
         <select class="agregar-producto-select" name="producto" id="producto">
             {% for producto in productos %}
-            <option value="{{ producto.id }}" data-precio="{{ producto.precio }}">{{ producto.nombre }}</option>
+            <option value="{{ producto.id }}" data-precio="{{ producto.precio }}" data-descripcion="{{ producto.descripcion }}">{{ producto.nombre }}</option>
             {% endfor %}
         </select>
         <p id="precio-unitario">Precio unitario: $0.00</p>
+        <div id="descripcion-producto"></div>
         <label class="agregar-producto-label" for="cantidad">Cantidad:</label>
         <input class="agregar-producto-cantidad" type="number" name="cantidad" id="cantidad" value="1" min="1">
         <button class="agregar-producto-btn" type="submit">Agregar</button>
@@ -46,13 +47,18 @@
         const selectProducto = document.getElementById('producto');
         const inputCantidad = document.getElementById('cantidad');
         const precioUnitario = document.getElementById('precio-unitario');
+        const descripcionProducto = document.getElementById('descripcion-producto');
 
-        // Actualiza el precio unitario al cargar la página
-        precioUnitario.textContent = `Precio unitario: $${selectProducto.options[selectProducto.selectedIndex].dataset.precio}`;
+        // Actualiza el precio unitario y la descripción al cargar la página
+        const productoSeleccionado = selectProducto.options[selectProducto.selectedIndex];
+        precioUnitario.textContent = `Precio unitario: $${productoSeleccionado.dataset.precio}`;
+        descripcionProducto.innerHTML = `<strong>Descripción:</strong> ${productoSeleccionado.dataset.descripcion}`;
 
-        // Actualiza el precio unitario cuando cambia la selección del producto
+        // Actualiza el precio unitario y la descripción cuando cambia la selección del producto
         selectProducto.addEventListener('change', function () {
-            precioUnitario.textContent = `Precio unitario: $${selectProducto.options[selectProducto.selectedIndex].dataset.precio}`;
+            const productoSeleccionado = selectProducto.options[selectProducto.selectedIndex];
+            precioUnitario.textContent = `Precio unitario: $${productoSeleccionado.dataset.precio}`;
+            descripcionProducto.innerHTML = `<strong>Descripción:</strong> ${productoSeleccionado.dataset.descripcion}`;
         });
 
         // Actualiza el total y la lista de productos cuando cambia la cantidad
@@ -124,17 +130,17 @@
                         'X-CSRFToken': getCookie('csrftoken'), // Obtén el token CSRF
                     },
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Actualiza el total del pedido
-                        const totalActual = parseFloat(totalPedido.textContent);
-                        totalPedido.textContent = (totalActual - precioTotalItem).toFixed(2);
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Actualiza el total del pedido
+                            const totalActual = parseFloat(totalPedido.textContent);
+                            totalPedido.textContent = (totalActual - precioTotalItem).toFixed(2);
 
-                        // Elimina el ítem de la lista
-                        listaProductos.removeChild(item);
-                    }
-                });
+                            // Elimina el ítem de la lista
+                            listaProductos.removeChild(item);
+                        }
+                    });
             }
         });
 

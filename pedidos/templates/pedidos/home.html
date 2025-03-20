@@ -7,7 +7,10 @@
 
     <div class="container mt-5">
         <section class="mt-5" id="nuestrasburgers">
-            <h2>Nuestras Burger's</h2>
+            <h2>
+                <img src="{% static 'pedidos/img/hamburguesa2.png' %}" alt="Icono de hamburguesa" style="vertical-align: middle; width: 94px; height: 94px;"/>
+                Nuestras Burger's
+            </h2>
             <div class="row">
                 {% for producto in productos %}
                 <div class="col-md-4 mb-4 product-item">

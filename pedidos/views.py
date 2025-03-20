@@ -163,9 +163,20 @@ def crear_pedido(request):
     })
 
 
+#def listar_pedidos(request):
+    #pedidos = Pedido.objects.all().order_by('-fecha_creacion') # Para mejorar el rendimiento, se podría agregar paginación
+    #return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from .models import Pedido
+
 def listar_pedidos(request):
-    pedidos = Pedido.objects.all().order_by('-fecha_creacion') # Para mejorar el rendimiento, se podría agregar paginación
+    pedidos_list = Pedido.objects.all().order_by('-fecha_creacion')
+    paginator = Paginator(pedidos_list, 10)  # Muestra 10 pedidos por página
+    page_number = request.GET.get('page')
+    pedidos = paginator.get_page(page_number)
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
+
 
 import json
 from django.shortcuts import render, get_object_or_404

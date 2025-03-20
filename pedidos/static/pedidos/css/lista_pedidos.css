@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilos generales 
 
 
 .container {
@@ -22,7 +22,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Estilos de la tabla */
+ Estilos de la tabla 
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -30,7 +30,7 @@ h1 {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    /* Para que el border-radius funcione */
+     Para que el border-radius funcione 
 }
 
 .table th,
@@ -54,7 +54,7 @@ h1 {
     background-color: #f0f8ff;
 }
 
-/* Estilos de botones */
+ Estilos de botones 
 .btn {
     display: inline-block;
     padding: 8px 12px;
@@ -89,7 +89,7 @@ h1 {
     background-color: #c82333;
 }
 
-/* Estilos para el mensaje de "No hay pedidos" */
+ Estilos para el mensaje de "No hay pedidos" 
 .text-center {
     text-align: center;
     padding: 20px;
@@ -97,16 +97,16 @@ h1 {
     color: #777;
 }
 
-/* Estilos para la tabla responsive */
+Estilos para la tabla responsive 
 .table-responsive {
     overflow-x: auto;
 }
 
-/* ------------------------------------
+ ------------------------------------
    MEDIA QUERIES
-   ------------------------------------ */
+   ------------------------------------ 
 
-/* Extra small devices (phones, less than 576px) */
+ Extra small devices (phones, less than 576px) 
 @media (max-width: 575.98px) {
     .container {
         padding: 10px;
@@ -136,7 +136,7 @@ h1 {
     }
 }
 
-/* Small devices (landscape phones, 576px and up) */
+ Small devices (landscape phones, 576px and up) 
 @media (min-width: 576px) and (max-width: 767.98px) {
     .container {
         padding: 15px;
@@ -162,7 +162,7 @@ h1 {
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
+ Medium devices (tablets, 768px and up) 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .container {
         padding: 20px;
@@ -186,7 +186,7 @@ h1 {
     }
 }
 
-/* Large devices (desktops, 992px and up) */
+ Large devices (desktops, 992px and up) 
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .container {
         padding: 20px;
@@ -210,7 +210,167 @@ h1 {
     }
 }
 
+ Extra large devices (large desktops, 1200px and up) 
+@media (min-width: 1200px) {
+     Your default styles already handle this well 
+}*/
+
+/* lista_pedidos.css (con paginacion*/
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Simpsonfont'; /* Asegúrate de que esta fuente esté definida */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Simpsonfont';
+}
+
+.table-responsive {
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+    pointer-events: none;
+}
+
+/* Media Queries */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    .btn-sm {
+        font-size: 10px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.9rem;
+        padding: 7px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .table th,
+    .table td {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+    }
+}
+
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    /* Your default styles already handle this well */
+    /* Estilos predeterminados ya manejan bien esto */
 }

@@ -30,15 +30,19 @@
     <nav class="nav">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                <li class="nav-item">
+                    <img src="{% static 'pedidos/img/home_simpsons.png' %}" alt="Icono de inicio" class="nav-icon-home"/>
+                    <a href="{% url 'home' %}" class="nav-link"> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'ver_carrito' %}" class="nav-link" id="carrito-link">
-                        <i class="fas fa-shopping-cart"></i> Carrito
+                    <img src="{% static 'pedidos/img/carrito.png' %}" alt="Icono de carrito" class="nav-icon-carrito"/>
+                    <a href="{% url 'ver_carrito' %}" class="nav-link" id="carrito-link">Carrito
                     </a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'listar_productos' %}" class="nav-link"><i class="fas fa-box"></i>
+                <li class="nav-item">
+                    <img src="{% static 'pedidos/img/productos.png' %}" alt="Icono de productos" class="nav-icon-producto"/>
+                    <a href="{% url 'listar_productos' %}" class="nav-link">
                         Productos</a></li>
                 <li class="nav-item"><a href="{% url 'listar_pedidos' %}" class="nav-link"><i
                             class="fas fa-list-alt"></i> Pedidos</a></li>
