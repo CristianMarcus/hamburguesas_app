@@ -1,39 +1,45 @@
 /* carrito.css */
 
+/* Estilos base para todos los dispositivos */
 .carrito-container {
-    font-family: 'Simpsonfont', sans-serif; /* Asegúrate de tener la fuente cargada */
-    background-color: #fff9c4; /* Amarillo claro */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
+    font-family: 'Simpsonfont', Arial, sans-serif;
+    background-color: #fff9c4;
+    padding: 1.25em; /* 20px / 16px = 1.25em */
+    border-radius: 0.625em; /* 10px / 16px = 0.625em */
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* 0 4px 8px rgba(0, 0, 0, 0.1) */
+    
+    margin: 1.25em auto; /* 20px / 16px = 1.25em */
+    width: 100%; /* Ajusta el ancho máximo al 90% del contenedor padre */
+    
 }
 
 .carrito-titulo {
-    color: #ffc107; /* Amarillo Simpsons */
-    text-shadow: 2px 2px #000;
-    margin-bottom: 20px;
+    color: #ffc107;
+    text-shadow: 0.125em 0.125em #000; /* 2px 2px #000 */
+    margin-bottom: 1.25em; /* 20px / 16px = 1.25em */
+    text-align: center;
+    font-size: 2em;
 }
 
 .carrito-tabla {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 1.25em; /* 20px / 16px = 1.25em */
 }
 
-.carrito-tabla th, .carrito-tabla td {
+.carrito-tabla th,
+.carrito-tabla td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 0.625em; /* 10px / 16px = 0.625em */
     text-align: left;
 }
 
 .carrito-tabla th {
-    background-color: #ffeb3b; /* Amarillo Simpsons */
+    background-color: #ffeb3b;
 }
 
 .carrito-tabla tbody tr:nth-child(even) {
-    background-color: #fffde7; /* Amarillo claro */
+    background-color: #fffde7;
 }
 
 .carrito-cantidad-container {
@@ -41,67 +47,194 @@
 }
 
 .carrito-cantidad-input {
-    width: 60px;
-    padding: 5px;
-    border: 2px solid #ffeb3b; /* Amarillo borde */
-    border-radius: 5px;
+    width: 3.75em; /* 60px / 16px = 3.75em */
+    padding: 0.3125em; /* 5px / 16px = 0.3125em */
+    border: 2px solid #ffeb3b;
+    border-radius: 0.3125em; /* 5px / 16px = 0.3125em */
 }
 
 .carrito-acciones .btn {
-    margin-right: 5px;
+    margin-right: 0.3125em; /* 5px / 16px = 0.3125em */
 }
 
 .carrito-total {
     text-align: right;
+    margin-top: 1.25em; /* 20px / 16px = 1.25em */
 }
 
 .carrito-botones {
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 1.25em; /* 20px / 16px = 1.25em */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .carrito-botones .btn {
-    margin: 5px;
+    margin: 0.3125em; /* 5px / 16px = 0.3125em */
+    flex: 1;
+    max-width: 12.5em; /* 200px / 16px = 12.5em */
 }
 
 .carrito-vacio {
     text-align: center;
     font-style: italic;
     color: #999;
-    padding: 20px;
+    padding: 1.25em; /* 20px / 16px = 1.25em */
 }
 
 .strongtotal {
     text-align: right;
+    font-weight: bold;
 }
 
 /* Estilos para los botones */
-.btn-primary, .btn-success, .btn-warning, .btn-danger {
-    background-color: #4caf50; /* Verde Simpsons */
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger {
+    background-color: #4caf50;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 0.625em 1.25em; /* 10px 20px / 16px = 0.625em 1.25em */
+    border-radius: 0.3125em; /* 5px / 16px = 0.3125em */
     color: white;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 0.625em; /* 10px / 16px = 0.625em */
+    font-size: 1em;
 }
 
-.btn-primary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover {
-    background-color: #43a047; /* Verde oscuro */
+.btn-primary:hover,
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover {
+    background-color: #43a047;
 }
 
 .btn-danger {
-    background-color: #f44336; /* Rojo */
+    background-color: #f44336;
 }
 
 .btn-danger:hover {
-    background-color: #d32f2f; /* Rojo oscuro */
+    background-color: #d32f2f;
 }
 
 .btn-warning {
-    background-color: #ff9800; /* Naranja */
+    background-color: #ff9800;
 }
 
 .btn-warning:hover {
-    background-color: #f57c00; /* Naranja oscuro */
+    background-color: #f57c00;
+}
+
+/* Media Queries (Mobile-First) */
+
+/* Para móviles pequeños (hasta 320px) */
+@media (max-width: 20em) { /* 320px / 16px = 20em */
+    .carrito-container {
+        padding: 0.3125em; /* 5px / 16px = 0.3125em */
+        margin: 0.3125em auto; /* 5px / 16px = 0.3125em */
+    }
+
+    .carrito-titulo {
+        font-size: 1.2em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.3125em; /* 5px / 16px = 0.3125em */
+        font-size: 0.7em;
+    }
+
+    .carrito-cantidad-input {
+        width: 1.5625em; /* 25px / 16px = 1.5625em */
+    }
+}
+
+/* Para móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) { /* 321px / 16px = 20.0625em, 480px / 16px = 30em */
+    .carrito-tabla th,
+    .carrito-tabla td {
+        font-size: 0.8em;
+    }
+
+    .carrito-cantidad-input {
+        width: 1.875em; /* 30px / 16px = 1.875em */
+    }
+}
+
+/* Para móviles grandes (481px - 600px) */
+@media (min-width: 30.0625em) and (max-width: 37.5em) { /* 481px / 16px = 30.0625em, 600px / 16px = 37.5em */
+    .carrito-tabla th,
+    .carrito-tabla td {
+        font-size: 0.9em;
+    }
+
+    .carrito-cantidad-input {
+        width: 2.1875em; /* 35px / 16px = 2.1875em */
+    }
+}
+
+/* Para tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) { /* 601px / 16px = 37.5625em, 768px / 16px = 48em */
+    .carrito-container {
+        padding: 0.625em; /* 10px / 16px = 0.625em */
+        margin: 0.625em auto; /* 10px / 16px = 0.625em */
+    }
+
+    .carrito-titulo {
+        font-size: 1.5em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.5em; /* 8px / 16px = 0.5em */
+        font-size: 0.9em;
+    }
+
+    .carrito-botones {
+        flex-direction: column;
+    }
+
+    .carrito-botones .btn {
+        width: 100%;
+        max-width: none;
+        margin: 0.3125em 0; /* 5px / 16px = 0.3125em */
+    }
+
+    .carrito-cantidad-input {
+        width: 2.5em; /* 40px / 16px = 2.5em */
+    }
+}
+
+/* Para tablets grandes (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) { /* 769px / 16px = 48.0625em, 1024px / 16px = 64em */
+    .carrito-container {
+        padding: 0.9375em; /* 15px / 16px = 0.9375em */
+    }
+
+    .carrito-titulo {
+        font-size: 1.8em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.5625em; /* 9px / 16px = 0.5625em */
+    }
+}
+
+/* Para pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) { /* 1025px / 16px = 64.0625em */
+    .carrito-container {
+        padding: 1.25em; /* 20px / 16px = 1.25em */
+        max-width: 50em; /* 800px / 16px = 50em */
+        margin: 1.25em auto; /* 20px / 16px = 1.25em */
+    }
+
+    .carrito-titulo {
+        font-size: 2em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.625em; /* 10px / 16px = 0.625em */
+    }
 }

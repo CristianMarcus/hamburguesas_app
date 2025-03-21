@@ -101,3 +101,27 @@
 .eliminar-item:hover {
     background-color: #d32f2f; /* Rojo más oscuro */
 }
+
+/* Media Queries para agregar_producto_al_pedido.css */
+
+/* Para móviles pequeños (hasta 600px) */
+@media (max-width: 600px) {
+    .agregar-producto-form {
+        padding: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .agregar-producto-form button {
+        width: 100%;
+    }
+}

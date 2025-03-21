@@ -48,6 +48,7 @@ p {
     background-color: #007bff;
     margin-left: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
+    
 }
 
 .mt-5 h2 {
@@ -232,6 +233,8 @@ p {
     height: 300px;
     padding: 20px;
     border-radius: 5px;
+    margin-left: 50px;
+    margin-right: 10px;
 }
 
 .bienvenida h1 {
@@ -247,6 +250,7 @@ p {
 .bienvenida p {
     font-size: 1.2em;
     margin-bottom: 30px;
+    margin-left: 40px;
     color: #d9ff00;
     text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
     1px -1px 0 black,  /* Borde superior derecho */
@@ -261,6 +265,10 @@ p {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
+    
 }
 
 .btn-explorar:hover{
@@ -286,27 +294,156 @@ p {
     100% { transform: translateX(0); }
 }
 
-@media (max-width: 768px) {
+/* Media Queries para home.css 
+
+/* Para móviles pequeños (hasta 600px) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .bienvenida-contenido {
+        width: 80%;
+        height: 80%;
+        flex-direction: column;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        margin-right: 10px;
+        box-sizing: border-box;
+    }
+
+    .bienvenida h1 {
+        font-size: 2em;
+    }
+
+    .btn-explorar {
+        margin-top: 100px;
+        
+        
+    }
+
+    .img-titulo {
+        width: 90%;
+        height: auto;
+    }
+
+    .product-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .product-details h5 {
+        font-size: 1.3em;
+    }
+
+    .product-details p {
+        font-size: 0.9em;
+    }
+
+    .hamburguesita {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Para móviles muy pequeños (hasta 320px) */
+@media (max-width: 320px) {
+    body {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .product-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bienvenida-contenido {
+        padding: 10px;
+    }
+}
+
+/* Para tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .col-md-4 {
+        width: calc(50% - 20px);
+    }
+
+    h2 {
+        font-size: 5rem;
+    }
+
+    h3 {
+        font-size: 4rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    .bienvenida-contenido {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .img-titulo {
+        width: 80%;
+    }
+}
+
+/* Para móviles grandes y tablets pequeñas (601px - 768px) */
+@media (min-width: 601px) and (max-width: 768px) {
     .col-md-4 {
         width: calc(50% - 20px);
     }
 }
 
-@media (max-width: 576px) {
+/* Para pantallas grandes (1025px y más) */
+@media (min-width: 1025px) {
+    body {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
     .col-md-4 {
-        width: 100%;
+        width: calc(33.33% - 20px);
     }
-}
 
-@media (max-width: 768px) {
-    .img-titulo {
-        width: 90%;
-        height: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .img-titulo {
-        width: 100%;
+    .bienvenida-contenido {
+        width: 80%;
+        padding: 40px;
     }
 }

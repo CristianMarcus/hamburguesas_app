@@ -5,6 +5,7 @@ body {
     background-color: #f6f609;
     margin: 0;
     padding: 0;
+    height: 600px;
 }
 
 @font-face {
@@ -181,16 +182,16 @@ a.nav-link {
 
 .main-content {
     background-color: transparent !important;
-    width: 90%;
+    width: 95%; /* Adjust the width */
     max-width: 1200px;
-    margin-left: 50px;
+    margin: 5px ; /* Center the main content */
     padding: 5px;
     min-height: auto;
     border-radius: 10px;
     box-sizing: border-box;
     font-family: 'Simpsonfont';
+    overflow-x: visible; /*to see the overflow if it happens*/
 }
-
 .messages-container {
     width: 90%;
     max-width: 1200px;
@@ -254,14 +255,15 @@ a.nav-link {
    
     border-radius: 2px;
     font-family: 'Simpsonfont';
-    min-height: 80px;
-    width: 100%; /* El footer ocupa todo el ancho disponible */
+    height: 130px;
+    width: auto; /* El footer ocupa todo el ancho disponible */
     
     transition: box-shadow 0.3s ease;
 }
 
 .footer:hover {
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.2), /* Sombra superior */
+                0 4px 4px rgba(0, 0, 0, 0.2);  /* Sombra inferior */
 }
 
 
@@ -308,95 +310,166 @@ a.nav-link {
     font-family: 'Simpsonfont';
 }
 
+/* Media Queries para base.css (Optimizado) */
+
+/* Para móviles pequeños (hasta 600px) */
 @media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.4; /* Ajusta el interlineado del body */
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    a.nav-link {
+        margin-right: 0;
+    }
+
+    .header {
+        height: 300px;
+        width: auto;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .icono-krusty {
+        display: none;
+    }
+
     .footer-container {
         flex-direction: column;
         align-items: center;
     }
+
     .footer-link {
         margin: 5px 0;
     }
-}
 
-@media (max-width: 575.98px) {
-    .nav-container {
-        flex-direction: column;
-        align-items: center;
-    }
     .nav-logo-img {
         height: 80px;
     }
-    .nav-menu {
-        flex-direction: column;
-        align-items: center;
+
+    .main-content {
+        padding: 20px;
+        margin-left: 0px;
+        width: calc(100% - 20px);
     }
-    .nav-item {
-        margin: 5px 0;
+
+    .footer-text {
+        font-size: 12px;
     }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .nav-container {
-        flex-direction: column;
-        align-items: center;
+/* Para móviles muy pequeños (hasta 320px) */
+@media (max-width: 320px) {
+    body {
+        font-size: 12px; /* Ajusta aún más el tamaño de fuente del body */
+        line-height: 1.2; /* Ajusta aún más el interlineado del body */
     }
+
     .nav-logo-img {
-        height: 80px;
+        height: 60px;
     }
-    .nav-menu {
-        flex-direction: column;
-        align-items: center;
+
+    .nav-link {
+        padding: 5px 10px;
+        font-size: 0.8em;
     }
-    .nav-item {
-        margin: 5px 0;
+
+    .header {
+        background-size: cover;
+    }
+
+    .main-content {
+        padding: 10px;
+        width: calc(100% - 10px);
+        margin-left: 5px;
     }
 }
 
+/* Para tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.5; /* Ajusta el interlineado del body */
+    }
+
+    .nav-container {
+        width: 95%;
+    }
+
+    a.nav-link {
+        margin-right: 2em;
+    }
+
+    .main-content {
+        margin-left: 25px;
+        width: calc(100% - 50px);
+    }
+}
+
+/* Para tablets medianas (768px a 991.98px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .nav-container {
         width: 95%;
     }
 }
 
+/* Para tablets grandes (992px a 1199.98px) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .nav-container {
         width: 95%;
     }
-}
 
-@media (max-width: 319.98px) {
-    .nav-logo-img {
-        height: 60px;
-    }
-    .nav-link {
-        padding: 5px 10px;
-        font-size: 0.8em;
-    }
     .main-content {
-        padding: 20px;
-    }
-    .footer-text {
-        font-size: 12px;
+        margin-left: 35px;
+        width: calc(100% - 70px);
     }
 }
 
+/* Para pantallas grandes (1200px a 1399.98px) */
 @media (min-width: 1200px) and (max-width: 1399.98px) {
     .nav-container {
         width: 95%;
     }
+
     .main-content {
         padding: 40px;
+        margin-left: 50px;
+        width: calc(100% - 100px);
     }
 }
 
+/* Para pantallas muy grandes (1400px y más) */
 @media (min-width: 1400px) {
+    body {
+        font-size: 18px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.6; /* Ajusta el interlineado del body */
+    }
+
     .nav-container {
         max-width: 1400px;
     }
+
     .main-content {
         max-width: 1400px;
         padding: 50px;
+        margin-left: 100px;
+        width: calc(100% - 200px);
     }
+
     .footer-container {
         max-width: 1400px;
     }

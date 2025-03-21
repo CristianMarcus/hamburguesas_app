@@ -258,6 +258,7 @@ h1 {
 .btn-sm {
     padding: 5px 10px;
     font-size: 12px;
+    margin: 10px;
 }
 
 .btn-info {
@@ -373,4 +374,24 @@ h1 {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     /* Estilos predeterminados ya manejan bien esto */
+}
+
+/* Media Queries para lista_pedidos.css */
+
+/* Para móviles pequeños (hasta 600px) */
+@media (max-width: 600px) {
+    .pedido-item {
+        width: 100%;
+    }
+}
+
+/* Para tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .pedido-item {
+        width: 50%;
+    }
+
+    .btn-sm {
+        margin: 10px;
+    }
 }
