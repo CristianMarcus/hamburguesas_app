@@ -148,6 +148,7 @@ p.card-color{
 .card-body {
     padding: 20px;
     font-family: 'Simpsonfont';
+    align-items: center;
 }
 
 .card-title {

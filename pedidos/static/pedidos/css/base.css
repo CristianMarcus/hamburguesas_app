@@ -47,58 +47,47 @@ nav-menu li img#openClosedSign:hover {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border-width: 10px;
+    border-width: 5px;
     border-style: solid;
     border-image: linear-gradient(to right, #ea7610, #ffff00) 1;
     border-image-slice: 1;
     border-image-repeat: round;
 
-    animation: border-blink 3s infinite alternate;
+    animation: border-blink 1s infinite alternate;
 }
 
 @keyframes border-blink {
     0% {
-        border-image: linear-gradient(to right, #ffeb3b, #ff9800) 1;
-    }
-    10% {
-        border-image: linear-gradient(to right, #ff9800, #ffeb3b) 1;
+        border-image: linear-gradient(to right, #FF0000, #FFFF00) 1; /* Rojo y amarillo (nariz y piel) */
     }
     20% {
-        border-image: linear-gradient(to right, #03a9f4, #2196f3) 1;
-    }
-    30% {
-        border-image: linear-gradient(to right, #2196f3, #03a9f4) 1;
+        border-image: linear-gradient(to right, #FFFF00, #00FF00) 1; /* Amarillo y verde (piel y cabello) */
     }
     40% {
-        border-image: linear-gradient(to right, #e91e63, #f06292) 1;
-    }
-    50% {
-        border-image: linear-gradient(to right, #f06292, #e91e63) 1;
+        border-image: linear-gradient(to right, #00FF00, #A52A2A) 1; /* Verde y marrón (cabello y hamburguesa) */
     }
     60% {
-        border-image: linear-gradient(to right, #ffc107, #ff9800) 1;
-    }
-    70% {
-        border-image: linear-gradient(to right, #ff9800, #ffc107) 1;
+        border-image: linear-gradient(to right, #A52A2A, #FFFFFF) 1; /* Marrón y blanco (hamburguesa y ojos) */
     }
     80% {
-        border-image: linear-gradient(to right, #00bcd4, #03a9f4) 1;
-    }
-    90% {
-        border-image: linear-gradient(to right, #03a9f4, #00bcd4) 1;
+        border-image: linear-gradient(to right, #FFFFFF, #FFA500) 1; /* blanco y naranja (ojos y comida) */
     }
     100% {
-        border-image: linear-gradient(to right, #ffeb3b, #ff9800) 1;
+        border-image: linear-gradient(to right, #FFA500, #FF0000) 1; /* naranja y rojo (comida y nariz) */
     }
+
 }
 
 .nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(4, 4, 243);
+    background-color: #007bff;
     padding: 10px 0;
     font-family: 'Simpsonfont';
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
+    border-radius: 2px;
+    margin-bottom: 10px;
 }
 
 .nav-container {
@@ -257,17 +246,24 @@ a.nav-link {
 }
 
 .footer {
-    background-color: #0d52d1;
-    position: absolute;
+    background-color: #007bff;
+    position: relative; /* Cambiado a relative para que no se superponga */
     color: white;
     padding: 5px;
     text-align: center;
-    border: 2px solid rgb(253, 237, 5);
+   
     border-radius: 2px;
     font-family: 'Simpsonfont';
     min-height: 80px;
-    width: 1393px;
+    width: 100%; /* El footer ocupa todo el ancho disponible */
+    
+    transition: box-shadow 0.3s ease;
 }
+
+.footer:hover {
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
 
 .footer-container {
     width: 90%;
@@ -284,7 +280,10 @@ a.nav-link {
     font-size: 16px;
     color: #ffc107;
     font-family: 'Simpsonfont';
-    text-shadow: none;
+    text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
+    1px -1px 0 black,  /* Borde superior derecho */
+    -1px 1px 0 black,  /* Borde inferior izquierdo */
+    1px 1px 0 black;   /* Borde inferior derecho */
 }
 
 .footer-text:first-child {
@@ -294,7 +293,7 @@ a.nav-link {
 }
 
 .footer-link {
-    color: #81d4fa;
+    color: white;
     text-decoration: none;
     font-family: 'Simpsonfont';
     margin: 0 10px;

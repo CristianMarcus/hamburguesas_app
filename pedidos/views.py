@@ -15,6 +15,7 @@ def home(request):
         'productos': productos,
         'year': year,
         
+        
     }
     return render(request, 'pedidos/home.html', context)
 

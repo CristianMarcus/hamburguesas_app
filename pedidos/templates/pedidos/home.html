@@ -1,95 +1,108 @@
 {% extends 'pedidos/base.html' %}
 {% load static %}
 
-{% block title %}Inicio - HamburguesasApp{% endblock %}
+{% block title %}HamburguesasApp{% endblock %}
 
 {% block content %}
+    <section class="nav">
+        <div class="bienvenida">
+            <h1>¡Bienvenidos a Krusty's Burger's!</h1>
+            <p>Disfruta de las mejores hamburguesas de Solano, preparadas con ingredientes frescos y sabrosos.</p>
+        </div>
+        <div class="bienvenida-contenido">
+            <a href="#nuestrasburgers" class="btn-explorar">Explorar el menu</a>
+        </div>
+    </section>
 
     <div class="container mt-5">
         <section class="mt-5" id="nuestrasburgers">
             <h2>
-                <img src="{% static 'pedidos/img/hamburguesa2.png' %}" alt="Icono de hamburguesa" style="vertical-align: middle; width: 94px; height: 94px;"/>
+                <img class="hamburguesita"  src="{% static 'pedidos/img/hamburguesa2.png' %}" alt="Icono de hamburguesa">
                 Nuestras Burger's
             </h2>
             <div class="row">
                 {% for producto in productos %}
-                <div class="col-md-4 mb-4 product-item">
-                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
-                        <div class="product-image">
-                            <img class="imagenproducto" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
-                        </div>
-                        <div class="product-details">
-                            <h5>{{ producto.nombre }}</h5>
-                            <p><span class="precio"><i class="fas fa-dollar-sign"></i> ${{ producto.precio }}</span></p>
-                        </div>
-                    </a>
-                </div>
+                    <div class="col-md-4 mb-4 product-item">
+                        <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
+                            <div class="product-image">
+                                <img class="imagenproducto" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                            </div>
+                            <div class="product-details">
+                                <div class="nombre-producto">
+                                    <h5>{{ producto.nombre }}</h5>
+                                    <div class="ingredientes">
+                                        <p>{{ producto.descripcion }}</p>
+                                    </div>
+                                </div>
+                                <p><span class="precio"><i class="fas fa-dollar-sign"></i> {{ producto.precio }}</span></p>
+                            </div>
+                        </a>
+                    </div>
                 {% endfor %}
                 <p class="pazul">Todas Las burgers van acompañadas de Papas Fritas</p>
             </div>
         </section>
     </div>
 {% endblock %}
-
 {% block extra_scripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('Script de home.html ejecutado');
-        if (window.location.hash === '#nuestrasburgers') {
-            console.log('Ancla #nuestrasburgers encontrada');
-            const targetElement = document.getElementById('nuestrasburgers');
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        const motito = document.querySelector('.icono-krusty');
-        const footer = document.querySelector('.footer');
-
-        function actualizarAnimacion() {
-            const footerRect = footer.getBoundingClientRect();
-            const footerTop = footerRect.top - 50; // Ajuste para la posición inicial
-
-            const keyframes = `
-                @keyframes mover-motito {
-                    0% {
-                        top: ${footerTop}px;
-                        left: 0;
-                        transform: rotate(0deg);
-                    }
-                    50% {
-                        top: ${footerTop}px;
-                        left: calc(100% - 50px);
-                        transform: rotate(0deg);
-                    }
-                    100% {
-                        top: ${footerTop}px;
-                        left: 0;
-                        transform: rotate(0deg);
-                    }
-                }
-            `;
-
-            // Elimina la regla de animación anterior (si existe)
-            const styleSheet = document.styleSheets[0];
-            for (let i = 0; i < styleSheet.cssRules.length; i++) {
-                if (styleSheet.cssRules[i].name === 'mover-motito') {
-                    styleSheet.deleteRule(i);
-                    break;
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Script de home.html ejecutado');
+            if (window.location.hash === '#nuestrasburgers') {
+                console.log('Ancla #nuestrasburgers encontrada');
+                const targetElement = document.getElementById('nuestrasburgers');
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             }
 
-            // Agrega la nueva regla de animación
-            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+            const motito = document.querySelector('.icono-krusty');
+            const footer = document.querySelector('.footer');
 
-            // Aplica la animación al icono
-            motito.style.animation = 'mover-motito 15s linear infinite';
-        }
+            function actualizarAnimacion() {
+                const footerRect = footer.getBoundingClientRect();
+                const footerTop = footerRect.top - 50; // Ajuste para la posición inicial
 
-        actualizarAnimacion();
-        window.addEventListener('resize', actualizarAnimacion);
-    });
-</script>
+                const keyframes = `
+                    @keyframes mover-motito {
+                        0% {
+                            top: ${footerTop}px;
+                            left: 0;
+                            transform: rotate(0deg);
+                        }
+                        50% {
+                            top: ${footerTop}px;
+                            left: calc(100% - 50px);
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            top: ${footerTop}px;
+                            left: 0;
+                            transform: rotate(0deg);
+                        }
+                    }
+                `;
+
+                // Elimina la regla de animación anterior (si existe)
+                const styleSheet = document.styleSheets[0];
+                for (let i = 0; i < styleSheet.cssRules.length; i++) {
+                    if (styleSheet.cssRules[i].name === 'mover-motito') {
+                        styleSheet.deleteRule(i);
+                        break;
+                    }
+                }
+
+                // Agrega la nueva regla de animación
+                styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+                // Aplica la animación al icono
+                motito.style.animation = 'mover-motito 15s linear infinite';
+            }
+
+            actualizarAnimacion();
+            window.addEventListener('resize', actualizarAnimacion);
+        });
+    </script>
 {% endblock %}
