@@ -17,10 +17,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  # Cambiar en producción
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-),  # Cambio aquí
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
