@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-3)d$4189+p85!f856*p4s6gq$2
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  # Cambiar en producción
+ALLOWED_HOSTS = ['hamburguesas-app.onrender.com']  # Cambiar en producción
 
 STATIC_URL = 'static/'
 
