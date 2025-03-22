@@ -7,10 +7,7 @@
     <section class="container mt-5">
         <div class="bienvenida">
             <h1>¡Bienvenidos a Krusty's Burger's!</h1>
-            <p>Disfruta de las mejores hamburguesas de Solano, preparadas con ingredientes frescos</p>
-        </div>
-        <div class="bienvenida-contenido">
-            <a href="#nuestrasburgers" class="btn-explorar">Explorar el menu</a>
+            <p class="disfrutap">Disfruta de las mejores hamburguesas de Solano, preparadas con ingredientes frescos</p>
         </div>
     </section>
 
@@ -23,18 +20,18 @@
             <div class="row">
                 {% for producto in productos %}
                     <div class="col-md-4 mb-4 product-item">
-                        <a href="{% url 'agregar_al_carrito' producto.id %}" class="text-decoration-none">
+                        <a href="{% url 'agregar_al_carrito' producto.id %}">
                             <div class="product-image">
                                 <img class="imagenproducto" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
                             </div>
                             <div class="product-details">
                                 <div class="nombre-producto">
-                                    <h5>{{ producto.nombre }}</h5>
+                                    <h5 class="producto-nombreh5">{{ producto.nombre }}</h5>
                                     <div class="ingredientes">
                                         <p>{{ producto.descripcion }}</p>
                                     </div>
                                 </div>
-                                <p><span class="precio"><i class="fas fa-dollar-sign"></i> {{ producto.precio }}</span></p>
+                                <p><span class="home-precio"><i class="fas fa-dollar-sign"></i> {{ producto.precio|default:"Precio no disponible" }}</span></p>
                             </div>
                         </a>
                     </div>

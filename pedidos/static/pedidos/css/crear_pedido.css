@@ -102,9 +102,8 @@ p.card-color{
     margin-top: 0.625em; /* 10px / 16px = 0.625em */
     text-align: center;
     font-family: 'Simpsonfont';
-    max-width: 30em; /* Define un ancho máximo para el contenedor (ajusta este valor según sea necesario) */
-    margin-left: auto;
-    margin-right: auto;
+    width: 15em; /* Define un ancho máximo para el contenedor (ajusta este valor según sea necesario) */
+    margin-right: 10em;
 }
 
 .btn-success {
@@ -120,10 +119,13 @@ p.card-color{
     display: block;
     text-align: center;
     font-family: 'Simpsonfont';
+    margin-right: 10em;
+    height: 30px;
+    margin-right: 8px;
 }
 
 
-.btn-btn-successbtn-sm {
+.btn.btn-success.btn-sm {
     display: inline-block;
     padding: 8px 16px;
     margin-right: 15px;
@@ -134,6 +136,9 @@ p.card-color{
     border: none;
     cursor: pointer;
     font-family: 'Simpsonfont';
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 .btn-success:hover {
@@ -170,6 +175,11 @@ p.card-color{
     font-family: 'Simpsonfont';
 }
 
+
+/* crear_pedido.css (o donde tengas los estilos) */
+
+/* Estilos generales (ya definidos en tu CSS anterior) */
+
 /* Media Queries para Responsividad */
 
 /* Móviles pequeños (hasta 767px) - Apilar columnas */
@@ -186,13 +196,17 @@ p.card-color{
         margin-top: 1.25em; /* 20px / 16px = 1.25em */
     }
 
-    .container{
+    .container {
         padding: 1.25em;
     }
 
+    #mercado-pago-info {
+        max-width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    }
+
     .btn-success {
-        padding: 0.625em 0.875em; /* Ajustar el padding para móviles */
-        font-size: 0.8em; /* Ajustar el tamaño de la fuente para móviles */
+        font-size: 0.8em; /* Ajusta el tamaño de la fuente para móviles */
+        padding: 0.625em 0.875em; /* Ajusta el padding para móviles */
     }
 }
 
@@ -202,8 +216,12 @@ p.card-color{
         padding: 0 1em; /* Ajustar el padding horizontal */
     }
 
-    .container{
+    .container {
         padding: 1.5em;
+    }
+
+    #mercado-pago-info {
+        max-width: 25em; /* Ajusta el ancho máximo para tablets */
     }
 }
 
@@ -213,8 +231,12 @@ p.card-color{
         padding: 0 1.25em; /* Ajustar el padding horizontal */
     }
 
-    .container{
+    .container {
         padding: 1.75em;
+    }
+
+    #mercado-pago-info {
+        max-width: 30em; /* Ajusta el ancho máximo para escritorios pequeños */
     }
 }
 
@@ -224,7 +246,194 @@ p.card-color{
         padding: 0 1.5em; /* Ajustar el padding horizontal */
     }
 
-    .container{
+    .container {
         padding: 2em;
+    }
+
+    #mercado-pago-info {
+        max-width: 30em; /* Ajusta el ancho máximo para escritorios grandes */
+    }
+}
+
+/* crear_pedido.css (o donde tengas los estilos) */
+
+/* Variables CSS para mantener la coherencia */
+:root {
+    --espaciado-movil: 0.625em; /* 10px / 16px = 0.625em */
+    --espaciado-tablet: 1em; /* 16px / 16px = 1em */
+    --espaciado-escritorio: 1.25em; /* 20px / 16px = 1.25em */
+    --espaciado-escritorio-grande: 1.5em; /* 24px / 16px = 1.5em */
+    --ancho-max-contenedor: 30em; /* Ancho máximo para el contenedor del botón de MP */
+}
+
+/* Estilos generales (ya definidos en tu CSS anterior) */
+
+/* Media Queries para Responsividad */
+
+/* Móviles pequeños (hasta 767px) - Apilar columnas */
+@media (max-width: 47.9375em) { /* 767px / 16px = 47.9375em */
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .mb-3 {
+        padding: 0 var(--espaciado-movil);
+    }
+
+    .card {
+        margin-top: var(--espaciado-escritorio);
+    }
+
+    .container {
+        padding: var(--espaciado-escritorio);
+    }
+
+    #mercado-pago-info {
+        max-width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+
+    .btn-success {
+        font-size: 0.8em; /* Ajusta el tamaño de la fuente para móviles */
+        padding: calc(var(--espaciado-movil) * 0.875) calc(var(--espaciado-movil) * 1.5); /* Ajusta el padding para móviles */
+    }
+}
+
+/* Tablets (768px - 991px) - Ajustar márgenes y padding */
+@media (min-width: 48em) and (max-width: 61.9375em) { /* 768px / 16px = 48em, 991px / 16px = 61.9375em */
+    .mb-3 {
+        padding: 0 var(--espaciado-tablet);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-tablet) * 1.5);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor); /* Ajusta el ancho máximo para tablets */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+}
+
+/* Escritorios pequeños (992px - 1199px) - Ajustar márgenes y padding */
+@media (min-width: 62em) and (max-width: 74.9375em) { /* 992px / 16px = 62em, 1199px / 16px = 74.9375em */
+    .mb-3 {
+        padding: 0 var(--espaciado-escritorio);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-escritorio) * 1.4);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor); /* Ajusta el ancho máximo para escritorios pequeños */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+}
+
+/* Escritorios grandes (1200px y más) - Ajustar márgenes y padding */
+@media (min-width: 75em) { /* 1200px / 16px = 75em */
+    .mb-3 {
+        padding: 0 var(--espaciado-escritorio-grande);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-escritorio-grande) * 1.3);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor); /* Ajusta el ancho máximo para escritorios grandes */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+}
+/* crear_pedido.css (o donde tengas los estilos) */
+
+/* Variables CSS para mantener la coherencia */
+:root {
+    --espaciado-movil: 0.625em;
+    --espaciado-tablet: 1em;
+    --espaciado-escritorio: 1.25em;
+    --espaciado-escritorio-grande: 1.5em;
+    --ancho-max-contenedor: 30em;
+}
+
+/* Estilos generales (ya definidos en tu CSS anterior) */
+
+/* Media Queries para Responsividad */
+
+/* Móviles pequeños (hasta 767px) */
+@media (max-width: 47.9375em) {
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .mb-3 {
+        padding: 0 var(--espaciado-movil);
+    }
+
+    .card {
+        margin-top: var(--espaciado-escritorio);
+    }
+
+    .container {
+        padding: var(--espaciado-escritorio);
+    }
+
+    #mercado-pago-info {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .btn-success {
+        font-size: 0.8em;
+        padding: calc(var(--espaciado-movil) * 0.875) calc(var(--espaciado-movil) * 1.5);
+    }
+}
+
+/* Tablets (768px - 991px) */
+@media (min-width: 48em) and (max-width: 61.9375em) {
+    .mb-3 {
+        padding: 0 var(--espaciado-tablet);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-tablet) * 1.5);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor);
+        margin: 0 auto;
+    }
+}
+
+/* Escritorios pequeños (992px - 1199px) */
+@media (min-width: 62em) and (max-width: 74.9375em) {
+    .mb-3 {
+        padding: 0 var(--espaciado-escritorio);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-escritorio) * 1.4);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor);
+        margin: 0 auto;
+    }
+}
+
+/* Escritorios grandes (1200px y más) */
+@media (min-width: 75em) {
+    .mb-3 {
+        padding: 0 var(--espaciado-escritorio-grande);
+    }
+
+    .container {
+        padding: calc(var(--espaciado-escritorio-grande) * 1.3);
+    }
+
+    #mercado-pago-info {
+        max-width: var(--ancho-max-contenedor);
+        margin: 0 auto;
     }
 }

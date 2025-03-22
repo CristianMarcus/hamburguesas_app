@@ -217,11 +217,13 @@ Estilos para la tabla responsive
 
 /* lista_pedidos.css (con paginacion*/
 
+/* lista_pedidos.css */
+
 .container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    font-family: 'Simpsonfont'; /* Asegúrate de que esta fuente esté definida */
+    font-family: 'Simpsonfont';
 }
 
 h1 {
@@ -233,11 +235,13 @@ h1 {
 
 .table-responsive {
     margin-bottom: 20px;
+    overflow-x: auto; /* Permite scroll horizontal */
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px; /* Ancho mínimo para evitar colapso excesivo */
 }
 
 .table th,
@@ -245,6 +249,7 @@ h1 {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    white-space: nowrap; /* Evita que el texto se envuelva */
 }
 
 .table th {
@@ -305,93 +310,126 @@ h1 {
 
 /* Media Queries */
 
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
     .container {
+        padding: 0 10px;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permite scroll horizontal */
+    }
+
+    .table {
+        min-width: 400px; /* Reduce el ancho mínimo en móviles pequeños */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.8em;
+        padding: 6px;
+        white-space: normal; /* Permite que el texto se envuelva */
+    }
+
+    .btn-sm {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+
+    .pagination .page-link {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permite scroll horizontal */
+    }
+
+    .table {
+        min-width: 500px; /* Ajusta el ancho mínimo */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.9em;
+        padding: 7px;
+    }
+
+    .btn-sm {
+        font-size: 0.8em;
+        padding: 5px 9px;
+    }
+
+    .pagination .page-link {
+        font-size: 0.9em;
+        padding: 5px 9px;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .table th,
+    .table td {
+        font-size: 1em;
         padding: 10px;
     }
 
-    h1 {
-        font-size: 2rem;
+    .btn-sm {
+        font-size: 0.9em;
+        padding: 6px 12px;
     }
 
+    .pagination .page-link {
+        font-size: 1em;
+        padding: 6px 12px;
+    }
+}
+
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
     .table th,
     .table td {
-        font-size: 0.8rem;
-        padding: 6px;
+        font-size: 1.1em;
+        padding: 12px;
     }
 
     .btn-sm {
-        font-size: 10px;
+        font-size: 1em;
+        padding: 7px 14px;
+    }
+
+    .pagination .page-link {
+        font-size: 1.1em;
+        padding: 7px 14px;
     }
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
     .container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
+        max-width: 1400px;
     }
 
     .table th,
     .table td {
-        font-size: 0.9rem;
-        padding: 7px;
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 3rem;
-    }
-
-    .table th,
-    .table td {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 3.2rem;
-    }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    /* Estilos predeterminados ya manejan bien esto */
-}
-
-/* Media Queries para lista_pedidos.css */
-
-/* Para móviles pequeños (hasta 600px) */
-@media (max-width: 600px) {
-    .pedido-item {
-        width: 100%;
-    }
-}
-
-/* Para tablets (601px a 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .pedido-item {
-        width: 50%;
+        font-size: 1.2em;
+        padding: 14px;
     }
 
     .btn-sm {
-        margin: 10px;
+        font-size: 1.1em;
+        padding: 8px 16px;
+    }
+
+    .pagination .page-link {
+        font-size: 1.2em;
+        padding: 8px 16px;
     }
 }

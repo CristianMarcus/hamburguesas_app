@@ -1,0 +1,179 @@
+/* agregar_producto.css */
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Simpsonfont';
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: 'Simpsonfont';
+}
+
+form p {
+    margin-bottom: 15px;
+    word-wrap: break-word; /* Permite que las palabras largas se rompan */
+    font-family: 'Simpsonfont';
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: 'Simpsonfont';
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-family: 'Simpsonfont';
+}
+
+textarea {
+    resize: vertical;
+    font-family: 'Simpsonfont';
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Simpsonfont';
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    font-family: 'Simpsonfont';
+}
+
+/* Estilos específicos para la URL */
+form p a {
+    display: inline-block;
+    width: 100%; /* Ocupa todo el ancho del párrafo */
+    overflow-wrap: break-word; /* Permite que las URLs largas se rompan */
+    word-break: break-all; /* Rompe palabras largas en cualquier punto */
+    font-family: 'Simpsonfont';
+}
+
+/* Media Queries */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .container {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 1em;
+        padding: 9px;
+    }
+
+    .btn-primary {
+        font-size: 1em;
+        padding: 9px 18px;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .container {
+        padding: 25px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+
+    .btn-primary {
+        font-size: 1.1em;
+        padding: 12px 24px;
+    }
+}
+
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .container {
+        padding: 30px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 1.2em;
+        padding: 14px;
+    }
+
+    .btn-primary {
+        font-size: 1.2em;
+        padding: 14px 28px;
+    }
+}
+
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .container {
+        max-width: 1000px;
+        padding: 40px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 1.3em;
+        padding: 16px;
+    }
+
+    .btn-primary {
+        font-size: 1.3em;
+        padding: 16px 32px;
+    }
+}

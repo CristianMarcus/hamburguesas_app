@@ -5,6 +5,53 @@
     font-style: normal;
 }
 
+a {
+    text-decoration: none !important;
+}
+
+a:hover, a:visited {
+    text-decoration: none !important;
+}
+
+.product-details h5, 
+.product-details p, 
+.card-title, 
+.card-text {
+    text-decoration: none !important;
+}
+
+/* ... (tu CSS anterior) ... */
+
+.product-details {
+    position: relative; /* Asegura que el contenedor sea relativo para posicionar los ingredientes */
+}
+
+
+
+.ingredientes {
+    visibility: hidden; /* Oculta los ingredientes */
+    opacity: 0; /* Hace que desaparezcan suavemente */
+    height: 0; /* Evita que ocupen espacio cuando están ocultos */
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+    background-color: #2b2b29;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.product-details:hover .ingredientes {
+    visibility: visible; /* Muestra los ingredientes */
+    opacity: 1; /* Hace que sean visibles suavemente */
+    height: auto; /* Permite que tomen su altura natural */
+    padding: 10px; /* Restablece el padding para mejorar la visualización */
+}
+
+
+
+/* ... (tu CSS anterior) ... */
+
 .img-titulo {
     width: 70%;
     height: 60%;
@@ -19,36 +66,41 @@ h2 {
     color: rgb(15, 54, 90);
     font-family: 'Simpsonfont', cursive;
     font-size: 8rem;
-    text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
-    1px -1px 0 white,  /* Borde superior derecho */
-    -1px 1px 0 white,  /* Borde inferior izquierdo */
-    1px 1px 0 white;   /* Borde inferior derecho */
+    text-shadow: -1px -1px 0 black, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
 }
-
 
 h3 {
     color: rgb(114, 52, 2);
     font-size: 6rem;
-    text-decoration: underline;
     font-family: 'Simpsonfont';
 }
 
+
 p {
     color: rgb(204, 79, 116);
-    font-size: 1.8rem;
+    font-size: 1em;
     margin: 5px;
     font-family: 'Simpsonfont';
 }
 
+.disfrutap {
+    color: rgb(15, 54, 90);
+    font-size: 1.5em;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque para darle un toque moderno */
+    text-align: center;
+}
+
 .pazul {
+    font-size: 2rem;
     color: rgb(9, 9, 121);
+    margin-top: 15px;
 }
 
 .container.mt-5 {
     background-color: #007bff;
     margin-left: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .mt-5 h2 {
@@ -71,32 +123,17 @@ p {
     padding: 10px;
     margin: 10px;
     box-sizing: border-box;
-    font-family: 'Simpsonfont';
 }
 
-.ingredientes {
-    display: none;
-    background-color: #c1dd22;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 5px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.nombre-producto:hover .ingredientes {
-    display: block;
-    opacity: 1;
-}
-
-.ingredientes ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.ingredientes li {
-    margin-bottom: 5px;
+.producto-nombreh5 {
+    font-size: 1.7em;
+    color: yellow;
+    margin: 10px;
+    text-shadow: 
+        -2px -2px 0 black,
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;
 }
 
 .product-item {
@@ -123,36 +160,16 @@ p {
     object-fit: cover;
 }
 
-.product-details h5 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    color: #063051;
-    font-family: 'Simpsonfont';
-}
-
-.product-details p {
-    font-size: 1em;
-    color: #666;
-    font-family: 'Simpsonfont';
-}
-
-.imagenproducto {
-    width: 70px;
-    height: 70px;
-}
-
 .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
-    overflow: visible;
     background-color: #fff;
     width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
-    font-family: 'Simpsonfont';
 }
 
 .card-image-container {
@@ -178,20 +195,6 @@ p {
     padding: 20px;
 }
 
-.card-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #333;
-    font-family: 'Simpsonfont';
-}
-
-.card-text {
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 15px;
-    font-family: 'Simpsonfont';
-}
-
 .btn-primary {
     background-color: #007bff;
     color: #fff;
@@ -201,249 +204,111 @@ p {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
-    font-family: 'Simpsonfont';
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
 
-.precio {
-    color: #bd0606;
-    font-weight: 300;
-    font-family: 'Simpsonfont';
-}
-
-/* Estilos para la sección de bienvenida */
-.bienvenida-contenido {
-    background-image: url("pedidos/img/bienvenidos.jpg");
-    background-size:cover;
-    background-position: left;
-    height: 300px;
-    display: flex;
-    align-items: first baseline;
-    justify-content: left;
-    text-align: left;
-    color: white;
-    font-family: 'Simpsonfont';
+.home-precio {
+    font-size: 1.5rem;
+    color: rgb(173, 0, 0);
 }
 
 .bienvenida-contenido {
-    width: 860px; 
-    height: 300px;
-    padding: 20px;
-    border-radius: 5px;
-    margin-left: 50px;
+    display: flex; /* Necesario para usar flexbox */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra el contenido verticalmente */
+    width: 80%;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    padding: 40px; /* Mejorado el padding */
     margin-right: 10px;
+    box-sizing: border-box;
+    border-radius: 15px; /* Bordes redondeados para un diseño más suave */
+    
+    
+    color: #fff; /* Color de texto blanco para mejor contraste */
 }
 
 .bienvenida h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: white;
-    text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
-                 1px -1px 0 black,  /* Borde superior derecho */
-                 -1px 1px 0 black,  /* Borde inferior izquierdo */
-                 1px 1px 0 black;   /* Borde inferior derecho */
-}
-
-.bienvenida p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    margin-left: 40px;
-    color: #d9ff00;
-    text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
-    1px -1px 0 black,  /* Borde superior derecho */
-    -1px 1px 0 black,  /* Borde inferior izquierdo */
-    1px 1px 0 black;   /* Borde inferior derecho */
+    font-size: 4em; /* Aumenté el tamaño del título */
+    font-weight: 700; /* Hizo el texto más destacado */
+    text-align: center;
+    margin-bottom: 20px; /* Espacio debajo del título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Añadí sombra para mejorar la visibilidad */
 }
 
 .btn-explorar {
-    background-color: #f7c42b;
-    color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
-    
+    margin-top: 30px; /* Menos margen superior para alineación */
+    padding: 12px 30px; /* Botón con más espacio */
+    font-size: 1.2em; /* Aumenté el tamaño de la fuente del botón */
+    color: #fff;
+    background-color: #ff8c00; /* Un color naranja vibrante */
+    border: none;
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el cursor */
 }
 
-.btn-explorar:hover{
-    background-color: #ffaf03;
+.btn-explorar:hover {
+    background-color: #ff6f00; /* Color de fondo más oscuro al pasar el mouse */
 }
 
-.hamburguesita {
-    vertical-align: middle;
-    width: 94px;
-    height: 94px;
-    transition: transform 0.3s ease;
-}
-
-.hamburguesita:hover {
-    animation: sacudir 0.5s ease-in-out;
-}
-
-@keyframes sacudir {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-
-/* Media Queries para home.css 
-
-/* Para móviles pequeños (hasta 600px) */
-@media (max-width: 600px) {
-    body {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-
-    .col-md-4 {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    h2 {
-        font-size: 3rem;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-    }
-
-    p {
-        font-size: 1.2rem;
-    }
-
+@media (max-width: 768px) {
     .bienvenida-contenido {
-        width: 80%;
-        height: 80%;
-        flex-direction: column;
-        align-items: center;
-        background-size: cover;
-        background-position: center;
-        padding: 20px;
-        margin-right: 10px;
-        box-sizing: border-box;
-    }
-
-    .bienvenida h1 {
-        font-size: 2em;
-    }
-
-    .btn-explorar {
-        margin-top: 100px;
-        
-        
-    }
-
-    .img-titulo {
         width: 90%;
         height: auto;
     }
 
+    .bienvenida h1 {
+        font-size: 2.5em;
+    }
+
+    .btn-explorar {
+        font-size: 1.1em;
+    }
+}
+
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .col-md-4 {
+        width: 100%;
+    }
     .product-image {
         width: 120px;
         height: 120px;
     }
-
-    .product-details h5 {
-        font-size: 1.3em;
-    }
-
-    .product-details p {
-        font-size: 0.9em;
-    }
-
-    .hamburguesita {
-        width: 70px;
-        height: 70px;
-    }
 }
 
-/* Para móviles muy pequeños (hasta 320px) */
 @media (max-width: 320px) {
-    body {
-        font-size: 12px;
-        line-height: 1.2;
-    }
-
     h2 {
         font-size: 2.5rem;
     }
-
     p {
         font-size: 1rem;
     }
-
-    .product-image {
-        width: 100px;
-        height: 100px;
-    }
-
-    .bienvenida-contenido {
-        padding: 10px;
-    }
 }
 
-/* Para tablets (601px a 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
-    body {
-        font-size: 16px;
-        line-height: 1.5;
-    }
-
-    .col-md-4 {
-        width: calc(50% - 20px);
-    }
-
     h2 {
         font-size: 5rem;
     }
-
     h3 {
         font-size: 4rem;
     }
-
     p {
         font-size: 1.5rem;
-    }
-
-    .bienvenida-contenido {
-        width: 90%;
-        padding: 30px;
-    }
-
-    .img-titulo {
-        width: 80%;
-    }
-}
-
-/* Para móviles grandes y tablets pequeñas (601px - 768px) */
-@media (min-width: 601px) and (max-width: 768px) {
-    .col-md-4 {
-        width: calc(50% - 20px);
-    }
-}
-
-/* Para pantallas grandes (1025px y más) */
-@media (min-width: 1025px) {
-    body {
-        font-size: 18px;
-        line-height: 1.6;
-    }
-
-    .col-md-4 {
-        width: calc(33.33% - 20px);
-    }
-
-    .bienvenida-contenido {
-        width: 80%;
-        padding: 40px;
     }
 }

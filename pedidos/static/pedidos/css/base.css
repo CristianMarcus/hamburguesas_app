@@ -246,68 +246,107 @@ a.nav-link {
     }
 }
 
+/* Variables CSS */
+:root {
+    --footer-bg-color: #007bff;
+    --footer-text-color: #ffc107;
+    --footer-link-color: white;
+    --footer-text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    --footer-font: 'Simpsonfont', sans-serif;
+    --footer-padding: 10px;
+}
+
 .footer {
-    background-color: #007bff;
-    position: relative; /* Cambiado a relative para que no se superponga */
-    color: white;
-    padding: 5px;
+    background-color: var(--footer-bg-color);
+    position: relative; /* Evita superposiciones */
+    color: var(--footer-link-color);
+    padding: var(--footer-padding);
     text-align: center;
-   
     border-radius: 2px;
-    font-family: 'Simpsonfont';
-    height: 130px;
-    width: auto; /* El footer ocupa todo el ancho disponible */
-    
+    font-family: var(--footer-font);
+    height: auto; /* Altura automática para contenido dinámico */
+    width: 100%; /* Ocupa todo el ancho */
     transition: box-shadow 0.3s ease;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
 .footer:hover {
-    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.2), /* Sombra superior */
-                0 4px 4px rgba(0, 0, 0, 0.2);  /* Sombra inferior */
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.2),
+                0 4px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 .footer-container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    font-family: 'Simpsonfont';
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Centra verticalmente */
+    padding: 20px 0; /* Espacio interno */
 }
 
 .footer-text {
     margin: 5px 0;
     font-size: 16px;
-    color: #ffc107;
-    font-family: 'Simpsonfont';
-    text-shadow: -1px -1px 0 black,  /* Borde superior izquierdo */
-    1px -1px 0 black,  /* Borde superior derecho */
-    -1px 1px 0 black,  /* Borde inferior izquierdo */
-    1px 1px 0 black;   /* Borde inferior derecho */
+    color: var(--footer-text-color);
+    font-family: var(--footer-font);
+    text-shadow: var(--footer-text-shadow);
+    line-height: 1.5; /* Mejora la legibilidad */
 }
 
 .footer-text:first-child {
     font-weight: bold;
     font-size: 18px;
-    color: #ffeb3b;
+    color: #ffeb3b; /* Color específico para el primer texto */
 }
 
 .footer-link {
-    color: white;
+    color: var(--footer-link-color);
     text-decoration: none;
-    font-family: 'Simpsonfont';
+    font-family: var(--footer-font);
     margin: 0 10px;
+    transition: color 0.3s ease; /* Transición suave de color */
 }
 
 .footer-link:hover {
     text-decoration: underline;
+    color: #ddd; /* Cambia el color al pasar el ratón */
 }
 
 .login-links {
-    display: none;
-    font-family: 'Simpsonfont';
+    display: none; /* Oculta los enlaces de inicio de sesión */
+    font-family: var(--footer-font);
+}
+
+/* Media Queries para Responsividad del Footer */
+
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 15px 0;
+    }
+
+    .footer-text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .footer-link {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .footer-text {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .footer-container {
+        max-width: 1400px;
+    }
 }
 
 /* Media Queries para base.css (Optimizado) */

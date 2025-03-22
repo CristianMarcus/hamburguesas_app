@@ -1,388 +1,255 @@
-
+/* listar_productos.css */
 
 .container {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
-    font-family: 'Simpsonfont';
+    padding: 0 20px;
+    font-family: sans-serif; /* Fuente base */
 }
 
-
-
 h1 {
-    color: #333;
     text-align: center;
-    margin-bottom: 30px;
-    font-family: 'Simpsonfont';
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .btn-success {
-    background-color: #4CAF50;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 14px 28px; /* Aumenta el padding */
-    text-align: center;
+    border-radius: 4px;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     margin-bottom: 20px;
-    border-radius: 10px; /* Borde más redondeado */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'Simpsonfont';
 }
 
 .btn-success:hover {
-    background-color: #45a049;
-    font-family: 'Simpsonfont';
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: 'Simpsonfont';
-}
-
-.col-md-4 {
-    width: calc(33.33% - 20px);
-    margin: 10px;
-    font-family: 'Simpsonfont';
+    background-color: #218838;
 }
 
 .card {
-    border: 1px solid #ddd; /* Borde sutil */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     overflow: hidden;
-    background-color: #fff;
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Simpsonfont';
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    font-family: 'Simpsonfont';
 }
 
 .card-img-top {
-    font-family: 'Simpsonfont';
-    height: 200px;
-    object-fit: cover; /* Cambiado a cover */
-    object-position: center;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .card-body {
-    font-family: 'Simpsonfont';
-    text-align: center;
-    padding: 25px; /* Aumenta el padding */
-    flex-grow: 1;
+    padding: 15px;
 }
 
 .card-title {
-    font-family: 'Simpsonfont';
-    font-size: 1.5rem; /* Aumenta el tamaño de la fuente */
-    font-weight: 600;
-    margin-bottom: 15px; /* Aumenta el margen inferior */
-    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
-.card-text .precio {
-    font-family: 'Simpsonfont';
-    font-size: 1.4rem; /* Aumenta el tamaño de la fuente */
+.card-text {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.precio {
     font-weight: bold;
-    color: #e44d26;
-    background-color: #ebd40d;
-    padding: 8px 16px; /* Aumenta el padding */
-    border-radius: 8px; /* Borde más redondeado */
-    transition: transform 0.2s ease;
-}
-
-.card-text .precio:hover {
-    font-family: 'Simpsonfont';
-    transform: scale(1.05);
+    color: #007bff;
 }
 
 .btn-primary {
-    font-family: 'Simpsonfont';
     background-color: #007bff;
-    border: none;
     color: white;
-    padding: 12px 24px; /* Aumenta el padding */
-    text-align: center;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px; /* Aumenta el tamaño de la fuente */
-    border-radius: 10px; /* Borde más redondeado */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    font-family: 'Simpsonfont';
     background-color: #0056b3;
 }
 
-.btn-warning,
-.btn-danger {
-    font-family: 'Simpsonfont';
-    padding: 10px 20px; /* Aumenta el padding */
-    font-size: 13px; /* Aumenta el tamaño de la fuente */
-    margin: 5px;
-    border-radius: 10px; /* Borde más redondeado */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 .btn-warning {
-    font-family: 'Simpsonfont';
     background-color: #ffc107;
+    color: black;
+    padding: 5px 10px;
     border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-warning:hover {
-    font-family: 'Simpsonfont';
     background-color: #e0a800;
 }
 
 .btn-danger {
-    font-family: 'Simpsonfont';
     background-color: #dc3545;
-    border: none;
     color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-danger:hover {
-    font-family: 'Simpsonfont';
     background-color: #c82333;
 }
 
-a {
-    font-family: 'Simpsonfont';
-    text-decoration: none;
-    color: #c82333;
+.mt-2 {
+    margin-top: 10px;
 }
 
-/* ------------------------------------
-    MEDIA QUERIES
-    ------------------------------------ */
+.mb-3 {
+    margin-bottom: 15px;
+}
 
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
+.mb-4 {
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+/* Media Queries */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
     .container {
-        padding: 10px;
-        margin: 10px auto;
-    }
-
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .btn-success {
-        padding: 10px 20px;
-        font-size: 14px;
-        margin-bottom: 15px;
+        padding: 0 10px;
     }
 
     .col-md-4 {
         width: 100%;
-        margin: 10px 0;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    .card-img-top {
-        height: 150px;
     }
 
     .card-title {
-        font-size: 1.1rem;
+        font-size: 1em;
     }
 
     .card-text {
-        font-size: 0.9rem;
+        font-size: 0.9em;
     }
 
-    .card-text .precio {
-        font-size: 1rem;
+    .btn-primary,
+    .btn-warning,
+    .btn-danger {
+        font-size: 0.8em;
         padding: 6px 12px;
     }
 
-    .btn-primary {
+    .btn-success {
+        width: 100%; /* El botón ocupa todo el ancho en móviles */
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .col-md-4 {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 1.1em;
+    }
+
+    .card-text {
+        font-size: 0.95em;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger {
+        font-size: 0.9em;
+        padding: 7px 14px;
+    }
+
+    .btn-success {
+        width: 100%; /* El botón ocupa todo el ancho en móviles */
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .col-md-4 {
+        width: 50%;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+    }
+
+    .card-text {
+        font-size: 1em;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger {
+        font-size: 1em;
         padding: 8px 16px;
-        font-size: 12px;
-    }
-
-    .btn-warning,
-    .btn-danger {
-        padding: 8px 16px;
-        font-size: 10px;
-        margin: 3px;
-    }
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .container {
-        padding: 15px;
-        margin: 15px auto;
-    }
-
-    h1 {
-        font-size: 2.5rem;
     }
 
     .btn-success {
-        padding: 12px 24px;
-        font-size: 15px;
-    }
-
-    .col-md-4 {
-        width: calc(50% - 20px);
-    }
-
-    .card {
-        width: 280px;
-    }
-
-    .card-img-top {
-        height: 160px;
-    }
-
-    .card-title {
-        font-size: 1.2rem;
-    }
-
-    .card-text {
-        font-size: 1rem;
-    }
-
-    .card-text .precio {
-        font-size: 1.1rem;
-    }
-
-    .btn-primary {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
-
-    .btn-warning,
-    .btn-danger {
-        padding: 10px 20px;
-        font-size: 11px;
+        width: auto; /* El botón vuelve a su ancho automático */
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .container {
-        padding: 20px;
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .col-md-4 {
+        width: 50%;
     }
 
-    h1 {
-        font-size: 3rem;
+    .card-title {
+        font-size: 1.3em;
+    }
+
+    .card-text {
+        font-size: 1.1em;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger {
+        font-size: 1.1em;
+        padding: 9px 18px;
     }
 
     .btn-success {
-        padding: 14px 28px;
-        font-size: 16px;
-    }
-
-    .col-md-4 {
-        width: calc(50% - 20px);
-    }
-
-    .card {
-        width: 300px;
-    }
-
-    .card-img-top {
-        height: 170px;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-    }
-
-    .card-text {
-        font-size: 1.1rem;
-    }
-
-    .card-text .precio {
-        font-size: 1.2rem;
-    }
-
-    .btn-primary {
-        padding: 12px 24px;
-        font-size: 14px;
-    }
-
-    .btn-warning,
-    .btn-danger {
-        padding: 10px 20px;
-        font-size: 12px;
+        width: auto; /* El botón vuelve a su ancho automático */
     }
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .container {
-        padding: 20px;
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .col-md-4 {
+        width: 33.333%;
     }
 
-    h1 {
-        font-size: 3.5rem;
+    .card-title {
+        font-size: 1.4em;
+    }
+
+    .card-text {
+        font-size: 1.2em;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger {
+        font-size: 1.2em;
+        padding: 10px 20px;
     }
 
     .btn-success {
-        padding: 14px 28px;
-        font-size: 16px;
+        width: auto; /* El botón vuelve a su ancho automático */
     }
-
-    .col-md-4 {
-        width: calc(33.33% - 20px);
-    }
-
-    .card {
-        width: 270px;
-    }
-
-    .card-img-top {
-        height: 175px;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-    }
-
-    .card-text {
-        font-size: 1.1rem;
-    }
-
-    .card-text .precio {
-        font-size: 1.2rem;
-    }
-
-    .btn-primary {
-        padding: 12px 24px;
-        font-size: 14px;
-    }
-
-    .btn-warning,
-    .btn-danger {
-        padding: 10px 20px;
-        font-size: 12px;
-    }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    /* Los estilos predeterminados ya manejan bien esto */
 }
