@@ -2,11 +2,11 @@
 
 
 .container {
-    max-width: 900px; /* Aumentado el ancho máximo */
+    max-width: 900px;
     margin: 40px auto;
-    padding: 30px;
+    padding: 20px; /* Reducir el padding */
     font-family: 'Simpsonfont';
-    background-color: #ffffff;
+    background-color: #bbe0f8;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -29,14 +29,20 @@
     font-family: 'Simpsonfont';
     align-items: center;
     background-color: rgb(151, 151, 234);
-    margin: 5px;
-    margin-left: 16px;
-    
+    margin: 5px; /* Ajuste del margen general */
+    margin-left: 0; /* Eliminar el margen izquierdo */
+    width: calc(100% - 10px); /* Ajustar el ancho para compensar los márgenes */
 }
 
 p.card-color{
     color: #f8f404;
     font-family: 'Simpsonfont';
+    font-weight: 900;
+}
+
+p.card-text {
+    color: #218838;
+    font-weight: 800;
 }
 
 .crearh5 {
@@ -127,7 +133,7 @@ p.card-color{
 
 .btn.btn-success.btn-sm {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 8px 2px;
     margin-right: 15px;
     text-align: center;
     text-decoration: none;
@@ -138,7 +144,9 @@ p.card-color{
     font-family: 'Simpsonfont';
     height: 30px;
     vertical-align: middle;
-    margin-right: 8px;
+    margin-right: 30px;
+    font-size: 10px;
+    
 }
 
 .btn-success:hover {
@@ -163,17 +171,22 @@ p.card-color{
 }
 
 .card-title {
+    color: #0452a6 ;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 15px;
     font-family: 'Simpsonfont';
 }
 
+
+
 .card-text {
     font-size: 16px;
     margin-bottom: 10px;
     font-family: 'Simpsonfont';
 }
+
+
 
 
 /* crear_pedido.css (o donde tengas los estilos) */

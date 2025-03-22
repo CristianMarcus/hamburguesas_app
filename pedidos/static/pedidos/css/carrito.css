@@ -1,30 +1,28 @@
 /* Estilos base para todos los dispositivos */
 
-/* Encapsulamos todo dentro de una clase específica para el carrito */
 .carrito-container {
     font-family: 'Simpsonfont', Arial, sans-serif;
     background-color: #fff9c4;
-    padding: 1.25em;
-    border-radius: 0.625em;
+    padding: 1em; /* Ajuste para móviles */
+    border-radius: 0.5em;
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
-    margin: 1.25em auto;
-    width: 100%;
+    margin: 1em auto;
+    width: 95%; /* Ajuste para móviles */
     overflow-x: auto;
 }
 
 .carrito-titulo {
     color: #ffc107;
     text-shadow: 0.125em 0.125em #000;
-    margin-bottom: 1.25em;
+    margin-bottom: 1em;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em; /* Ajuste para móviles */
 }
 
-/* Aseguramos que la tabla solo se vea en el carrito */
 .carrito-tabla {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1.25em;
+    margin-top: 1em;
     display: block;
     overflow-x: auto;
 }
@@ -32,8 +30,9 @@
 .carrito-tabla th,
 .carrito-tabla td {
     border: 1px solid #ddd;
-    padding: 0.625em;
+    padding: 0.5em; /* Ajuste para móviles */
     text-align: left;
+    font-size: 0.8em; /* Ajuste para móviles */
 }
 
 .carrito-tabla th {
@@ -44,66 +43,59 @@
     background-color: #fffde7;
 }
 
-/* Agrupar las acciones dentro del carrito */
 .carrito-cantidad-container {
     display: inline-block;
 }
 
 .carrito-cantidad-input {
-    width: 3.75em;
-    padding: 0.3125em;
+    width: 3em; /* Ajuste para móviles */
+    padding: 0.3em;
     border: 2px solid #ffeb3b;
-    border-radius: 0.3125em;
+    border-radius: 0.3em;
 }
 
 .carrito-acciones .btn {
-    margin-right: 0.3125em;
+    margin-right: 0.3em;
+    font-size: 0.8em; /* Ajuste para móviles */
 }
 
-/* Estilos del total y botones del carrito */
 .carrito-total {
     text-align: right;
-    margin-top: 1.25em;
+    margin-top: 1em;
+    font-size: 0.9em; /* Ajuste para móviles */
 }
 
 .carrito-botones {
-    margin-top: 1.25em;
+    margin-top: 1em;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .carrito-botones .btn {
-    margin: 0.3125em;
+    margin: 0.3em;
     flex: 1;
-    max-width: 12.5em;
+    max-width: 10em; /* Ajuste para móviles */
+    font-size: 0.9em; /* Ajuste para móviles */
 }
 
-.carrito-vacio {
-    text-align: center;
-    font-style: italic;
-    color: #999;
-    padding: 1.25em;
+.carrito-botones .btn-grande {
+    padding: 0.6em 1.2em;
+    font-size: 1em;
 }
 
-.strongtotal {
-    text-align: right;
-    font-weight: bold;
-}
-
-/* Estilos específicos para los botones del carrito */
 .carrito-btn-primary,
 .carrito-btn-success,
 .carrito-btn-warning,
 .carrito-btn-danger {
     background-color: #4caf50;
     border: none;
-    padding: 0.625em 1.25em;
-    border-radius: 0.3125em;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
     color: white;
     cursor: pointer;
-    margin-top: 0.625em;
-    font-size: 1em;
+    margin-top: 0.5em;
+    font-size: 0.9em; /* Ajuste para móviles */
 }
 
 .carrito-btn-primary:hover,
@@ -129,90 +121,13 @@
     background-color: #f57c00;
 }
 
-/* Media Queries (Mobile-First) */
-
-/* Para móviles pequeños (hasta 320px) */
-@media (max-width: 20em) {
-    .carrito-container {
-        padding: 0.3125em;
-        margin: 0.3125em auto;
-    }
-
-    .carrito-titulo {
-        font-size: 1.2em;
-    }
-
-    .carrito-tabla th,
-    .carrito-tabla td {
-        padding: 0.3125em;
-        font-size: 0.7em;
-    }
-
-    .carrito-cantidad-input {
-        width: 1.5625em;
-    }
-}
-
-/* Para móviles medianos (321px - 480px) */
-@media (min-width: 20.0625em) and (max-width: 30em) {
-    .carrito-tabla th,
-    .carrito-tabla td {
-        font-size: 0.8em;
-    }
-
-    .carrito-cantidad-input {
-        width: 1.875em;
-    }
-}
-
-/* Para móviles grandes (481px - 600px) */
-@media (min-width: 30.0625em) and (max-width: 37.5em) {
-    .carrito-tabla th,
-    .carrito-tabla td {
-        font-size: 0.9em;
-    }
-
-    .carrito-cantidad-input {
-        width: 2.1875em;
-    }
-}
+/* Media Queries */
 
 /* Para tablets pequeñas (601px - 768px) */
 @media (min-width: 37.5625em) and (max-width: 48em) {
     .carrito-container {
-        padding: 0.625em;
-        margin: 0.625em auto;
-    }
-
-    .carrito-titulo {
-        font-size: 1.5em;
-    }
-
-    .carrito-tabla th,
-    .carrito-tabla td {
-        padding: 0.5em;
-        font-size: 0.9em;
-    }
-
-    .carrito-botones {
-        flex-direction: column;
-    }
-
-    .carrito-botones .btn {
-        width: 100%;
-        max-width: none;
-        margin: 0.3125em 0;
-    }
-
-    .carrito-cantidad-input {
-        width: 2.5em;
-    }
-}
-
-/* Para tablets grandes (769px - 1024px) */
-@media (min-width: 48.0625em) and (max-width: 64em) {
-    .carrito-container {
-        padding: 0.9375em;
+        padding: 1.5em;
+        width: 90%;
     }
 
     .carrito-titulo {
@@ -221,16 +136,32 @@
 
     .carrito-tabla th,
     .carrito-tabla td {
-        padding: 0.5625em;
+        padding: 0.7em;
+        font-size: 1em;
+    }
+
+    .carrito-cantidad-input {
+        width: 3.5em;
+    }
+
+    .carrito-acciones .btn {
+        font-size: 1em;
+    }
+
+    .carrito-total {
+        font-size: 1em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 12em;
     }
 }
 
-/* Para pantallas grandes (1025px y más) */
-@media (min-width: 64.0625em) {
+/* Para tablets grandes (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
     .carrito-container {
-        padding: 1.25em;
-        max-width: 50em;
-        margin: 1.25em auto;
+        padding: 2em;
+        width: 85%;
     }
 
     .carrito-titulo {
@@ -239,6 +170,41 @@
 
     .carrito-tabla th,
     .carrito-tabla td {
-        padding: 0.625em;
+        padding: 0.8em;
+    }
+
+    .carrito-cantidad-input {
+        width: 4em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 14em;
+    }
+}
+
+/* Para pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .carrito-container {
+        padding: 2.5em;
+        max-width: 60em;
+    }
+
+    .carrito-titulo {
+        font-size: 2.2em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 1em;
+        font-size: 1.1em;
+    }
+
+    .carrito-cantidad-input {
+        width: 4.5em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 16em;
+        font-size: 1.1em;
     }
 }

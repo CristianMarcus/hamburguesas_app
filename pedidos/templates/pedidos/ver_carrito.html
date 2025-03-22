@@ -55,7 +55,7 @@
         </table>
         <div class="carrito-botones">
             <a href="{% url 'home' %}#nuestrasburgers" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar Burger</a>
-            <a href="{% url 'crear_pedido' %}" class="btn btn-success" id="crear-pedido-link"><i class="fas fa-check-circle"></i> Crear Pedido</a>
+            <a href="{% url 'crear_pedido' %}" class="btn btn-success btn-grande" id="crear-pedido-link"><i class="fas fa-check-circle"></i> Crear Pedido</a>
             <a href="{% url 'vaciar_carrito' %}" class="btn btn-warning"><i class="fas fa-trash"></i> Vaciar Carrito</a>
         </div>
     </div>
@@ -88,9 +88,12 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            const subtotalElement = document.getElementById(`subtotal-${productoId}`);
-                            subtotalElement.textContent = `$${(precio * cantidad).toFixed(2)}`;
-                            document.querySelector('.carrito-total strong').textContent = `$${parseFloat(data.total).toFixed(2)}`;
+                            // Agrupa las actualizaciones del DOM
+                            requestAnimationFrame(() => {
+                                const subtotalElement = document.getElementById(`subtotal-${productoId}`);
+                                subtotalElement.textContent = `$${(precio * cantidad).toFixed(2)}`;
+                                document.querySelector('.carrito-total strong').textContent = `$${parseFloat(data.total).toFixed(2)}`;
+                            });
                         } else {
                             alert('Error al actualizar la cantidad.');
                         }
@@ -110,8 +113,8 @@
                             break;
                         }
                     }
-                    return cookieValue;
                 }
+                return cookieValue;
             }
         });
     </script>

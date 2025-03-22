@@ -14,7 +14,8 @@
         <label class="agregar-producto-label" for="producto">Producto:</label>
         <select class="agregar-producto-select" name="producto" id="producto">
             {% for producto in productos %}
-            <option value="{{ producto.id }}" data-precio="{{ producto.precio }}" data-descripcion="{{ producto.descripcion }}">{{ producto.nombre }}</option>
+            <option value="{{ producto.id }}" data-precio="{{ producto.precio }}"
+                data-descripcion="{{ producto.descripcion }}">{{ producto.nombre }}</option>
             {% endfor %}
         </select>
         <p id="precio-unitario">Precio unitario: $0.00</p>
@@ -35,7 +36,7 @@
             </li>
             {% endfor %}
         </ul>
-        <p>Total: $<span id="total-pedido">{{ pedido.total }}</span></p>
+        <p>Total: $<span id="total-pedido">{{ pedido.total|floatformat:2 }}</span></p>
     </div>
 </div>
 
@@ -48,6 +49,9 @@
         const inputCantidad = document.getElementById('cantidad');
         const precioUnitario = document.getElementById('precio-unitario');
         const descripcionProducto = document.getElementById('descripcion-producto');
+
+        // Obtiene el total inicial del pedido desde el template
+        let total = parseFloat(totalPedido.textContent);
 
         // Actualiza el precio unitario y la descripción al cargar la página
         const productoSeleccionado = selectProducto.options[selectProducto.selectedIndex];
@@ -68,19 +72,8 @@
             const precioTotalProducto = productoPrecio * cantidad;
 
             // Actualiza el total del pedido
-            let totalActual = parseFloat(totalPedido.textContent);
-            let totalSinProductoActual = 0;
-
-            // Calcula el total sin el producto actual (si ya existe en la lista)
-            if (listaProductos.children.length > 0) {
-                const itemTexto = listaProductos.children[0].textContent;
-                const precioActual = parseFloat(itemTexto.split('$')[1]);
-                totalSinProductoActual = totalActual - precioActual;
-            } else {
-                totalSinProductoActual = totalActual;
-            }
-
-            totalPedido.textContent = (totalSinProductoActual + precioTotalProducto).toFixed(2);
+            total = precioTotalProducto;
+            totalPedido.textContent = total.toFixed(2);
 
             // Actualiza la lista de productos
             const productoNombre = selectProducto.options[selectProducto.selectedIndex].text;
@@ -108,8 +101,8 @@
             nuevoItem.textContent = `${productoNombre} x ${cantidad} - $${precioTotalProducto}`;
             listaProductos.appendChild(nuevoItem);
 
-            const totalActual = parseFloat(totalPedido.textContent);
-            totalPedido.textContent = (totalActual + precioTotalProducto).toFixed(2);
+            total += precioTotalProducto;
+            totalPedido.textContent = total.toFixed(2);
 
             form.submit();
         });
@@ -134,8 +127,8 @@
                     .then(data => {
                         if (data.success) {
                             // Actualiza el total del pedido
-                            const totalActual = parseFloat(totalPedido.textContent);
-                            totalPedido.textContent = (totalActual - precioTotalItem).toFixed(2);
+                            total -= precioTotalItem;
+                            totalPedido.textContent = total.toFixed(2);
 
                             // Elimina el ítem de la lista
                             listaProductos.removeChild(item);
