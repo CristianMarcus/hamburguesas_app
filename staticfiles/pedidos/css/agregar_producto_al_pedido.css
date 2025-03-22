@@ -1,0 +1,224 @@
+/* agregar_producto_al_pedido.css */
+
+.agregar-producto-container {
+    background-color: #fff9c4;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    margin: 30px auto;
+    border: 3px solid #ffeb3b;
+}
+
+.agregar-producto-titulo {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #d32f2f;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.5em;
+    text-shadow: 2px 2px #ffc107;
+}
+
+.agregar-producto-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #212121;
+    font-weight: bold;
+}
+
+.agregar-producto-select,
+.agregar-producto-cantidad {
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fffde7;
+}
+
+.agregar-producto-btn {
+    background-color: #00bcd4;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.agregar-producto-btn:hover {
+    background-color: #0097a7;
+}
+
+.resumen-pedido {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.resumen-pedido h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #00838f;
+}
+
+.resumen-pedido ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resumen-pedido li {
+    margin-bottom: 5px;
+}
+
+.resumen-pedido p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#precio-unitario {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.eliminar-item {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.eliminar-item:hover {
+    background-color: #d32f2f;
+}
+
+/* Media Queries */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
+    .agregar-producto-container {
+        width: 90%;
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+    .agregar-producto-titulo {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .agregar-producto-select,
+    .agregar-producto-cantidad {
+        font-size: 0.9em;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .agregar-producto-btn {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+
+    .resumen-pedido {
+        padding: 15px;
+    }
+
+    .resumen-pedido h2 {
+        font-size: 1.3em;
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .agregar-producto-container {
+        width: 90%;
+        padding: 25px;
+        margin: 15px auto;
+    }
+
+    .agregar-producto-titulo {
+        font-size: 2.2em;
+    }
+
+    .agregar-producto-select,
+    .agregar-producto-cantidad {
+        font-size: 0.95em;
+    }
+
+    .agregar-producto-btn {
+        font-size: 1.1em;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .agregar-producto-container {
+        width: 80%;
+        padding: 35px;
+        margin: 25px auto;
+    }
+
+    .agregar-producto-titulo {
+        font-size: 2.8em;
+    }
+
+    .agregar-producto-select,
+    .agregar-producto-cantidad {
+        font-size: 1.1em;
+    }
+
+    .agregar-producto-btn {
+        font-size: 1.3em;
+    }
+}
+
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .agregar-producto-container {
+        width: 70%;
+        padding: 40px;
+        margin: 30px auto;
+    }
+
+    .agregar-producto-titulo {
+        font-size: 3em;
+    }
+
+    .agregar-producto-select,
+    .agregar-producto-cantidad {
+        font-size: 1.2em;
+    }
+}
+
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .agregar-producto-container {
+        width: 60%;
+        max-width: 1000px;
+        padding: 50px;
+        margin: 40px auto;
+    }
+
+    .agregar-producto-titulo {
+        font-size: 3.5em;
+    }
+
+    .agregar-producto-select,
+    .agregar-producto-cantidad {
+        font-size: 1.3em;
+    }
+
+    .agregar-producto-btn {
+        font-size: 1.4em;
+    }
+}

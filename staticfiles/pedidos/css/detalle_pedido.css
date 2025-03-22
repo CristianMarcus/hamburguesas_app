@@ -1,0 +1,396 @@
+/* detalle_pedido.css */
+
+/* --- Variables CSS para Mantenibilidad --- */
+:root {
+    --color-principal: #ffc107;
+    --color-secundario: #ff9800;
+    --color-texto: #f33434;
+    --color-fondo: #f9f9f9;
+    --color-borde: #ddd;
+    --color-borde-input: #ffeb3b;
+    --color-boton-principal: #4caf50;
+    --color-boton-principal-hover: #245f27;
+    --color-boton-whatsapp: #43a047;
+    --color-boton-whatsapp-hover: #025f30;
+    --color-tabla-header: #ffeb3b;
+    --color-tabla-fila-par: #fffde7;
+    --color-texto-sin-productos: #999;
+    --sombra-caja: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --radio-borde: 5px;
+    --transicion-rapida: 0.3s ease;
+}
+
+/* --- Estilos Generales del Contenedor --- */
+.detalle-pedido-container {
+    font-family: 'Simpsonfont', sans-serif;
+    background-color: var(--color-fondo);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid var(--color-borde);
+}
+
+.productosh2 {
+    font-size: 5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--color-principal);
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* --- Estilos de Encabezados y Textos --- */
+.detalle-pedido-titulo {
+    color: var(--color-principal);
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 10px;
+}
+
+.detalle-pedido-subtitulo {
+    color: var(--color-secundario);
+    margin-top: 10px;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 10px;
+}
+
+.detalle-pedido-texto {
+    color: var(--color-texto);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- Estilos del Formulario --- */
+.detalle-pedido-form-control {
+    border: 2px solid var(--color-borde-input);
+    border-radius: var(--radio-borde);
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.detalle-pedido-btn-primary,
+.detalle-pedido-btn-success {
+    background-color: var(--color-boton-principal);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radio-borde);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: var(--sombra-caja);
+    transition: background-color var(--transicion-rapida);
+}
+
+.detalle-pedido-btn-primary:hover,
+.detalle-pedido-btn-success:hover {
+    background-color: var(--color-boton-principal-hover);
+}
+
+/* --- Estilos de la Tabla de Productos --- */
+.detalle-pedido-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
+}
+
+.detalle-pedido-tabla th,
+.detalle-pedido-tabla td {
+    border: 1px solid var(--color-borde);
+    padding: 10px;
+    text-align: left;
+}
+
+.detalle-pedido-tabla th {
+    background-color: var(--color-tabla-header);
+}
+
+.detalle-pedido-tabla tbody tr:nth-child(even) {
+    background-color: var(--color-tabla-fila-par);
+}
+
+/* --- Estilos del Botón de WhatsApp --- */
+.detalle-pedido-whatsapp-btn {
+    background-color: var(--color-boton-whatsapp);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color var(--transicion-rapida);
+    box-shadow: var(--sombra-caja);
+}
+
+.detalle-pedido-whatsapp-btn:hover {
+    background-color: var(--color-boton-whatsapp-hover);
+}
+
+/* --- Estilos del Formulario de Confirmación --- */
+.detalle-pedido-confirmar-form {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
+}
+
+/* --- Estilos del Mensaje "Sin Productos" --- */
+.detalle-pedido-sin-productos {
+    font-style: italic;
+    color: var(--color-texto-sin-productos);
+    background-color: white;
+    padding: 10px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
+    margin-top: 10px;
+}
+
+/* --- Selectores Específicos para IDs --- */
+#detalle-pedido-ancla {
+    color: var(--color-principal);
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 10px;
+}
+
+#confirmar-form {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-caja);
+}
+
+/* detalle_pedido.css */
+
+/* ... (Tu CSS existente) ... */
+
+/* --- Media Queries para Responsividad --- */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
+    .detalle-pedido-container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .productosh2 {
+        font-size: 3em;
+    }
+
+    .detalle-pedido-tabla {
+        font-size: 0.7em;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.3125em;
+    }
+
+    .detalle-pedido-whatsapp-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .detalle-pedido-form-control,
+    .detalle-pedido-btn-primary,
+    .detalle-pedido-btn-success,
+    .detalle-pedido-sin-productos {
+        padding: 8px;
+    }
+
+    /* Ajustes específicos para la tabla en móviles */
+    .detalle-pedido-tabla thead,
+    .detalle-pedido-tabla tbody,
+    .detalle-pedido-tabla tr,
+    .detalle-pedido-tabla td,
+    .detalle-pedido-tabla th {
+        display: block;
+    }
+
+    .detalle-pedido-tabla thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .detalle-pedido-tabla td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .detalle-pedido-tabla td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+    }
+
+    /* Añade data-label a cada td en tu HTML */
+    .detalle-pedido-tabla td:nth-of-type(1):before { content: "Producto"; }
+    .detalle-pedido-tabla td:nth-of-type(2):before { content: "Cantidad"; }
+    .detalle-pedido-tabla td:nth-of-type(3):before { content: "Precio Unitario"; }
+    .detalle-pedido-tabla td:nth-of-type(4):before { content: "Precio Total"; }
+    .detalle-pedido-tabla td:nth-of-type(5):before { content: "Acciones"; }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .detalle-pedido-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .productosh2 {
+        font-size: 4em;
+    }
+
+    .detalle-pedido-tabla {
+        font-size: 0.8em;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.4em;
+    }
+
+    .detalle-pedido-whatsapp-btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Móviles grandes (481px - 600px) */
+@media (min-width: 30.0625em) and (max-width: 37.5em) {
+    .detalle-pedido-tabla {
+        font-size: 0.9em;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.45em;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .detalle-pedido-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .productosh2 {
+        font-size: 4.5em;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+
+    .detalle-pedido-whatsapp-btn {
+        padding: 14px 22px;
+        font-size: 16px;
+    }
+
+    /* Ajustes específicos para la tabla en móviles */
+    .detalle-pedido-tabla {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+    .detalle-pedido-tabla thead {
+        display: none;
+    }
+
+    .detalle-pedido-tabla tr {
+        display: block;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .detalle-pedido-tabla td {
+        display: block;
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        box-sizing: border-box;
+    }
+
+    .detalle-pedido-tabla td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+    }
+}
+
+/* Tablets grandes (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .detalle-pedido-container {
+        padding: 25px;
+        margin: 25px auto;
+    }
+
+    .productosh2 {
+        font-size: 5em;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.5625em;
+        font-size: 1em;
+    }
+
+    .detalle-pedido-whatsapp-btn {
+        padding: 15px 25px;
+        font-size: 16px;
+    }
+}
+
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .detalle-pedido-container {
+        padding: 30px;
+        margin: 30px auto;
+    }
+
+    .productosh2 {
+        font-size: 5.5em;
+    }
+
+    .detalle-pedido-tabla th,
+    .detalle-pedido-tabla td {
+        padding: 0.625em;
+        font-size: 1.1em;
+    }
+
+    .detalle-pedido-whatsapp-btn {
+        padding: 16px 28px;
+        font-size: 17px;
+    }
+}

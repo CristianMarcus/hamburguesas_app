@@ -1,0 +1,435 @@
+/* Estilos generales 
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(184, 46, 22);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: #089c77 solid 5px;
+}
+
+h1 {
+    color: rgb(219, 136, 201);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ Estilos de la tabla 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+     Para que el border-radius funcione 
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+    color: #555;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+ Estilos de botones 
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 0.875rem;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+ Estilos para el mensaje de "No hay pedidos" 
+.text-center {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #777;
+}
+
+Estilos para la tabla responsive 
+.table-responsive {
+    overflow-x: auto;
+}
+
+ ------------------------------------
+   MEDIA QUERIES
+   ------------------------------------ 
+
+ Extra small devices (phones, less than 576px) 
+@media (max-width: 575.98px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .text-center {
+        padding: 10px;
+        font-size: 0.875rem;
+    }
+}
+
+ Small devices (landscape phones, 576px and up) 
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+        font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 7px 11px;
+    }
+
+    .text-center {
+        padding: 15px;
+    }
+}
+
+ Medium devices (tablets, 768px and up) 
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+
+    .text-center {
+        padding: 20px;
+    }
+}
+
+ Large devices (desktops, 992px and up) 
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 5.5rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 15px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+    }
+
+    .text-center {
+        padding: 20px;
+    }
+}
+
+ Extra large devices (large desktops, 1200px and up) 
+@media (min-width: 1200px) {
+     Your default styles already handle this well 
+}*/
+
+/* lista_pedidos.css (con paginacion*/
+
+/* lista_pedidos.css */
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Simpsonfont';
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Simpsonfont';
+}
+
+.table-responsive {
+    margin-bottom: 20px;
+    overflow-x: auto; /* Permite scroll horizontal */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ancho mínimo para evitar colapso excesivo */
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap; /* Evita que el texto se envuelva */
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+    pointer-events: none;
+}
+
+/* Media Queries */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permite scroll horizontal */
+    }
+
+    .table {
+        min-width: 400px; /* Reduce el ancho mínimo en móviles pequeños */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.8em;
+        padding: 6px;
+        white-space: normal; /* Permite que el texto se envuelva */
+    }
+
+    .btn-sm {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+
+    .pagination .page-link {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permite scroll horizontal */
+    }
+
+    .table {
+        min-width: 500px; /* Ajusta el ancho mínimo */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.9em;
+        padding: 7px;
+    }
+
+    .btn-sm {
+        font-size: 0.8em;
+        padding: 5px 9px;
+    }
+
+    .pagination .page-link {
+        font-size: 0.9em;
+        padding: 5px 9px;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .table th,
+    .table td {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    .btn-sm {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+
+    .pagination .page-link {
+        font-size: 1em;
+        padding: 6px 12px;
+    }
+}
+
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .table th,
+    .table td {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+
+    .btn-sm {
+        font-size: 1em;
+        padding: 7px 14px;
+    }
+
+    .pagination .page-link {
+        font-size: 1.1em;
+        padding: 7px 14px;
+    }
+}
+
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 1.2em;
+        padding: 14px;
+    }
+
+    .btn-sm {
+        font-size: 1.1em;
+        padding: 8px 16px;
+    }
+
+    .pagination .page-link {
+        font-size: 1.2em;
+        padding: 8px 16px;
+    }
+}

@@ -1,0 +1,210 @@
+/* Estilos base para todos los dispositivos */
+
+.carrito-container {
+    font-family: 'Simpsonfont', Arial, sans-serif;
+    background-color: #fff9c4;
+    padding: 1em; /* Ajuste para móviles */
+    border-radius: 0.5em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    margin: 1em auto;
+    width: 95%; /* Ajuste para móviles */
+    overflow-x: auto;
+}
+
+.carrito-titulo {
+    color: #ffc107;
+    text-shadow: 0.125em 0.125em #000;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 1.5em; /* Ajuste para móviles */
+}
+
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    display: block;
+    overflow-x: auto;
+}
+
+.carrito-tabla th,
+.carrito-tabla td {
+    border: 1px solid #ddd;
+    padding: 0.5em; /* Ajuste para móviles */
+    text-align: left;
+    font-size: 0.8em; /* Ajuste para móviles */
+}
+
+.carrito-tabla th {
+    background-color: #ffeb3b;
+}
+
+.carrito-tabla tbody tr:nth-child(even) {
+    background-color: #fffde7;
+}
+
+.carrito-cantidad-container {
+    display: inline-block;
+}
+
+.carrito-cantidad-input {
+    width: 3em; /* Ajuste para móviles */
+    padding: 0.3em;
+    border: 2px solid #ffeb3b;
+    border-radius: 0.3em;
+}
+
+.carrito-acciones .btn {
+    margin-right: 0.3em;
+    font-size: 0.8em; /* Ajuste para móviles */
+}
+
+.carrito-total {
+    text-align: right;
+    margin-top: 1em;
+    font-size: 0.9em; /* Ajuste para móviles */
+}
+
+.carrito-botones {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.carrito-botones .btn {
+    margin: 0.3em;
+    flex: 1;
+    max-width: 10em; /* Ajuste para móviles */
+    font-size: 0.9em; /* Ajuste para móviles */
+}
+
+.carrito-botones .btn-grande {
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+}
+
+.carrito-btn-primary,
+.carrito-btn-success,
+.carrito-btn-warning,
+.carrito-btn-danger {
+    background-color: #4caf50;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    color: white;
+    cursor: pointer;
+    margin-top: 0.5em;
+    font-size: 0.9em; /* Ajuste para móviles */
+}
+
+.carrito-btn-primary:hover,
+.carrito-btn-success:hover,
+.carrito-btn-warning:hover,
+.carrito-btn-danger:hover {
+    background-color: #43a047;
+}
+
+.carrito-btn-danger {
+    background-color: #f44336;
+}
+
+.carrito-btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.carrito-btn-warning {
+    background-color: #ff9800;
+}
+
+.carrito-btn-warning:hover {
+    background-color: #f57c00;
+}
+
+/* Media Queries */
+
+/* Para tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .carrito-container {
+        padding: 1.5em;
+        width: 90%;
+    }
+
+    .carrito-titulo {
+        font-size: 1.8em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.7em;
+        font-size: 1em;
+    }
+
+    .carrito-cantidad-input {
+        width: 3.5em;
+    }
+
+    .carrito-acciones .btn {
+        font-size: 1em;
+    }
+
+    .carrito-total {
+        font-size: 1em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 12em;
+    }
+}
+
+/* Para tablets grandes (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .carrito-container {
+        padding: 2em;
+        width: 85%;
+    }
+
+    .carrito-titulo {
+        font-size: 2em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 0.8em;
+    }
+
+    .carrito-cantidad-input {
+        width: 4em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 14em;
+    }
+}
+
+/* Para pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .carrito-container {
+        padding: 2.5em;
+        max-width: 60em;
+    }
+
+    .carrito-titulo {
+        font-size: 2.2em;
+    }
+
+    .carrito-tabla th,
+    .carrito-tabla td {
+        padding: 1em;
+        font-size: 1.1em;
+    }
+
+    .carrito-cantidad-input {
+        width: 4.5em;
+    }
+
+    .carrito-botones .btn {
+        max-width: 16em;
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,158 @@
+/* detalle_producto.css */
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries */
+
+/* Móviles pequeños (hasta 320px) */
+@media (max-width: 20em) {
+    .container {
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+    }
+
+    .card-text {
+        font-size: 1em;
+    }
+
+    .btn-primary {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+/* Móviles medianos (321px - 480px) */
+@media (min-width: 20.0625em) and (max-width: 30em) {
+    .container {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.3em;
+    }
+
+    .card-text {
+        font-size: 1.05em;
+    }
+
+    .btn-primary {
+        font-size: 1em;
+        padding: 9px 18px;
+    }
+}
+
+/* Tablets pequeñas (601px - 768px) */
+@media (min-width: 37.5625em) and (max-width: 48em) {
+    .container {
+        padding: 25px;
+    }
+
+    .card-title {
+        font-size: 1.4em;
+    }
+
+    .card-text {
+        font-size: 1.1em;
+    }
+
+    .btn-primary {
+        font-size: 1.1em;
+        padding: 12px 24px;
+    }
+}
+
+/* Tablets grandes y pantallas pequeñas (769px - 1024px) */
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .container {
+        padding: 30px;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+    }
+
+    .card-text {
+        font-size: 1.15em;
+    }
+
+    .btn-primary {
+        font-size: 1.2em;
+        padding: 14px 28px;
+    }
+}
+
+/* Pantallas grandes (1025px y más) */
+@media (min-width: 64.0625em) {
+    .container {
+        max-width: 1000px;
+        padding: 40px;
+    }
+
+    .card-title {
+        font-size: 1.6em;
+    }
+
+    .card-text {
+        font-size: 1.2em;
+    }
+
+    .btn-primary {
+        font-size: 1.3em;
+        padding: 16px 32px;
+    }
+}

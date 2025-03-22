@@ -1,0 +1,515 @@
+body {
+    font-family: 'Simpsonfont';
+    line-height: 1.6;
+    color: #e36bf3;
+    background-color: #f6f609;
+    margin: 0;
+    padding: 0;
+    height: 600px;
+}
+
+@font-face {
+    font-family: 'Simpsonfont';
+    src: url('fonts/Simpsonfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+nav-menu li img#openClosedSign {
+    max-height: 30px;
+    max-width: 60px;
+    width: auto;
+    margin: 0 5px;
+    color: #ca4e5a;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    font-family: 'Simpsonfont';
+}
+
+nav-menu li img#openClosedSign:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    font-family: 'Simpsonfont';
+}
+
+.header {
+    background-image: url("pedidos/img/1024_600.jpg");
+    color: #ce4e4e;
+    font-family: 'Simpsonfont';
+    font-size: 1em;
+    padding: 15px;
+    border-radius: 10px;
+    height: 600px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ea7610, #ffff00) 1;
+    border-image-slice: 1;
+    border-image-repeat: round;
+
+    animation: border-blink 1s infinite alternate;
+}
+
+@keyframes border-blink {
+    0% {
+        border-image: linear-gradient(to right, #FF0000, #FFFF00) 1; /* Rojo y amarillo (nariz y piel) */
+    }
+    20% {
+        border-image: linear-gradient(to right, #FFFF00, #00FF00) 1; /* Amarillo y verde (piel y cabello) */
+    }
+    40% {
+        border-image: linear-gradient(to right, #00FF00, #A52A2A) 1; /* Verde y marrón (cabello y hamburguesa) */
+    }
+    60% {
+        border-image: linear-gradient(to right, #A52A2A, #FFFFFF) 1; /* Marrón y blanco (hamburguesa y ojos) */
+    }
+    80% {
+        border-image: linear-gradient(to right, #FFFFFF, #FFA500) 1; /* blanco y naranja (ojos y comida) */
+    }
+    100% {
+        border-image: linear-gradient(to right, #FFA500, #FF0000) 1; /* naranja y rojo (comida y nariz) */
+    }
+
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff;
+    padding: 10px 0;
+    font-family: 'Simpsonfont';
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Agregamos el sombreado */
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    font-family: 'Simpsonfont';
+    max-width: 1200px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: 'Simpsonfont';
+}
+
+.nav-item {
+    margin: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Simpsonfont';
+    align-items: center; /* Alineación vertical */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    transform: scale(1.1);
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    padding: 8px 8px;
+    box-sizing: border-box;
+}
+
+.nav-icon-home {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.nav-icon-carrito {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.nav-icon-producto {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.nav-link {
+    color: #e71b81;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding: 8px 8px;
+    transition: color 0.3s ease;
+    font-family: 'Simpsonfont', sans-serif;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    display: inline-block;
+}
+
+a.nav-link {
+    margin-right: 5em;
+    text-align: center;
+    font-family: 'Simpsonfont';
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: #fd1fb3;
+    font-family: 'Simpsonfont';
+}
+
+.main-content {
+    background-color: transparent !important;
+    width: 95%; /* Adjust the width */
+    max-width: 1200px;
+    margin: 5px ; /* Center the main content */
+    padding: 5px;
+    min-height: auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'Simpsonfont';
+    overflow-x: visible; /*to see the overflow if it happens*/
+}
+.messages-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: 'Simpsonfont';
+}
+
+.message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: 'Simpsonfont';
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    font-family: 'Simpsonfont';
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    font-family: 'Simpsonfont';
+}
+
+.icono-krusty {
+    width: 50px;
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    animation: mover-motito 30s linear infinite;
+    z-index: 10;
+    transition: transform 0s linear
+}
+
+@keyframes mover-motito {
+    0% {
+        left: -20px;
+        transform: rotateY(0deg);
+    }
+    25%, 75% {
+        transform: rotateY(0deg);
+    }
+    80% {
+        left: calc(100% - 50px);
+        transform: rotateY(360deg);
+    }
+    100% {
+        left: -20px;
+        transform: rotateY(0deg);
+    }
+}
+
+/* Variables CSS */
+:root {
+    --footer-bg-color: #007bff;
+    --footer-text-color: #ffc107;
+    --footer-link-color: white;
+    --footer-text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    --footer-font: 'Simpsonfont', sans-serif;
+    --footer-padding: 10px;
+}
+
+.footer {
+    background-color: var(--footer-bg-color);
+    position: relative; /* Evita superposiciones */
+    color: var(--footer-link-color);
+    padding: var(--footer-padding);
+    text-align: center;
+    border-radius: 2px;
+    font-family: var(--footer-font);
+    height: auto; /* Altura automática para contenido dinámico */
+    width: 100%; /* Ocupa todo el ancho */
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+}
+
+.footer:hover {
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.2),
+                0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente */
+    padding: 20px 0; /* Espacio interno */
+}
+
+.footer-text {
+    margin: 5px 0;
+    font-size: 16px;
+    color: var(--footer-text-color);
+    font-family: var(--footer-font);
+    text-shadow: var(--footer-text-shadow);
+    line-height: 1.5; /* Mejora la legibilidad */
+}
+
+.footer-text:first-child {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffeb3b; /* Color específico para el primer texto */
+}
+
+.footer-link {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    font-family: var(--footer-font);
+    margin: 0 10px;
+    transition: color 0.3s ease; /* Transición suave de color */
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #ddd; /* Cambia el color al pasar el ratón */
+}
+
+.login-links {
+    display: none; /* Oculta los enlaces de inicio de sesión */
+    font-family: var(--footer-font);
+}
+
+/* Media Queries para Responsividad del Footer */
+
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 15px 0;
+    }
+
+    .footer-text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .footer-link {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .footer-text {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .footer-container {
+        max-width: 1400px;
+    }
+}
+
+/* Media Queries para base.css (Optimizado) */
+
+/* Para móviles pequeños (hasta 600px) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.4; /* Ajusta el interlineado del body */
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    a.nav-link {
+        margin-right: 0;
+    }
+
+    .header {
+        height: 300px;
+        width: auto;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .icono-krusty {
+        display: none;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-link {
+        margin: 5px 0;
+    }
+
+    .nav-logo-img {
+        height: 80px;
+    }
+
+    .main-content {
+        padding: 20px;
+        margin-left: 0px;
+        width: calc(100% - 20px);
+    }
+
+    .footer-text {
+        font-size: 12px;
+    }
+}
+
+/* Para móviles muy pequeños (hasta 320px) */
+@media (max-width: 320px) {
+    body {
+        font-size: 12px; /* Ajusta aún más el tamaño de fuente del body */
+        line-height: 1.2; /* Ajusta aún más el interlineado del body */
+    }
+
+    .nav-logo-img {
+        height: 60px;
+    }
+
+    .nav-link {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+    .header {
+        background-size: cover;
+    }
+
+    .main-content {
+        padding: 10px;
+        width: calc(100% - 10px);
+        margin-left: 5px;
+    }
+}
+
+/* Para tablets (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.5; /* Ajusta el interlineado del body */
+    }
+
+    .nav-container {
+        width: 95%;
+    }
+
+    a.nav-link {
+        margin-right: 2em;
+    }
+
+    .main-content {
+        margin-left: 25px;
+        width: calc(100% - 50px);
+    }
+}
+
+/* Para tablets medianas (768px a 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .nav-container {
+        width: 95%;
+    }
+}
+
+/* Para tablets grandes (992px a 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .nav-container {
+        width: 95%;
+    }
+
+    .main-content {
+        margin-left: 35px;
+        width: calc(100% - 70px);
+    }
+}
+
+/* Para pantallas grandes (1200px a 1399.98px) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .nav-container {
+        width: 95%;
+    }
+
+    .main-content {
+        padding: 40px;
+        margin-left: 50px;
+        width: calc(100% - 100px);
+    }
+}
+
+/* Para pantallas muy grandes (1400px y más) */
+@media (min-width: 1400px) {
+    body {
+        font-size: 18px; /* Ajusta el tamaño de fuente del body */
+        line-height: 1.6; /* Ajusta el interlineado del body */
+    }
+
+    .nav-container {
+        max-width: 1400px;
+    }
+
+    .main-content {
+        max-width: 1400px;
+        padding: 50px;
+        margin-left: 100px;
+        width: calc(100% - 200px);
+    }
+
+    .footer-container {
+        max-width: 1400px;
+    }
+}
