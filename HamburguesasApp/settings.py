@@ -3,6 +3,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url  # Importa dj_database_url
 
 # Cargar variables de entorno desde .env
 load_dotenv()
@@ -11,14 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-3)d$4189+p85!f856*p4s6gq$2y3635&46*y!9&4*!2t5j4r')
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Lee DEBUG de la variable de entorno
 
-ALLOWED_HOSTS = ['hamburguesas-app.onrender.com']  # Cambiar en producción
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'hamburguesas-app.onrender.com').split(',')  # Lee ALLOWED_HOSTS
 
 STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Configura STATIC_ROOT
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -83,15 +82,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'HamburguesasApp.wsgi.application'
 
+# Configura la base de datos para Render
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hamburguesasdb',  # Nombre de tu base de datos
-        'USER': 'postgres',        # Tu usuario de PostgreSQL
-        'PASSWORD': '1234',        # Tu contraseña de PostgreSQL
-        'HOST': 'localhost',      # O la dirección de tu servidor PostgreSQL
-        'PORT': '5432',            # Puerto de PostgreSQL
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
