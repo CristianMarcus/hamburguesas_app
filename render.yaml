@@ -1,22 +1,14 @@
-databases:
-  - name: burgername # Nombre correcto
-    plan: free
-    databaseName: burgername # Nombre correcto
-    # user: pola7188 # Quita esta línea para que Render maneje el usuario
-
 services:
   - type: web
-    plan: free
-    name: HamburguesasApp
+    name: hamburguesas-app
     runtime: python
-    buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn HamburguesasApp.asgi:application -k uvicorn.workers.UvicornWorker" # Nombre correcto
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn HamburguesasApp.wsgi:application
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: burgername # Nombre correcto
-          property: connectionString
       - key: SECRET_KEY
         generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "hamburguesas-app.onrender.com"
+    staticDir: ./staticfiles
