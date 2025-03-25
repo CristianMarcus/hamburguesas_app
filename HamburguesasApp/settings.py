@@ -12,14 +12,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-3)d$4189+p85!f856*p4s6gq$2y3635&46*y!9&4*!2t5j4r')
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True
+
 
 ALLOWED_HOSTS = ['hamburguesas-app.onrender.com', '127.0.0.1']  # Cambiar en producción
 
-STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Carpeta donde se recopilarán
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Asegúrate de que esta carpeta existe
+]
 
 
 
