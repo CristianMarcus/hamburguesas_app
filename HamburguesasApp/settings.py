@@ -19,9 +19,9 @@ ALLOWED_HOSTS = ['hamburguesas-app.onrender.com', '127.0.0.1']  # Cambiar en pro
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Carpeta donde se recopilarán
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Asegúrate de que esta carpeta existe
-]
+#STATICFILES_DIRS = [
+ #   os.path.join(BASE_DIR, 'static'),  # Asegúrate de que esta carpeta existe
+#]
 
 
 

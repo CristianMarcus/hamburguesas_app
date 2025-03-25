@@ -1,14 +1,18 @@
 services:
   - type: web
     name: hamburguesas-app
-    runtime: python
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    env: python
+    buildCommand: ./build.sh
     startCommand: gunicorn HamburguesasApp.wsgi:application
+    plan: free
+    branches:
+      - main
     envVars:
-      - key: SECRET_KEY
-        generateValue: true
       - key: DEBUG
         value: "False"
-      - key: ALLOWED_HOSTS
-        value: "hamburguesas-app.onrender.com"
-    staticDir: ./staticfiles
+      - key: SECRET_KEY
+        value: "br00$ll06-s-urgqy)@%n4_1r3&iir$y%oc)(46nn2g!7yhxcj"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "'hamburguesas-app.onrender.com', '127.0.0.1', 'localhost'"
+      - key: DATABASE_URL
+        value: "postgresql://pola7188:TXzER0LNWIKySkBIU9HZjIGUEsKWW67Q@dpg-cvgkum3tq21c73e597f0-a/burgername"

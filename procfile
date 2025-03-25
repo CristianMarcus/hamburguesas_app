@@ -1,1 +1,1 @@
-web: gunicorn hamburguesas_app.wsgi
+web: gunicorn HamburguesasApp.wsgi:application
