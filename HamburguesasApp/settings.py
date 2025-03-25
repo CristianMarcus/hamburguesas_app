@@ -3,7 +3,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-import dj_database_url  # Importa dj_database_url
+import dj_database_url
 
 # Cargar variables de entorno desde .env
 load_dotenv()
@@ -12,14 +12,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-3)d$4189+p85!f856*p4s6gq$2y3635&46*y!9&4*!2t5j4r')
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Lee DEBUG de la variable de entorno
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'hamburguesas-app.onrender.com').split(',')  # Lee ALLOWED_HOSTS
+ALLOWED_HOSTS = ['hamburguesas-app.onrender.com', '127.0.0.1']  # Cambiar en producción
 
 STATIC_URL = 'static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Configura STATIC_ROOT
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -47,8 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-
 ]
 
 LOGGING = {
@@ -87,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'HamburguesasApp.wsgi.application'
 
-# Configura la base de datos para Render
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
